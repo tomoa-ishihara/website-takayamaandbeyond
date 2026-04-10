@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Takayama & Beyond</title>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── VARIABLES ── */
+:root {
+  --ink: #1c1916; --ink2: #5a5048; --ink3: #9a9088;
+  --paper: #f8f6f2; --cream: #ede9e2; --dark: #141210;
+  --red: #8b1a1a; --gold: #c9a96e; --line: rgba(28,25,22,0.1);
+}
+body { font-family: "DM Sans", sans-serif; color: var(--ink); background: var(--paper); }
+
+/* ── NAV ── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 60px; height: 60px;
+  background: rgba(248,246,242,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-nav-logo {
+  font-family: "Kaisei Decol", serif; font-size: 15px;
+  text-decoration: none; color: var(--ink); letter-spacing: 0.01em;
+}
+.site-nav-logo em { color: var(--red); font-style: normal; }
+.site-nav-links { display: flex; gap: 28px; align-items: center; }
+.site-nav-links a {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; color: var(--ink2); transition: color 0.18s;
+}
+.site-nav-links a:hover { color: var(--red); }
+.site-nav-book {
+  padding: 6px 16px; border: 1px solid rgba(28,25,22,0.2);
+  color: var(--ink) !important; transition: all 0.18s !important;
+}
+.site-nav-book:hover { background: var(--red) !important; border-color: var(--red) !important; color: #fff !important; }
+.site-body { padding-top: 60px; }
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--dark); padding: 56px 60px 32px;
+}
+.site-footer-top {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 48px; padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.site-footer-logo {
+  font-family: "Kaisei Decol", serif; font-size: 17px;
+  color: #fff; margin-bottom: 12px; display: block;
+  text-decoration: none;
+}
+.site-footer-logo em { color: var(--red); font-style: normal; }
+.site-footer-tagline {
+  font-size: 13px; color: rgba(255,255,255,0.28);
+  line-height: 1.7; font-weight: 300; max-width: 240px;
+}
+.site-footer-contact {
+  margin-top: 20px; font-size: 12px;
+  color: rgba(255,255,255,0.25); line-height: 1.8; font-weight: 300;
+}
+.site-footer-contact a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.site-footer-col-title {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); margin-bottom: 18px;
+}
+.site-footer-links { display: flex; flex-direction: column; gap: 10px; }
+.site-footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.4);
+  text-decoration: none; font-weight: 300; transition: color 0.18s;
+}
+.site-footer-links a:hover { color: var(--gold); }
+.site-footer-bottom {
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.site-footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.06em; }
+.site-footer-legal { display: flex; gap: 20px; }
+.site-footer-legal a {
+  font-size: 11px; color: rgba(255,255,255,0.18);
+  text-decoration: none; transition: color 0.18s;
+}
+.site-footer-legal a:hover { color: rgba(255,255,255,0.45); }
+
+/* ── LEGAL PAGE BODY ── */
+.legal-hero {
+  padding: 80px 60px 56px;
+  background: var(--dark);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.legal-hero-label {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(201,169,110,0.6); margin-bottom: 16px;
+}
+.legal-hero-title {
+  font-family: "Kaisei Decol", serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 12px;
+}
+.legal-hero-date { font-size: 13px; color: rgba(255,255,255,0.25); }
+
+.legal-body {
+  max-width: 800px; margin: 0 auto;
+  padding: 64px 60px 80px;
+}
+.legal-section { margin-bottom: 40px; }
+.legal-section-title {
+  font-family: "Kaisei Decol", serif; font-size: 18px;
+  font-weight: 400; color: var(--ink); margin-bottom: 14px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--line);
+}
+.legal-section-title-ja {
+  font-size: 13px; color: var(--ink3); font-weight: 300; margin-left: 8px;
+}
+.legal-p {
+  font-size: 15px; color: var(--ink2); line-height: 1.85; font-weight: 300; margin-bottom: 14px;
+}
+.legal-list { padding-left: 20px; margin-bottom: 14px; }
+.legal-list li { font-size: 15px; color: var(--ink2); line-height: 1.8; font-weight: 300; margin-bottom: 6px; }
+.legal-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+.legal-table td {
+  padding: 14px 16px; border-bottom: 1px solid var(--line);
+  font-size: 14px; color: var(--ink2); vertical-align: top; line-height: 1.7; font-weight: 300;
+}
+.legal-table td:first-child {
+  font-weight: 400; color: var(--ink); white-space: nowrap; width: 200px;
+  padding-right: 24px;
+}
+.legal-divider { border: none; border-top: 2px solid var(--line); margin: 48px 0; }
+
+/* TC specific */
+.tc-toc {
+  background: var(--cream); padding: 24px 28px; margin-bottom: 40px;
+  border-left: 3px solid var(--red);
+}
+.tc-toc-title { font-family: "Kaisei Decol", serif; font-size: 15px; margin-bottom: 12px; }
+.tc-toc-list { columns: 2; gap: 16px; list-style: none; padding: 0; }
+.tc-toc-list li { font-size: 13px; color: var(--ink2); margin-bottom: 4px; font-weight: 300; }
+.tc-toc-list a { color: var(--ink2); text-decoration: none; }
+.tc-toc-list a:hover { color: var(--red); }
+
+@media (max-width: 900px) {
+  .site-nav { padding: 0 24px; }
+  .site-nav-links a:not(.site-nav-book) { display: none; }
+  .site-footer { padding: 48px 24px 28px; }
+  .site-footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .legal-hero { padding: 64px 24px 40px; }
+  .legal-body { padding: 48px 24px 64px; }
+  .tc-toc-list { columns: 1; }
+  .legal-table td:first-child { width: 140px; white-space: normal; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">Takayama &amp; <em>B</em>eyond</a>
+  <div class="site-nav-links">
+    <a href="/">Home</a>
+    <a href="/experiences">Experiences</a>
+    <a href="/tours">Tours</a>
+    <a href="/about">About Us</a>
+    <a href="/partnership">Partnership</a>
+    <a href="/experiences" class="site-nav-book">Book now</a>
+  </div>
+</nav>
+<div class="site-body">
+<div class="legal-hero">
+  <div class="legal-hero-label">Legal</div>
+  <h1 class="legal-hero-title">Privacy Policy<br><span style="font-size:0.55em;opacity:0.5;">プライバシーポリシー</span></h1>
+  <div class="legal-hero-date">Last updated / 最終更新日: April 1, 2026</div>
+</div>
+<div class="legal-body">
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">1. Introduction <span class="legal-section-title-ja">/ はじめに</span></h2>
+    <p class="legal-p">Takayama & Beyond is operated by Four Circles Japan 株式会社 ("we," "us," or "our"), located at Kamisannomachi 26, Takayama, Gifu 506-0847, Japan. This Privacy Policy explains how we collect, use, and protect your personal information when you use our website (takayamaandbeyond.com) or book our services.</p>
+    <p class="legal-p">Takayama & Beyondは、Four Circles Japan 株式会社（以下「当社」）が運営しています（所在地：〒506-0847 岐阜県高山市上三之町26）。本プライバシーポリシーは、お客様が当社ウェブサイト（takayamaandbeyond.com）を利用され、またはサービスをご予約いただく際に、当社がどのように個人情報を収集・利用・保護するかを説明するものです。</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">2. Information We Collect <span class="legal-section-title-ja">/ 収集する情報</span></h2>
+    <p class="legal-p">We may collect the following information:</p>
+    <ul class="legal-list">
+      <li>Name / 氏名</li>
+      <li>Email address / メールアドレス</li>
+      <li>Phone number / 電話番号</li>
+      <li>Nationality / 国籍</li>
+      <li>Booking and payment details / 予約および支払い情報</li>
+      <li>Correspondence and inquiries / お問い合わせ内容</li>
+      <li>Website usage data (via cookies and analytics) / ウェブサイトの利用データ（Cookie・アナリティクス経由）</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">3. How We Use Your Information <span class="legal-section-title-ja">/ 情報の利用目的</span></h2>
+    <ul class="legal-list">
+      <li>Process bookings and payments / 予約・支払いの処理</li>
+      <li>Communicate with you regarding your reservation / ご予約に関するご連絡</li>
+      <li>Fulfill legal and regulatory obligations / 法令および規制上の義務の履行</li>
+      <li>Improve our website and services / ウェブサイトおよびサービスの改善</li>
+      <li>Send service-related communications (not marketing, unless you opt in) / サービスに関するご連絡（オプトインいただいた場合を除き、マーケティング目的には使用しません）</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">4. Sharing of Information <span class="legal-section-title-ja">/ 情報の第三者提供</span></h2>
+    <p class="legal-p">We do not sell your personal information. We may share it with: / 当社はお客様の個人情報を販売しません。以下の場合に限り、第三者と共有することがあります。</p>
+    <ul class="legal-list">
+      <li>Local guides, accommodation partners, and transport providers necessary to deliver your booked experience / ご予約の体験を提供するために必要なローカルガイド、宿泊施設、交通機関</li>
+      <li>Payment processors / 決済代行業者</li>
+      <li>Legal authorities, where required by law / 法令に基づき必要な場合の行政機関・法的機関</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">5. Data Retention <span class="legal-section-title-ja">/ データの保存期間</span></h2>
+    <p class="legal-p">We retain your personal data only as long as necessary to fulfill the purposes described in this policy, or as required by applicable law. / 当社は、本ポリシーに記載された目的を達成するために必要な期間、または適用法令が求める期間に限り、個人データを保存します。</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">6. Cookies <span class="legal-section-title-ja">/ クッキー</span></h2>
+    <p class="legal-p">Our website may use cookies to improve your browsing experience and analyze site traffic. You may disable cookies through your browser settings, though some features of the site may not function properly as a result. / 当社ウェブサイトでは、閲覧体験の向上およびアクセス解析のためにCookieを使用することがあります。ブラウザの設定によりCookieを無効にすることができますが、一部の機能が正常に動作しない場合があります。</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">7. Your Rights <span class="legal-section-title-ja">/ お客様の権利</span></h2>
+    <ul class="legal-list">
+      <li>Access the personal data we hold about you / 当社が保有するお客様の個人データへのアクセス</li>
+      <li>Request correction or deletion of your data / データの訂正または削除の請求</li>
+      <li>Withdraw consent at any time / いつでも同意を撤回すること</li>
+    </ul>
+    <p class="legal-p">To exercise these rights, please contact us at <a href="mailto:info@takayamaandbeyond.com" style="color:var(--red);">info@takayamaandbeyond.com</a>. / これらの権利を行使される場合は、info@takayamaandbeyond.com までご連絡ください。</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">8. Security <span class="legal-section-title-ja">/ セキュリティ</span></h2>
+    <p class="legal-p">We take reasonable measures to protect your personal information from unauthorized access, disclosure, or misuse. However, no method of transmission over the internet is completely secure. / 当社は、不正アクセス・開示・悪用からお客様の個人情報を保護するために合理的な措置を講じます。ただし、インターネット上での送信方法に完全な安全性を保証することはできません。</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">9. Changes to This Policy <span class="legal-section-title-ja">/ ポリシーの変更</span></h2>
+    <p class="legal-p">We may update this Privacy Policy from time to time. The latest version will always be available on this page. / 当社は本プライバシーポリシーを随時更新することがあります。最新版は常に本ページに掲載されます。</p>
+  </div>
+
+  <div class="legal-section">
+    <h2 class="legal-section-title">10. Contact <span class="legal-section-title-ja">/ お問い合わせ</span></h2>
+    <p class="legal-p">Four Circles Japan 株式会社<br>〒506-0847 岐阜県高山市上三之町26<br><a href="mailto:info@takayamaandbeyond.com" style="color:var(--red);">info@takayamaandbeyond.com</a><br>https://takayamaandbeyond.com</p>
+  </div>
+
+</div>
+<footer class="site-footer">
+  <div class="site-footer-top">
+    <div>
+      <a href="/" class="site-footer-logo">Takayama &amp; <em>B</em>eyond</a>
+      <div class="site-footer-tagline">Private experiences in Hida Takayama — connecting travellers with the people and places that make this region extraordinary.</div>
+      <div class="site-footer-contact">
+        Four Circles Japan 株式会社<br>
+        〒506-0847 岐阜県高山市上三之町26<br>
+        <a href="mailto:info@takayamaandbeyond.com">info@takayamaandbeyond.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="site-footer-col-title">Pages</div>
+      <div class="site-footer-links">
+        <a href="/">Home</a>
+        <a href="/experiences">Experiences</a>
+        <a href="/tours">Tours</a>
+        <a href="/about">About Us</a>
+        <a href="/partnership">Partnership / DMC</a>
+      </div>
+    </div>
+    <div>
+      <div class="site-footer-col-title">Legal</div>
+      <div class="site-footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/tokushoho">特定商取引法に基づく表記</a>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    <div class="site-footer-copy">© 2026 FOUR CIRCLES JAPAN 株式会社</div>
+    <div class="site-footer-legal">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="/tokushoho">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特定商取引法に基づく表記 — Takayama & Beyond</title>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── VARIABLES ── */
+:root {
+  --ink: #1c1916; --ink2: #5a5048; --ink3: #9a9088;
+  --paper: #f8f6f2; --cream: #ede9e2; --dark: #141210;
+  --red: #8b1a1a; --gold: #c9a96e; --line: rgba(28,25,22,0.1);
+}
+body { font-family: "DM Sans", sans-serif; color: var(--ink); background: var(--paper); }
+
+/* ── NAV ── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 60px; height: 60px;
+  background: rgba(248,246,242,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-nav-logo {
+  font-family: "Kaisei Decol", serif; font-size: 15px;
+  text-decoration: none; color: var(--ink); letter-spacing: 0.01em;
+}
+.site-nav-logo em { color: var(--red); font-style: normal; }
+.site-nav-links { display: flex; gap: 28px; align-items: center; }
+.site-nav-links a {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; color: var(--ink2); transition: color 0.18s;
+}
+.site-nav-links a:hover { color: var(--red); }
+.site-nav-book {
+  padding: 6px 16px; border: 1px solid rgba(28,25,22,0.2);
+  color: var(--ink) !important; transition: all 0.18s !important;
+}
+.site-nav-book:hover { background: var(--red) !important; border-color: var(--red) !important; color: #fff !important; }
+.site-body { padding-top: 60px; }
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--dark); padding: 56px 60px 32px;
+}
+.site-footer-top {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 48px; padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.site-footer-logo {
+  font-family: "Kaisei Decol", serif; font-size: 17px;
+  color: #fff; margin-bottom: 12px; display: block;
+  text-decoration: none;
+}
+.site-footer-logo em { color: var(--red); font-style: normal; }
+.site-footer-tagline {
+  font-size: 13px; color: rgba(255,255,255,0.28);
+  line-height: 1.7; font-weight: 300; max-width: 240px;
+}
+.site-footer-contact {
+  margin-top: 20px; font-size: 12px;
+  color: rgba(255,255,255,0.25); line-height: 1.8; font-weight: 300;
+}
+.site-footer-contact a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.site-footer-col-title {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); margin-bottom: 18px;
+}
+.site-footer-links { display: flex; flex-direction: column; gap: 10px; }
+.site-footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.4);
+  text-decoration: none; font-weight: 300; transition: color 0.18s;
+}
+.site-footer-links a:hover { color: var(--gold); }
+.site-footer-bottom {
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.site-footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.06em; }
+.site-footer-legal { display: flex; gap: 20px; }
+.site-footer-legal a {
+  font-size: 11px; color: rgba(255,255,255,0.18);
+  text-decoration: none; transition: color 0.18s;
+}
+.site-footer-legal a:hover { color: rgba(255,255,255,0.45); }
+
+/* ── LEGAL PAGE BODY ── */
+.legal-hero {
+  padding: 80px 60px 56px;
+  background: var(--dark);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.legal-hero-label {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(201,169,110,0.6); margin-bottom: 16px;
+}
+.legal-hero-title {
+  font-family: "Kaisei Decol", serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 12px;
+}
+.legal-hero-date { font-size: 13px; color: rgba(255,255,255,0.25); }
+
+.legal-body {
+  max-width: 800px; margin: 0 auto;
+  padding: 64px 60px 80px;
+}
+.legal-section { margin-bottom: 40px; }
+.legal-section-title {
+  font-family: "Kaisei Decol", serif; font-size: 18px;
+  font-weight: 400; color: var(--ink); margin-bottom: 14px;
+  padding-bottom: 10px; border-bottom: 1px solid var(--line);
+}
+.legal-section-title-ja {
+  font-size: 13px; color: var(--ink3); font-weight: 300; margin-left: 8px;
+}
+.legal-p {
+  font-size: 15px; color: var(--ink2); line-height: 1.85; font-weight: 300; margin-bottom: 14px;
+}
+.legal-list { padding-left: 20px; margin-bottom: 14px; }
+.legal-list li { font-size: 15px; color: var(--ink2); line-height: 1.8; font-weight: 300; margin-bottom: 6px; }
+.legal-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+.legal-table td {
+  padding: 14px 16px; border-bottom: 1px solid var(--line);
+  font-size: 14px; color: var(--ink2); vertical-align: top; line-height: 1.7; font-weight: 300;
+}
+.legal-table td:first-child {
+  font-weight: 400; color: var(--ink); white-space: nowrap; width: 200px;
+  padding-right: 24px;
+}
+.legal-divider { border: none; border-top: 2px solid var(--line); margin: 48px 0; }
+
+/* TC specific */
+.tc-toc {
+  background: var(--cream); padding: 24px 28px; margin-bottom: 40px;
+  border-left: 3px solid var(--red);
+}
+.tc-toc-title { font-family: "Kaisei Decol", serif; font-size: 15px; margin-bottom: 12px; }
+.tc-toc-list { columns: 2; gap: 16px; list-style: none; padding: 0; }
+.tc-toc-list li { font-size: 13px; color: var(--ink2); margin-bottom: 4px; font-weight: 300; }
+.tc-toc-list a { color: var(--ink2); text-decoration: none; }
+.tc-toc-list a:hover { color: var(--red); }
+
+@media (max-width: 900px) {
+  .site-nav { padding: 0 24px; }
+  .site-nav-links a:not(.site-nav-book) { display: none; }
+  .site-footer { padding: 48px 24px 28px; }
+  .site-footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .site-footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .legal-hero { padding: 64px 24px 40px; }
+  .legal-body { padding: 48px 24px 64px; }
+  .tc-toc-list { columns: 1; }
+  .legal-table td:first-child { width: 140px; white-space: normal; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="site-nav-logo">Takayama &amp; <em>B</em>eyond</a>
+  <div class="site-nav-links">
+    <a href="/">Home</a>
+    <a href="/experiences">Experiences</a>
+    <a href="/tours">Tours</a>
+    <a href="/about">About Us</a>
+    <a href="/partnership">Partnership</a>
+    <a href="/experiences" class="site-nav-book">Book now</a>
+  </div>
+</nav>
+<div class="site-body">
+<div class="legal-hero">
+  <div class="legal-hero-label">Legal</div>
+  <h1 class="legal-hero-title">特定商取引法に基づく表記</h1>
+  <div class="legal-hero-date">Specified Commercial Transaction Act Disclosure</div>
+</div>
+<div class="legal-body">
+  <table class="legal-table">
+    <tr><td>販売業者</td><td>Four Circles Japan 株式会社</td></tr>
+    <tr><td>運営責任者</td><td>石原 朋亞</td></tr>
+    <tr><td>所在地</td><td>〒506-0847 岐阜県高山市上三之町26</td></tr>
+    <tr><td>電話番号</td><td>0577-32-2879（受付時間：10:00〜18:00／年中無休）<br><small style="color:var(--ink3);">※お問い合わせはメールでも受け付けております</small></td></tr>
+    <tr><td>メールアドレス</td><td><a href="mailto:info@takayamaandbeyond.com" style="color:var(--red);">info@takayamaandbeyond.com</a></td></tr>
+    <tr><td>ウェブサイトURL</td><td><a href="https://takayamaandbeyond.com" style="color:var(--red);">https://takayamaandbeyond.com</a></td></tr>
+    <tr><td>販売価格</td><td>各サービスページに税込価格を表示しています。また、個別見積もりの場合は見積書に記載された金額とします。</td></tr>
+    <tr><td>商品代金以外の必要料金</td><td>・銀行振込の場合の振込手数料はお客様負担となります<br>・インターネット接続に必要な通信費はお客様のご負担となります</td></tr>
+    <tr><td>支払方法</td><td>・クレジットカード決済<br>・銀行振込<br>・現地支払い（現金）</td></tr>
+    <tr><td>支払時期</td><td>・クレジットカード決済：予約確定時に即時決済されます<br>・銀行振込：予約確定後、3日以内にお支払いください</td></tr>
+    <tr><td>サービス提供時期</td><td>予約確定後、指定された日時にサービスを提供いたします。詳細な日時は予約確認メールにてご案内いたします。</td></tr>
+    <tr><td>キャンセル・返金について</td><td>
+      <strong style="font-size:13px;">お客様都合によるキャンセル</strong><br>
+      各サービスページに記載のキャンセルポリシーに従います。<br><br>
+      <strong style="font-size:13px;">当社都合によるキャンセル</strong><br>
+      天候不良や主催者都合により催行中止となった場合、全額返金いたします。
+    </td></tr>
+    <tr><td>返品・交換について</td><td>
+      <strong style="font-size:13px;">サービスの性質について</strong><br>
+      サービスの性質上、提供後の返品・交換はお受けできません。<br><br>
+      <strong style="font-size:13px;">不具合・問題があった場合</strong><br>
+      サービス内容に重大な不備があった場合は、状況に応じて返金または代替対応を行います。
+    </td></tr>
+  </table>
+</div>
+<footer class="site-footer">
+  <div class="site-footer-top">
+    <div>
+      <a href="/" class="site-footer-logo">Takayama &amp; <em>B</em>eyond</a>
+      <div class="site-footer-tagline">Private experiences in Hida Takayama — connecting travellers with the people and places that make this region extraordinary.</div>
+      <div class="site-footer-contact">
+        Four Circles Japan 株式会社<br>
+        〒506-0847 岐阜県高山市上三之町26<br>
+        <a href="mailto:info@takayamaandbeyond.com">info@takayamaandbeyond.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="site-footer-col-title">Pages</div>
+      <div class="site-footer-links">
+        <a href="/">Home</a>
+        <a href="/experiences">Experiences</a>
+        <a href="/tours">Tours</a>
+        <a href="/about">About Us</a>
+        <a href="/partnership">Partnership / DMC</a>
+      </div>
+    </div>
+    <div>
+      <div class="site-footer-col-title">Legal</div>
+      <div class="site-footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/tokushoho">特定商取引法に基づく表記</a>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    <div class="site-footer-copy">© 2026 FOUR CIRCLES JAPAN 株式会社</div>
+    <div class="site-footer-legal">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="/tokushoho">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+</footer>
+</div>
+</body>
+</html>
