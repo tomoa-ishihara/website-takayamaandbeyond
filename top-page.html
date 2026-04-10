@@ -113,12 +113,12 @@
 .tp-hero-right img { width: 100%; height: 100%; object-fit: cover; }
 .tp-hero-scroll { position: absolute; bottom: 24px; right: 24px; font-size: 11px; color: var(--ink3); letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; writing-mode: vertical-rl; font-family: "Lora", serif; }
 .tp-section { padding: 80px 60px; }
-.tp-section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-family: "DM Sans", sans-serif; font-weight: 500; display: inline-block; border: 1px solid var(--red); padding: 4px 12px; border-radius: 2px; font-style: normal; }
+.tp-section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-style: italic; margin-bottom: 8px; font-family: "Lora", serif; }
 .tp-section-title { font-family: "Kaisei Decol", serif; font-size: clamp(26px, 3vw, 38px); font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 8px; }
 .tp-section-sub { font-size: 17px; color: var(--ink2); line-height: 1.75; max-width: 520px; font-family: "DM Sans", sans-serif; font-weight: 300; }
 /* ── FIND YOUR TOUR — 2-axis matrix ── */
 .tp-persona { background: #2a2218; padding: 48px 60px 52px; }
-.tp-persona .tp-section-label { color: #c9a96e; border-color: rgba(201,169,110,0.6); }
+.tp-persona .tp-section-label { color: var(--gold); }
 .tp-persona .tp-section-title { color: #fff; }
 .tp-persona .tp-section-sub { color: rgba(255,255,255,0.4); }
 
@@ -155,12 +155,12 @@
   background: #3a3228;
 }
 .tp-widget-step-label {
-  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
   color: #c9a96e;
 }
 .tp-widget-step-count {
-  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
 }
 
 /* Step question */
@@ -174,8 +174,8 @@
   color: #fff; font-weight: 400; margin-bottom: 3px; line-height: 1.2;
 }
 .tp-widget-q-sub {
-  font-size: 15px; color: rgba(255,255,255,0.6);
-  font-family: 'DM Sans', sans-serif; font-weight: 300; font-style: normal;
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  font-family: 'Lora', serif; font-style: italic;
 }
 
 /* Group tiles — circular, clearly selectable */
@@ -221,11 +221,11 @@
 .tp-group-tile.selected .tp-group-badge { display: flex; }
 .tp-group-icon { width: 26px; height: 26px; }
 .tp-group-name {
-  font-size: 12px; color: rgba(255,255,255,0.78);
-  font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.2;
+  font-size: 10px; color: rgba(255,255,255,0.5);
+  font-family: 'Kaisei Decol', serif; line-height: 1.2;
   transition: color 0.2s;
 }
-.tp-group-tile.selected .tp-group-name { color: #e8c88a; font-size: 12px; }
+.tp-group-tile.selected .tp-group-name { color: #e8c88a; font-size: 10px; }
 
 /* Interest pills — colorful rounded, clearly selectable */
 .tp-interest-row {
@@ -235,10 +235,10 @@
   background: #2e2820;
 }
 .tp-interest-pill {
-  padding: 10px 20px;
-  border: 1.5px solid rgba(255,255,255,0.18);
-  border-radius: 24px;
-  font-size: 13px; color: rgba(255,255,255,0.65);
+  padding: 7px 16px;
+  border: 1.5px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  font-size: 12px; color: rgba(255,255,255,0.5);
   cursor: pointer; transition: all 0.18s;
   background: rgba(255,255,255,0.05); font-family: 'DM Sans', sans-serif;
 }
@@ -260,8 +260,8 @@
   border-top: 1px solid rgba(255,255,255,0.07);
 }
 .tp-widget-skip {
-  font-size: 13px; letter-spacing: 0.04em;
-  color: rgba(255,255,255,0.55); text-decoration: underline; transition: color 0.2s;
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s;
   background: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
 }
 .tp-widget-skip:hover { color: rgba(255,255,255,0.5); }
@@ -314,6 +314,19 @@
   width: max-content;
   min-width: 100%;
 }
+.tp-tour-card.best-match {
+  grid-column: span 2;
+}
+.tp-tour-card.best-match .tp-tour-img-placeholder,
+.tp-tour-card.best-match .tp-tour-img {
+  height: 380px;
+}
+.tp-tour-card.best-match .tp-tour-name {
+  font-size: clamp(22px, 2.2vw, 30px);
+}
+.tp-tour-card.best-match .tp-tour-desc {
+  font-size: 16px;
+}
 .tp-tour-card {
   text-decoration: none; color: inherit;
   background: var(--paper); overflow: hidden;
@@ -335,27 +348,24 @@
 .tp-tour-days-badge {
   position: absolute; bottom: 12px; right: 12px;
   background: rgba(20,18,16,0.7); backdrop-filter: blur(6px);
-  color: rgba(255,255,255,0.9); font-size: 11px;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 6px 14px; font-family: "DM Sans", sans-serif;
+  color: rgba(255,255,255,0.85); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 12px; font-family: "DM Sans", sans-serif;
 }
 .tp-tour-body {
   padding: 20px 22px 18px; display: flex; flex-direction: column; flex: 1;
 }
 .tp-tour-tag {
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  margin-bottom: 12px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
   font-family: "DM Sans", sans-serif;
-  padding: 4px 12px; border-radius: 20px;
-  border: 1px solid currentColor; opacity: 0.85;
-  width: fit-content;
 }
 .tp-tour-name {
   font-family: "Kaisei Decol", serif; font-size: clamp(17px, 1.6vw, 22px);
   font-weight: 400; color: var(--ink); line-height: 1.25; margin-bottom: 8px;
 }
 .tp-tour-desc {
-  font-size: 15px; color: var(--ink2); line-height: 1.7;
+  font-size: 13px; color: var(--ink2); line-height: 1.65;
   margin-bottom: 16px; font-family: "DM Sans", sans-serif; font-weight: 300; flex: 1;
 }
 .tp-tour-footer {
@@ -363,7 +373,7 @@
   border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto;
 }
 .tp-tour-price { font-size: 15px; color: var(--ink); font-family: "Kaisei Decol", serif; }
-.tp-tour-days { font-size: 12px; color: var(--ink3); font-family: "DM Sans", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+.tp-tour-days { font-size: 10px; color: var(--ink3); font-family: "DM Sans", sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
 .tp-exp { background: var(--paper2); }
 .tp-exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
 .tp-exp-card {
@@ -380,18 +390,15 @@
 .tp-exp-img { width: 100%; height: 200px; object-fit: cover; display: block; }
 .tp-exp-body { padding: 18px 20px; display: flex; flex-direction: column; flex: 1; }
 .tp-exp-tag {
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 10px; font-family: "DM Sans", sans-serif;
-  display: inline-block; padding: 4px 12px; border-radius: 20px;
-  border: 1px solid var(--red); background: rgba(139,26,26,0.06);
-  width: fit-content;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px; font-family: "DM Sans", sans-serif;
 }
 .tp-exp-name {
   font-family: "Kaisei Decol", serif; font-size: 20px;
   font-weight: 400; color: var(--ink); margin-bottom: 8px; line-height: 1.25;
 }
 .tp-exp-desc {
-  font-size: 15px; color: var(--ink2); line-height: 1.7;
+  font-size: 14px; color: var(--ink2); line-height: 1.65;
   font-family: "DM Sans", sans-serif; font-weight: 300;
   margin-bottom: 14px; flex: 1;
 }
@@ -417,7 +424,7 @@
 .tp-test-meta { flex: 1; }
 .tp-test-name { font-family: "Kaisei Decol", serif; font-size: 14px; color: var(--ink); margin-bottom: 2px; }
 .tp-test-stars { font-size: 12px; color: var(--red); letter-spacing: 2px; }
-.tp-test-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink2); border: 1px solid var(--line); padding: 5px 14px; border-radius: 20px; font-family: "DM Sans", sans-serif; background: var(--paper2); }
+.tp-test-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); border: 1px solid var(--line); padding: 3px 8px; border-radius: 1px; font-family: "DM Sans", sans-serif; }
 .tp-test-quote { font-size: 16px; color: var(--ink2); line-height: 1.75; font-family: "DM Sans", sans-serif; font-weight: 300; }
 .tp-cta { background: var(--ink); padding: 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
 .tp-cta-title { font-family: "Kaisei Decol", serif; font-size: clamp(22px, 3vw, 34px); font-weight: 400; color: #fff; margin-bottom: 8px; }
@@ -446,11 +453,11 @@
   <div class="tp-hero">
     <div class="tp-hero-left">
       <div class="tp-hero-eyebrow">Takayama & Beyond</div>
-      <h1 class="tp-hero-title">Private Tours &amp;<br>Unique Experiences<br>in Takayama &amp; Beyond.</h1>
+      <h1 class="tp-hero-title">Private Tours &<br>Unique Experiences<br>in Takayama.</h1>
       <p class="tp-hero-sub">Enter a world few ever see. Real food, real people, real life in Takayama. Beyond sightseeing, into something lasting.</p>
       <div class="tp-hero-btns">
-        <a href="#tp-persona" class="tp-btn-primary" style="background:var(--red);">Find my tour</a>
-        <button onclick="tpShowAll()" class="tp-btn-outline" style="cursor:pointer;font-family:inherit;">Browse all</button>
+        <a href="#tp-persona" class="tp-btn-primary">Find my tour</a>
+        <a href="/tours" class="tp-btn-outline">Browse all</a>
       </div>
     </div>
     <div class="tp-hero-right">
@@ -701,50 +708,50 @@
 
       <div class="tp-test-card">
         <div class="tp-test-header">
-          <div class="tp-test-avatar">B</div>
+          <div class="tp-test-avatar">S</div>
           <div class="tp-test-meta">
-            <div class="tp-test-name">Brynn M.</div>
+            <div class="tp-test-name">Sarah M.</div>
             <div class="tp-test-stars">★★★★★</div>
           </div>
-          <span class="tp-test-tag">Honeymoon · Cooking</span>
+          <span class="tp-test-tag">Nature lover</span>
         </div>
-        <p class="tp-test-quote">"Our cooking class with Bob and Hisa was the highlight of our trip to Japan. Hisa made the best Miso soup we've ever had, and Bob taught us how to make incredible mains. Beyond that, they were great company! Highly recommend booking this class or any other experiences with Hisa and Bob."</p>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
       </div>
 
       <div class="tp-test-card">
         <div class="tp-test-header">
-          <div class="tp-test-avatar">C</div>
+          <div class="tp-test-avatar">J</div>
           <div class="tp-test-meta">
-            <div class="tp-test-name">Chris M.</div>
+            <div class="tp-test-name">James K.</div>
             <div class="tp-test-stars">★★★★★</div>
           </div>
-          <span class="tp-test-tag">Family · Cooking</span>
+          <span class="tp-test-tag">Family</span>
         </div>
-        <p class="tp-test-quote">"Fascinating to see the inside of Bob and Hisa's 200 year old house right in the middle of the old part of town. We made our own sushi and tempura all from scratch, then sat down in their beautiful dining room to eat the lunch we all made. It was a highlight of our trip to Japan!"</p>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
       </div>
 
       <div class="tp-test-card">
         <div class="tp-test-header">
           <div class="tp-test-avatar">A</div>
           <div class="tp-test-meta">
-            <div class="tp-test-name">amer142</div>
+            <div class="tp-test-name">Anna L.</div>
             <div class="tp-test-stars">★★★★★</div>
           </div>
-          <span class="tp-test-tag">Couple · Cooking</span>
+          <span class="tp-test-tag">Craft fan</span>
         </div>
-        <p class="tp-test-quote">"Many cooking classes take place in restaurants or commercial kitchens, but this one is truly special — held right in their family home in the historic Sanmachi-dori area. This is an absolute must-do in Takayama and an experience we will be remembering for years to come."</p>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
       </div>
 
       <div class="tp-test-card">
         <div class="tp-test-header">
-          <div class="tp-test-avatar">K</div>
+          <div class="tp-test-avatar">M</div>
           <div class="tp-test-meta">
-            <div class="tp-test-name">Karolina M.</div>
+            <div class="tp-test-name">Mark T.</div>
             <div class="tp-test-stars">★★★★★</div>
           </div>
-          <span class="tp-test-tag">Couple · Cooking</span>
+          <span class="tp-test-tag">Food lover</span>
         </div>
-        <p class="tp-test-quote">"It was the best culinary experience I could imagine. Bob, Hisa and Tomoa are very warm and friendly people. We tried the wagyu prepared by Bob and it was the most delicious. Definitely the best cooking experience I ever had taken part."</p>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
       </div>
 
     </div>
@@ -847,10 +854,17 @@ function tpSearch() {
     card._score = gs * 2 + ts * 3;
   });
   const tourCards = [...document.querySelectorAll('.tp-tour-card')];
+  const maxScore = Math.max(...tourCards.map(c => c._score));
   tourCards.forEach(c => {
     c.style.order = c._score > 0 ? String(-c._score) : '0';
     c.style.opacity = c._score > 0 ? '1' : '0.2';
     c.style.transition = 'opacity 0.4s';
+    // ベストマッチを2倍幅に
+    if (maxScore > 0 && c._score === maxScore) {
+      c.classList.add('best-match');
+    } else {
+      c.classList.remove('best-match');
+    }
   });
 
   // ── Experiences: interest only ──
@@ -871,6 +885,7 @@ function tpReset() {
   tpSearched = false;
   tpGroups.clear(); tpInterests.clear();
   document.querySelectorAll('.tp-group-tile').forEach(t => t.classList.remove('selected'));
+  document.querySelectorAll('.tp-tour-card').forEach(c => c.classList.remove('best-match'));
   document.querySelectorAll('.tp-interest-pill').forEach(p => p.classList.remove('selected'));
   document.getElementById('tp-next-1').classList.remove('active');
   const btn = document.getElementById('tp-search-btn');
