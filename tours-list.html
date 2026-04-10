@@ -1,3 +1,78 @@
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.snav * { box-sizing: border-box; }
+.snav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 60px; height: 58px;
+  background: rgba(248,246,242,0.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(28,25,22,0.09);
+  font-family: 'DM Sans', sans-serif;
+}
+.snav-logo {
+  font-family: 'Kaisei Decol', serif; font-size: 14px;
+  text-decoration: none; color: #1c1916; letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.snav-logo em { color: #8b1a1a; font-style: normal; }
+.snav-links { display: flex; gap: 24px; align-items: center; }
+.snav-links a {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; color: rgba(28,25,22,0.5); transition: color 0.18s;
+  white-space: nowrap;
+}
+.snav-links a:hover { color: #8b1a1a; }
+.snav-book {
+  padding: 6px 16px !important;
+  border: 1px solid rgba(28,25,22,0.22) !important;
+  color: #1c1916 !important; transition: all 0.18s !important;
+}
+.snav-book:hover { background: #8b1a1a !important; border-color: #8b1a1a !important; color: #fff !important; }
+@media (max-width: 768px) {
+  .snav { padding: 0 20px; }
+  .snav-links a:not(.snav-book) { display: none; }
+}
+
+/* Footer */
+.sftr { background: #141210; padding: 52px 60px 28px; font-family: 'DM Sans', sans-serif; }
+.sftr-top {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.sftr-logo {
+  font-family: 'Kaisei Decol', serif; font-size: 16px;
+  color: #fff; display: block; text-decoration: none; margin-bottom: 10px;
+}
+.sftr-logo em { color: #8b1a1a; font-style: normal; }
+.sftr-tagline { font-size: 13px; color: rgba(255,255,255,0.25); line-height: 1.7; font-weight: 300; max-width: 220px; }
+.sftr-contact { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.22); line-height: 1.8; font-weight: 300; }
+.sftr-contact a { color: rgba(255,255,255,0.3); text-decoration: none; }
+.sftr-col-title { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.2); margin-bottom: 16px; }
+.sftr-links { display: flex; flex-direction: column; gap: 9px; }
+.sftr-links a { font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; font-weight: 300; transition: color 0.18s; }
+.sftr-links a:hover { color: #c9a96e; }
+.sftr-bottom { padding-top: 22px; display: flex; justify-content: space-between; align-items: center; }
+.sftr-copy { font-size: 11px; color: rgba(255,255,255,0.16); letter-spacing: 0.06em; }
+.sftr-legal { display: flex; gap: 18px; }
+.sftr-legal a { font-size: 11px; color: rgba(255,255,255,0.16); text-decoration: none; transition: color 0.18s; }
+.sftr-legal a:hover { color: rgba(255,255,255,0.45); }
+@media (max-width: 768px) {
+  .sftr { padding: 44px 20px 24px; }
+  .sftr-top { grid-template-columns: 1fr; gap: 32px; }
+  .sftr-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
+}
+.snav + * { margin-top: 0; } body { padding-top: 0 !important; }
+</style>
+<nav class="snav">
+  <a href="/" class="snav-logo">Takayama &amp; <em>B</em>eyond</a>
+  <div class="snav-links">
+    <a href="/experiences">Experiences</a>
+    <a href="/tours">Tours</a>
+    <a href="/about">About Us</a>
+    <a href="/partnership">DMC</a>
+    <a href="/experiences" class="snav-book">Book now</a>
+  </div>
+</nav>
 <!-- ============================================================
      TOURS — 2-Step Group + Interest Quiz
      Takayama & Beyond — Clean rebuild
@@ -541,3 +616,39 @@ function buildTiles(tiles, setName, id) {
 buildTiles(GROUP_TILES, 'group', 'tq-group-tiles');
 buildTiles(INTEREST_TILES, 'interest', 'tq-interest-tiles');
 </script>
+
+<footer class="sftr">
+  <div class="sftr-top">
+    <div>
+      <a href="/" class="sftr-logo">Takayama &amp; <em>B</em>eyond</a>
+      <div class="sftr-tagline">Private experiences in Hida Takayama — connecting travellers with the people and places that make this region extraordinary.</div>
+      <div class="sftr-contact">Four Circles Japan 株式会社<br>〒506-0847 岐阜県高山市上三之町26<br><a href="mailto:info@takayamaandbeyond.com">info@takayamaandbeyond.com</a></div>
+    </div>
+    <div>
+      <div class="sftr-col-title">Pages</div>
+      <div class="sftr-links">
+        <a href="/">Home</a>
+        <a href="/experiences">Experiences</a>
+        <a href="/tours">Tours</a>
+        <a href="/about">About Us</a>
+        <a href="/partnership">Partnership / DMC</a>
+      </div>
+    </div>
+    <div>
+      <div class="sftr-col-title">Legal</div>
+      <div class="sftr-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/tokushoho">特定商取引法に基づく表記</a>
+      </div>
+    </div>
+  </div>
+  <div class="sftr-bottom">
+    <div class="sftr-copy">© 2026 FOUR CIRCLES JAPAN 株式会社</div>
+    <div class="sftr-legal">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="/tokushoho">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+</footer>
