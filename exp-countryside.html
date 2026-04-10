@@ -62,6 +62,7 @@
   .sftr-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
 }
 .snav + * { margin-top: 0; } body { padding-top: 0 !important; }
+em { font-style: normal; }
 </style>
 <nav class="snav">
   <a href="/" class="snav-logo">Takayama &amp; <em>B</em>eyond</a>
@@ -106,7 +107,7 @@
    HERO — dark, text only, no image
    ════════════════════════════════════════ */
 .ox-hero {
-  background: var(--dark);
+  background: linear-gradient(to top, rgba(10,8,6,0.85) 0%, rgba(10,8,6,0.3) 60%, rgba(10,8,6,0.1) 100%), url("https://res.cloudinary.com/dgchfe8wb/image/upload/v1775795967/0812_%E6%9D%89%E7%8E%89105_xfdqwv.jpg") center/cover no-repeat;
   padding: 56px 72px 72px;
   min-height: 90vh;
   display: flex; flex-direction: column; justify-content: flex-end;
@@ -129,7 +130,7 @@
 }
 .ox-hero-sub {
   font-family: 'Lora', serif;
-  font-size: 18px; font-style: italic;
+  font-size: 18px; font-style: normal;
   color: rgba(255,255,255,0.5);
   line-height: 1.7; max-width: 520px;
   margin-bottom: 52px;
@@ -187,7 +188,7 @@
   border-left: 2px solid var(--line);
   padding-left: 20px;
   font-family: 'Lora', serif;
-  font-size: 15px; font-style: italic;
+  font-size: 15px; font-style: normal;
   color: var(--ink3); line-height: 1.7;
   margin-bottom: 32px;
 }
@@ -327,7 +328,7 @@
   font-family: 'Kaisei Decol', serif;
   font-size: clamp(30px, 4vw, 52px);
   font-weight: 400; line-height: 1.1;
-  color: #fff; font-style: italic; margin-bottom: 36px;
+  color: #fff; font-style: normal; margin-bottom: 36px;
 }
 .ox-centrepiece-body {
   font-size: 16px; color: rgba(255,255,255,0.45);
@@ -479,7 +480,7 @@
   background: var(--paper); transition: transform 0.25s, box-shadow 0.25s;
 }
 .ox-more-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-.ox-more-img-ph { width: 100%; height: 160px; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--ink3); font-style: italic; }
+.ox-more-img-ph { width: 100%; height: 160px; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--ink3); font-style: normal; }
 .ox-more-body { padding: 18px 20px; }
 .ox-more-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
 .ox-more-name { font-family: 'Kaisei Decol', serif; font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
@@ -497,7 +498,7 @@
   border: 1px solid var(--ink); color: var(--ink);
   font-family: 'Lora', serif; font-size: 13px;
   letter-spacing: 0.1em; text-transform: uppercase;
-  font-style: italic; text-decoration: none;
+  font-style: normal; text-decoration: none;
   border-radius: 0; transition: all 0.2s;
 }
 .ox-cta-btn:hover { background: var(--ink); color: #fff; }
@@ -565,7 +566,7 @@
 }
 .ox-booking-sub {
   font-family: 'Lora', serif;
-  font-size: 16px; font-style: italic;
+  font-size: 16px; font-style: normal;
   color: rgba(255,255,255,0.4); line-height: 1.75;
 }
 .ox-booking-right { padding: 64px 52px; }
@@ -668,7 +669,7 @@
 .ox-send-btn:hover { background: #6e1414; }
 .ox-send-note {
   font-size: 11px; color: rgba(255,255,255,0.2);
-  text-align: center; font-style: italic; line-height: 1.6;
+  text-align: center; font-style: normal; line-height: 1.6;
 }
 
 /* ════════════════════════════════════════
@@ -699,11 +700,11 @@
 .ox-pfield input:focus, .ox-pfield textarea:focus { border-color: var(--red); }
 .ox-psend { width: 100%; padding: 14px; background: var(--red); color: #fff; border: none; border-radius: 0; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; margin-top: 6px; transition: background 0.2s; }
 .ox-psend:hover { background: #6e1414; }
-.ox-pnote { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-style: italic; }
+.ox-pnote { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-style: normal; }
 .ox-pthanks { display: none; padding: 48px 28px; text-align: center; }
 .ox-pthanks-icon { font-size: 28px; color: var(--green); margin-bottom: 16px; }
 .ox-pthanks-title { font-family: 'Kaisei Decol', serif; font-size: 22px; color: var(--ink); margin-bottom: 10px; }
-.ox-pthanks-text { font-size: 15px; color: var(--ink2); line-height: 1.7; font-style: italic; }
+.ox-pthanks-text { font-size: 15px; color: var(--ink2); line-height: 1.7; font-style: normal; }
 .ox-pthanks-btn { margin-top: 24px; padding: 10px 28px; background: var(--ink); color: #fff; border: none; border-radius: 0; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; }
 
 /* ════════════════════════════════════════

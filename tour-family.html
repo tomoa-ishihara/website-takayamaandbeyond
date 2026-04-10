@@ -62,6 +62,7 @@
   .sftr-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
 }
 .snav + * { margin-top: 0; } body { padding-top: 0 !important; }
+em { font-style: normal; }
 </style>
 <nav class="snav">
   <a href="/" class="snav-logo">Takayama &amp; <em>B</em>eyond</a>
@@ -118,7 +119,7 @@
   display: inline-flex; align-items: center; gap: 7px;
   background: rgba(196,94,26,0.88); color: #fff;
   font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.14em;
-  text-transform: uppercase; font-style: italic;
+  text-transform: uppercase; font-style: normal;
   padding: 5px 14px; border-radius: 1px;
   margin-bottom: 14px; width: fit-content;
 }
@@ -130,7 +131,7 @@
 .td-tour-subtitle {
   font-family: 'Lora', serif; font-size: 15px;
   color: rgba(255,255,255,0.72); margin-top: 8px;
-  font-style: italic; font-weight: 400;
+  font-style: normal; font-weight: 400;
 }
 
 /* Hero illustration */
@@ -159,7 +160,7 @@
 .td-section { padding: 44px 44px 0; }
 .td-section-title {
   font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--red); font-style: italic;
+  text-transform: uppercase; color: var(--red); font-style: normal;
   margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
 }
 .td-section-title::after { content: ''; flex: 1; height: 1px; background: var(--red-light); }
@@ -171,13 +172,13 @@
 .td-sp-card:hover { background: var(--paper2); }
 .td-sp-icon { display: block; margin-bottom: 14px; color: var(--red); }
 .td-sp-title { font-family: 'Kaisei Decol', serif; font-size: 16px; font-weight: 400; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
-.td-sp-desc { font-size: 13px; color: var(--ink3); line-height: 1.7; font-family: 'Lora', serif; font-style: italic; }
+.td-sp-desc { font-size: 13px; color: var(--ink3); line-height: 1.7; font-family: 'Lora', serif; font-style: normal; }
 
 /* Day tabs */
 .td-day-tabs { display: flex; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 32px; width: fit-content; }
 .td-day-tab {
   padding: 10px 32px; font-family: 'Lora', serif; font-size: 13px;
-  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: normal;
   cursor: pointer; transition: all 0.2s; background: var(--paper); color: var(--ink3); border: none;
 }
 .td-day-tab.active { background: var(--ink); color: var(--paper); }
@@ -197,37 +198,37 @@
 .td-stop-name { font-family: 'Kaisei Decol', serif; font-size: 21px; font-weight: 400; line-height: 1.2; color: var(--ink); }
 .td-stop-type {
   font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.13em;
-  text-transform: uppercase; font-style: italic;
+  text-transform: uppercase; font-style: normal;
   color: var(--red); background: var(--red-light);
   padding: 4px 10px; border-radius: 1px; white-space: nowrap; margin-top: 4px;
 }
-.td-stop-desc { font-size: 15px; color: var(--ink2); line-height: 1.75; font-style: italic; margin-bottom: 12px; }
+.td-stop-desc { font-size: 15px; color: var(--ink2); line-height: 1.75; font-style: normal; margin-bottom: 12px; }
 .td-stop-img { width: 100%; height: 240px; object-fit: cover; border-radius: 2px; display: block; }
 .td-stop-img-placeholder {
   width: 100%; height: 140px; background: var(--paper2); border-radius: 2px;
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; color: var(--ink3); letter-spacing: 0.06em;
-  border: 1px dashed var(--line); font-style: italic;
+  border: 1px dashed var(--line); font-style: normal;
 }
 
 /* Inclusions */
 .td-inclusions { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 4px; }
-.td-inc-group-title { font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); font-style: italic; margin-bottom: 14px; }
+.td-inc-group-title { font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); font-style: normal; margin-bottom: 14px; }
 .td-inc-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--ink2); margin-bottom: 10px; line-height: 1.6; }
 .td-inc-icon { flex-shrink: 0; margin-top: 3px; }
 
 /* Booking */
 .td-booking { margin: 44px 44px 0; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
 .td-booking-top { background: var(--ink); padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.td-price-label { font-family: 'Lora', serif; font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; margin-bottom: 5px; }
+.td-price-label { font-family: 'Lora', serif; font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.12em; text-transform: uppercase; font-style: normal; margin-bottom: 5px; }
 .td-price { font-family: 'Kaisei Decol', serif; font-size: 38px; font-weight: 400; color: #fff; line-height: 1; }
-.td-price-sub { font-family: 'Lora', serif; font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; font-style: italic; }
+.td-price-sub { font-family: 'Lora', serif; font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; font-style: normal; }
 .td-avail { text-align: right; }
 .td-avail-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #7ecba1; margin-right: 6px; vertical-align: middle; }
-.td-avail-text { font-family: 'Lora', serif; font-size: 13px; color: rgba(255,255,255,0.65); font-style: italic; }
+.td-avail-text { font-family: 'Lora', serif; font-size: 13px; color: rgba(255,255,255,0.65); font-style: normal; }
 .td-booking-form { padding: 24px 32px; background: var(--paper2); }
 .td-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-.td-field label { display: block; font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; color: var(--ink3); margin-bottom: 6px; }
+.td-field label { display: block; font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-style: normal; color: var(--ink3); margin-bottom: 6px; }
 .td-field input, .td-field select {
   width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 2px;
   font-size: 14px; background: var(--paper); color: var(--ink);
@@ -237,7 +238,7 @@
 .td-book-btn {
   width: 100%; padding: 15px; background: var(--red); color: #fff; border: none; border-radius: 2px;
   font-family: 'Lora', serif; font-size: 13px; letter-spacing: 0.16em;
-  text-transform: uppercase; font-style: italic; cursor: pointer; transition: background 0.2s, transform 0.1s;
+  text-transform: uppercase; font-style: normal; cursor: pointer; transition: background 0.2s, transform 0.1s;
 }
 .td-book-btn:hover { background: #9e4b13; }
 .td-book-btn:active { transform: scale(0.99); }
@@ -255,15 +256,15 @@
 .td-rel-img-placeholder {
   width: 100%; height: 120px; background: var(--paper2);
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; color: var(--ink3); font-style: italic;
+  font-size: 11px; color: var(--ink3); font-style: normal;
   border-bottom: 1px dashed var(--line);
 }
 .td-rel-body { padding: 14px 16px; }
-.td-rel-tag { font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; color: var(--red); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.td-rel-tag { font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-style: normal; color: var(--red); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
 .td-rel-name { font-family: 'Kaisei Decol', serif; font-size: 17px; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 10px; }
 .td-rel-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 10px; }
 .td-rel-price { font-size: 13px; color: var(--ink2); }
-.td-rel-days { font-size: 11px; color: var(--ink3); font-style: italic; }
+.td-rel-days { font-size: 11px; color: var(--ink3); font-style: normal; }
 
 /* FAQ */
 .td-faq { padding: 44px 44px 0; }
@@ -294,7 +295,7 @@
   display: none; padding: 0 32px 20px 0;
   font-family: 'Lora', serif; font-size: 15px;
   color: var(--ink2); line-height: 1.8;
-  font-style: italic;
+  font-style: normal;
 }
 .td-faq-item.open .td-faq-a { display: block; }
 
@@ -493,7 +494,7 @@
         </div>
         <p class="td-stop-desc">Japan's famous plastic food displays — but you make them yourself. Using coloured wax, you craft hyper-realistic replicas of Japanese dishes: sushi, parfait, ice cream, whatever you choose. Every piece goes home with you as a keepsake. They can't be eaten, but they last forever — and they look astonishingly real.</p>
         <div class="td-stop-imgs">
-          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/b7dcb88f-197b-4895-875e-7e787fe85041/%E6%9C%80%E8%BF%91%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%9F%E9%A0%85%E7%9B%AE+-+1+%EF%BC%8F+1+%284%29.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Food Sample 1">
+          <img src="https://res.cloudinary.com/dgchfe8wb/image/upload/v1775796459/%E6%9C%80%E8%BF%91%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%9F%E9%A0%85%E7%9B%AE_-_1_1_6_jxkoul.jpg" class="td-stop-img" alt="Food Sample">
           <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/2ec81b95-b518-4d2e-8fcb-1458889eb62e/%E6%9C%80%E8%BF%91%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%9F%E9%A0%85%E7%9B%AE+-+1+%EF%BC%8F+1+%282%29.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Food Sample 2">
         </div>
       </div>
@@ -585,19 +586,19 @@
         <div class="td-price-label">Pricing</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; margin-top:8px;">
           <div>
-            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Adults (18+)</div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style: normal;">Adults (18+)</div>
             <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥86,000</div>
           </div>
           <div>
-            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Teens (13–17)</div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style: normal;">Teens (13–17)</div>
             <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥80,000</div>
           </div>
           <div>
-            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Children (4–12)</div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style: normal;">Children (4–12)</div>
             <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥60,000</div>
           </div>
           <div>
-            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Infants (0–3)</div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style: normal;">Infants (0–3)</div>
             <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">Free</div>
           </div>
         </div>
@@ -614,7 +615,7 @@
           <input type="date" id="td-date">
         </div>
         <div class="td-field">
-          <label>Adults <span style="font-size:10px; font-style:italic;">(18+)</span></label>
+          <label>Adults <span style="font-size:10px; font-style: normal;">(18+)</span></label>
           <select id="td-adults" onchange="tdUpdateTotal()">
             <option value="1">1</option>
             <option value="2" selected>2</option>
@@ -627,7 +628,7 @@
       </div>
       <div class="td-form-row">
         <div class="td-field">
-          <label>Teens <span style="font-size:10px; font-style:italic;">(13-17)</span></label>
+          <label>Teens <span style="font-size:10px; font-style: normal;">(13-17)</span></label>
           <select id="td-teens" onchange="tdUpdateTotal()">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -637,7 +638,7 @@
           </select>
         </div>
         <div class="td-field">
-          <label>Children <span style="font-size:10px; font-style:italic;">(4-12)</span></label>
+          <label>Children <span style="font-size:10px; font-style: normal;">(4-12)</span></label>
           <select id="td-children" onchange="tdUpdateTotal()">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -649,7 +650,7 @@
       </div>
       <div class="td-form-row">
         <div class="td-field">
-          <label>Infants <span style="font-size:10px; font-style:italic;">(0-3, free)</span></label>
+          <label>Infants <span style="font-size:10px; font-style: normal;">(0-3, free)</span></label>
           <select id="td-infants" onchange="tdUpdateTotal()">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -659,7 +660,7 @@
         </div>
         <div class="td-field" style="display:flex; align-items:flex-end;">
           <div style="width:100%; padding:10px 14px; background:var(--paper); border:1px solid var(--line); border-radius:2px;">
-            <div style="font-size:10px; color:var(--ink3); letter-spacing:0.1em; text-transform:uppercase; font-style:italic; margin-bottom:3px;">Estimated total</div>
+            <div style="font-size:10px; color:var(--ink3); letter-spacing:0.1em; text-transform:uppercase; font-style: normal; margin-bottom:3px;">Estimated total</div>
             <div id="td-total" style="font-family:'Kaisei Decol',serif; font-size:20px; color:var(--ink);">¥172,000</div>
           </div>
         </div>
@@ -686,29 +687,29 @@
       <!-- Form -->
       <div id="td-popup-form" style="padding:24px 28px;">
         <div style="margin-bottom:14px;">
-          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Your name *</label>
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style: normal; color:var(--ink3); margin-bottom:5px;">Your name *</label>
           <input type="text" id="td-name" placeholder="First and last name" style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none;">
         </div>
         <div style="margin-bottom:14px;">
-          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Email *</label>
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style: normal; color:var(--ink3); margin-bottom:5px;">Email *</label>
           <input type="email" id="td-email" placeholder="your@email.com" style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none;">
         </div>
         <div style="margin-bottom:20px;">
-          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Message / questions</label>
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style: normal; color:var(--ink3); margin-bottom:5px;">Message / questions</label>
           <textarea id="td-message" rows="3" placeholder="Any dietary requirements, questions, or special requests..." style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none; resize:vertical;"></textarea>
         </div>
-        <button onclick="tdSendInquiry()" style="width:100%; padding:14px; background:var(--red); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; font-style:italic; cursor:pointer;">
+        <button onclick="tdSendInquiry()" style="width:100%; padding:14px; background:var(--red); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; font-style: normal; cursor:pointer;">
           Send inquiry
         </button>
-        <p style="font-size:11px; color:var(--ink3); text-align:center; margin-top:12px; font-style:italic;">We'll reply within 24 hours to confirm your booking.</p>
+        <p style="font-size:11px; color:var(--ink3); text-align:center; margin-top:12px; font-style: normal;">We'll reply within 24 hours to confirm your booking.</p>
       </div>
 
       <!-- Thank you message (hidden initially) -->
       <div id="td-popup-thanks" style="display:none; padding:40px 28px; text-align:center;">
         <div style="font-size:28px; margin-bottom:16px;">✓</div>
         <div style="font-family:'Kaisei Decol',serif; font-size:20px; color:var(--ink); margin-bottom:8px;">Request sent!</div>
-        <p style="font-family:'Lora',serif; font-size:14px; color:var(--ink2); font-style:italic; line-height:1.7;">Thank you! We'll be in touch at your email address within 24 hours to confirm your booking.</p>
-        <button onclick="tdClosePopup()" style="margin-top:24px; padding:10px 28px; background:var(--ink); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; cursor:pointer;">Close</button>
+        <p style="font-family:'Lora',serif; font-size:14px; color:var(--ink2); font-style: normal; line-height:1.7;">Thank you! We'll be in touch at your email address within 24 hours to confirm your booking.</p>
+        <button onclick="tdClosePopup()" style="margin-top:24px; padding:10px 28px; background:var(--ink); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; font-style: normal; cursor:pointer;">Close</button>
       </div>
 
     </div>

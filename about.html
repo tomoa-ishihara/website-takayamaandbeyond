@@ -62,6 +62,7 @@
   .sftr-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
 }
 .snav + * { margin-top: 0; } body { padding-top: 0 !important; }
+em { font-style: normal; }
 </style>
 <nav class="snav">
   <a href="/" class="snav-logo">Takayama &amp; <em>B</em>eyond</a>
@@ -109,7 +110,7 @@
 .ab-photo-ph {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: var(--ink3); font-style: italic;
+  font-size: 10px; color: var(--ink3); font-style: normal;
   text-align: center; padding: 6px; line-height: 1.4;
 }
 .ab-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -141,7 +142,7 @@
   font-weight: 400; line-height: 0.95; color: var(--ink);
   letter-spacing: -0.03em; margin-bottom: 36px;
 }
-.ab-open-title em { font-style: italic; color: var(--red); }
+.ab-open-title em { font-style: normal; color: var(--red); }
 .ab-open-sub {
   font-family: "DM Sans", sans-serif; font-style: normal; font-weight: 300;
   font-size: 15px; color: var(--ink3); line-height: 1.75;
@@ -151,53 +152,69 @@
 /* ══ SECTION 2: STORY (DARK) ══ */
 .ab-story {
   padding: 100px 72px;
-  background: var(--dark);
+  background: #fff;
   position: relative; overflow: hidden;
 }
 .ab-story-label {
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(201,169,110,0.55); margin-bottom: 44px;
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 400; color: var(--ink);
+  margin-bottom: 48px; letter-spacing: -0.01em; line-height: 1;
+  text-align: center;
 }
-.ab-story-body { max-width: 680px; position: relative; z-index: 2; }
+.ab-story-body { max-width: 70%; margin: 0 auto; position: relative; z-index: 2; text-align: center; }
 .ab-story-p {
-  font-family: "Kaisei Decol", serif;
-  font-size: clamp(15px, 1.6vw, 20px);
-  font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.7);
-  margin-bottom: 44px;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(16px, 1.6vw, 19px);
+  font-weight: 300; line-height: 1.85; color: var(--ink2);
+  margin-bottom: 28px;
 }
 .ab-story-p:last-child { margin-bottom: 0; }
-.ab-story-p em  { color: var(--red); font-style: italic; }
-.ab-story-p strong { color: #fff; }
+.ab-story-p em  { color: var(--ink); font-style: normal; font-weight: 400; }
+.ab-story-p strong { color: var(--ink); font-weight: 500; }
 
-.ab-sp1 { width: 180px; height: 240px; right: 72px;  top: 80px;    transform: rotate(2deg);  background: #2a2420; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-.ab-sp2 { width: 136px; height: 176px; right: 210px; bottom: 80px; transform: rotate(-4deg); background: #2a2420; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-.ab-sp3 { width: 104px; height: 136px; right: 68px;  bottom: 100px; transform: rotate(7deg); background: #2a2420; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+.ab-sp1 { width: 180px; height: 240px; right: 72px;  top: 80px;    transform: rotate(2deg);  background: var(--cream); box-shadow: 0 4px 24px rgba(28,25,22,0.15); }
+.ab-sp2 { width: 136px; height: 176px; right: 210px; bottom: 80px; transform: rotate(-4deg); background: var(--cream); box-shadow: 0 4px 24px rgba(28,25,22,0.15); }
+.ab-sp3 { width: 104px; height: 136px; right: 68px;  bottom: 100px; transform: rotate(7deg); background: var(--cream); box-shadow: 0 4px 24px rgba(28,25,22,0.15); }
 
 /* ══ SECTION 3: QUOTE (BIG) ══ */
 .ab-quote {
   padding: 100px 72px;
-  background: var(--paper);
+  background: #fff;
   border-top: 1px solid var(--line);
   position: relative; overflow: hidden;
 }
 .ab-quote-pre {
-  font-size: 16px; color: var(--ink2); margin-bottom: 32px;
-  letter-spacing: 0.02em; line-height: 1.7; font-family: "Lora", serif; font-style: italic;
+  font-size: clamp(15px, 1.4vw, 18px); color: var(--ink2); margin-bottom: 40px;
+  letter-spacing: 0.01em; line-height: 1.7; font-family: "DM Sans", sans-serif; font-style: normal; font-weight: 300;
+  max-width: 640px; margin-left: auto; margin-right: auto;
 }
 .ab-quote-text {
-  font-family: "Lora", serif; font-style: italic;
-  font-size: clamp(20px, 3.2vw, 42px);
-  line-height: 1.3; color: var(--ink2); max-width: 760px; font-weight: 400;
-  opacity: 0.7;
+  font-family: "Lora", serif; font-style: normal;
+  font-size: clamp(16px, 1.8vw, 24px);
+  line-height: 1.6; color: var(--ink2); max-width: 760px; font-weight: 400;
+  opacity: 0.85;
 }
 .ab-quote-text em { color: var(--red); }
-.ab-quote-after {
-  margin-top: 44px; font-size: 14px; color: var(--ink3);
-  font-family: "Lora", serif; font-style: italic;
+.ab-quote-card-wrap {
+  display: flex; justify-content: center; margin: 0 auto;
 }
-.ab-qp1 { width: 116px; height: 154px; right: 180px; top: 64px;    transform: rotate(-5deg); }
-.ab-qp2 { width: 96px;  height: 126px; right: 60px;  top: 150px;   transform: rotate(3deg); }
-.ab-qp3 { width: 140px; height: 108px; right: 100px; bottom: 56px; transform: rotate(-2deg); }
+.ab-quote-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 32px rgba(28,25,22,0.07);
+  padding: 48px 56px;
+  max-width: 640px; width: 100%;
+  text-align: right;
+}
+.ab-quote-after {
+  margin-top: 44px; font-size: 15px; color: var(--ink3);
+  font-family: "DM Sans", sans-serif; font-style: normal; font-weight: 300;
+  text-align: right; max-width: 640px; margin-left: auto; margin-right: auto;
+}
+.ab-qp1 { width: 130px; height: 170px; right: 140px; top: 40px;   transform: rotate(-6deg); }
+.ab-qp2 { width: 100px; height: 130px; right: 40px;  top: 180px;  transform: rotate(4deg); }
+.ab-qp3 { width: 120px; height: 95px;  right: 90px;  bottom: 40px; transform: rotate(-3deg); }
 
 /* ══ SECTION 4: COLLAGE MOSAIC ══ */
 .ab-collage {
@@ -212,26 +229,30 @@
 }
 .ab-mosaic {
   display: grid;
-  grid-template-columns: 190px 1fr 150px 190px;
-  grid-template-rows: 172px 116px 192px;
-  gap: 14px;
+  grid-template-columns: 160px 1fr 130px 170px 140px;
+  grid-template-rows: 180px 130px 190px;
+  gap: 12px;
 }
 .ab-tile { overflow: hidden; }
 .ab-tile-ph {
   width: 100%; height: 100%; background: rgba(28,25,22,0.07);
   display: flex; align-items: center; justify-content: center;
-  font-size: 10px; color: var(--ink3); font-style: italic; text-align: center; padding: 8px;
+  font-size: 10px; color: var(--ink3); font-style: normal; text-align: center; padding: 8px;
 }
 .ab-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .ab-m1 { grid-column: 1; grid-row: 1 / 3; }
 .ab-m2 { grid-column: 2; grid-row: 1; }
 .ab-m3 { grid-column: 3; grid-row: 1; }
 .ab-m4 { grid-column: 4; grid-row: 1 / 3; }
-.ab-m5 { grid-column: 2; grid-row: 2; display: flex; align-items: center; padding: 0 20px; background: rgba(28,25,22,0.04); }
+.ab-m5 { grid-column: 5; grid-row: 1; }
 .ab-m5-text { font-size: 14px; color: var(--ink2); line-height: 1.7; font-weight: 300; }
-.ab-m6 { grid-column: 3; grid-row: 2 / 4; }
-.ab-m7 { grid-column: 1; grid-row: 3; }
-.ab-m8 { grid-column: 2; grid-row: 3; display: flex; align-items: flex-end; padding: 0 0 8px; }
+.ab-m6 { grid-column: 2 / 4; grid-row: 2; display: flex; align-items: center; padding: 0 24px; background: rgba(28,25,22,0.04); }
+.ab-m7 { grid-column: 4 / 6; grid-row: 2; }
+.ab-m8 { grid-column: 1; grid-row: 3; }
+.ab-m8-text { font-size: 13px; color: var(--ink3); line-height: 1.65; font-weight: 300; }
+.ab-m9 { grid-column: 2; grid-row: 3; }
+.ab-m10 { grid-column: 3; grid-row: 3; }
+.ab-m11 { grid-column: 4 / 6; grid-row: 3; }
 .ab-m8-text { font-family: "Kaisei Decol", serif; font-size: clamp(17px, 2.2vw, 26px); color: var(--ink); line-height: 1.25; }
 .ab-m9 { grid-column: 4; grid-row: 3; }
 
@@ -242,23 +263,27 @@
   background: var(--paper);
 }
 .ab-phil-label {
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 52px;
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 400; color: var(--ink);
+  margin-bottom: 48px; letter-spacing: -0.01em; line-height: 1;
+  text-align: center;
 }
 .ab-phil-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 80px; align-items: start;
+  max-width: 900px; margin: 0 auto;
 }
 .ab-phil-title {
   font-family: "Kaisei Decol", serif;
-  font-size: clamp(24px, 3.2vw, 42px);
-  font-weight: 400; line-height: 1.2; color: var(--ink); margin-bottom: 28px;
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 400; line-height: 1.25; color: var(--ink); margin-bottom: 28px;
 }
 .ab-phil-body { font-size: 16px; color: var(--ink2); line-height: 1.85; font-weight: 300; }
 .ab-phil-body p + p { margin-top: 16px; }
 .ab-phil-pull {
   margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line);
-  font-family: "Lora", serif; font-style: italic;
+  font-family: "Lora", serif; font-style: normal;
   font-size: 19px; color: var(--ink); line-height: 1.55;
 }
 .ab-phil-photos { position: relative; height: 480px; }
@@ -266,7 +291,7 @@
 .ab-pp2 { position: absolute; width: 176px; height: 136px; top: 56px; left: 250px;  transform: rotate(4deg);  box-shadow: 0 6px 28px rgba(28,25,22,0.14); }
 .ab-pp3 { position: absolute; width: 200px; height: 248px; bottom: 0;  left: 72px;  transform: rotate(2deg);  box-shadow: 0 6px 28px rgba(28,25,22,0.14); }
 .ab-pp4 { position: absolute; width: 124px; height: 164px; bottom: 36px; left: 304px; transform: rotate(-5deg); box-shadow: 0 6px 28px rgba(28,25,22,0.14); }
-.ab-pp-ph { width: 100%; height: 100%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--ink3); font-style: italic; }
+.ab-pp-ph { width: 100%; height: 100%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--ink3); font-style: normal; }
 
 /* ══ CTA ══ */
 .ab-cta {
@@ -326,16 +351,16 @@
     <div class="ab-photo ab-p6"><div class="ab-photo-ph">[ Sake brewery ]</div></div>
     <div class="ab-open-inner">
       <div class="ab-open-eyebrow">Takayama & Beyond — About us</div>
-      <h1 class="ab-open-title">A Local Experience<br>&amp; Tour Company<br>in Takayama &amp;<br><em style="color:var(--red);font-style:italic;">Beyond.</em></h1>
+      <h1 class="ab-open-title">A Local Experience<br>and Tour Company<br>in Takayama &amp;<br><em style="color:var(--red);font-style: normal;">Beyond.</em></h1>
       <p class="ab-open-sub">Connecting people in Takayama — with the place, the people, and what makes it unlike anywhere else in Japan.</p>
     </div>
   </div>
 
   <!-- ══ STORY ══ -->
   <div class="ab-story">
-    <div class="ab-photo ab-sp1"><div class="ab-photo-ph" style="color:rgba(255,255,255,0.2);">[ Guide & guests ]</div></div>
-    <div class="ab-photo ab-sp2"><div class="ab-photo-ph" style="color:rgba(255,255,255,0.2);">[ Family home ]</div></div>
-    <div class="ab-photo ab-sp3"><div class="ab-photo-ph" style="color:rgba(255,255,255,0.2);">[ Tea room ]</div></div>
+    <div class="ab-photo ab-sp1"><div class="ab-photo-ph">[ Guide & guests ]</div></div>
+    <div class="ab-photo ab-sp2"><div class="ab-photo-ph">[ Family home ]</div></div>
+    <div class="ab-photo ab-sp3"><div class="ab-photo-ph">[ Tea room ]</div></div>
     <div class="ab-story-label">Our story</div>
     <div class="ab-story-body">
       <p class="ab-story-p">Founded with a single conviction: that the most valuable thing a traveller can bring home is a <em>genuine human and cultural connection.</em></p>
@@ -346,15 +371,18 @@
 
   <!-- ══ QUOTE ══ -->
   <div class="ab-quote">
-    <div class="ab-photo ab-qp1"><div class="ab-photo-ph">[ Grandfather ]</div></div>
-    <div class="ab-photo ab-qp2"><div class="ab-photo-ph">[ Snow in town ]</div></div>
-    <div class="ab-photo ab-qp3"><div class="ab-photo-ph">[ Lantern light ]</div></div>
+    <div class="ab-photo ab-qp1"><img src="https://res.cloudinary.com/dgchfe8wb/image/upload/v1775796014/656951138_1916973502514612_2008553217234363262_n_zwfaqx.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    <div class="ab-photo ab-qp2"><img src="https://res.cloudinary.com/dgchfe8wb/image/upload/v1775796013/642754589_1735930757368816_3093318760541958508_n_cwcmhz.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
     <div class="ab-quote-pre">My grandfather, who loved living in Takayama his entire life, had often said —</div>
-    <div class="ab-quote-text">
-      &ldquo;Takayama is not an easy place to reach.<br>
-      If someone makes the journey,<br>
-      they deserve a <em>warm welcome,</em><br>
-      even if we&rsquo;ve only just met.&rdquo;
+    <div class="ab-quote-card-wrap">
+      <div class="ab-quote-card">
+        <div class="ab-quote-text">
+          &ldquo;Takayama is not an easy place to reach.<br>
+          If someone makes the journey,<br>
+          they deserve a <em>warm welcome,</em><br>
+          even if we&rsquo;ve only just met.&rdquo;
+        </div>
+      </div>
     </div>
     <div class="ab-quote-after">and we stand by that.</div>
   </div>
@@ -367,11 +395,13 @@
       <div class="ab-tile ab-m2"><div class="ab-tile-ph">[ Morning market ]</div></div>
       <div class="ab-tile ab-m3"><div class="ab-tile-ph">[ Sake pour ]</div></div>
       <div class="ab-tile ab-m4"><div class="ab-tile-ph">[ Farmhouse ]</div></div>
-      <div class="ab-m5"><div class="ab-m5-text">We work with local families, craftspeople, and sake brewers who open their doors to a small number of guests each week.</div></div>
-      <div class="ab-tile ab-m6"><div class="ab-tile-ph">[ Tea ceremony tatami ]</div></div>
-      <div class="ab-tile ab-m7"><div class="ab-tile-ph">[ Sugidama making ]</div></div>
-      <div class="ab-m8"><div class="ab-m8-text">Every experience runs exclusively for your group.</div></div>
-      <div class="ab-tile ab-m9"><div class="ab-tile-ph">[ Mountain view ]</div></div>
+      <div class="ab-tile ab-m5"><div class="ab-tile-ph">[ Tea room ]</div></div>
+      <div class="ab-m6"><div class="ab-m5-text">We work with local families, craftspeople, and sake brewers who open their doors to a small number of guests each week.</div></div>
+      <div class="ab-tile ab-m7"><div class="ab-tile-ph">[ Countryside ]</div></div>
+      <div class="ab-tile ab-m8"><div class="ab-tile-ph">[ Sugidama ]</div></div>
+      <div class="ab-tile ab-m9"><div class="ab-tile-ph">[ Old town ]</div></div>
+      <div class="ab-tile ab-m10"><div class="ab-tile-ph">[ Sake brewery ]</div></div>
+      <div class="ab-tile ab-m11"><div class="ab-tile-ph">[ Mountain view ]</div></div>
     </div>
   </div>
 
