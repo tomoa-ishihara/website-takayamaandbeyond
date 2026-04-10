@@ -1,0 +1,972 @@
+<!-- ============================================================
+     EXPERIENCE DETAIL — Takayama & Beyond
+     Cooking Experience — Merged Design
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+.ox * { box-sizing: border-box; margin: 0; padding: 0; }
+.ox {
+  --ink:       #1a1a1a;
+  --ink2:      #444;
+  --ink3:      #888;
+  --paper:     #ffffff;
+  --cream:     #f0eeeb;
+  --bg:        #e8e6e1;
+  --card-dark: #5a5550;
+  --dark:      #141210;
+  --red:       #8b1a1a;
+  --green:     #4a7c59;
+  --gold:      #c9a96e;
+  --line:      rgba(0,0,0,0.1);
+  --line-w:    rgba(255,255,255,0.1);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+.sqs-block-code { padding: 0 !important; margin: 0 !important; }
+
+/* ════════════════════════════════════════
+   HERO — dark, text only, no image
+   ════════════════════════════════════════ */
+.ox-hero {
+  background: var(--dark);
+  padding: 56px 72px 72px;
+  min-height: 90vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.ox-hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.7);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 0;
+  margin-bottom: 36px; width: fit-content;
+}
+.ox-hero-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(52px, 8vw, 108px);
+  font-weight: 400; line-height: 1.0;
+  color: #fff; margin-bottom: 28px;
+  letter-spacing: -0.02em;
+  max-width: 780px;
+}
+.ox-hero-sub {
+  font-family: 'Lora', serif;
+  font-size: 18px; font-style: italic;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7; max-width: 520px;
+  margin-bottom: 52px;
+}
+.ox-hero-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+}
+.ox-hero-stat {
+  padding-right: 48px;
+  border-right: 1px solid rgba(255,255,255,0.15);
+  margin-right: 48px;
+}
+.ox-hero-stat:last-child { border-right: none; margin-right: 0; }
+.ox-hero-stat-val {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 28px; color: #fff; line-height: 1;
+}
+.ox-hero-stat-label {
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  margin-top: 5px;
+}
+
+/* ════════════════════════════════════════
+   THE EXPERIENCE — 2 column layout
+   ════════════════════════════════════════ */
+.ox-experience {
+  background: var(--cream);
+  padding: 96px 72px;
+}
+.ox-experience-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.ox-experience-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); border: 1px solid var(--red);
+  padding: 4px 10px; display: inline-block; width: fit-content;
+  margin-bottom: 24px;
+}
+.ox-experience-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(32px, 3.8vw, 52px);
+  font-weight: 400; line-height: 1.1;
+  color: var(--ink); margin-bottom: 24px;
+}
+.ox-experience-body {
+  font-size: 16px; color: var(--ink2);
+  line-height: 1.8; font-weight: 300;
+  margin-bottom: 24px;
+}
+.ox-experience-quote {
+  border-left: 2px solid var(--line);
+  padding-left: 20px;
+  font-family: 'Lora', serif;
+  font-size: 15px; font-style: italic;
+  color: var(--ink3); line-height: 1.7;
+  margin-bottom: 32px;
+}
+.ox-reserve-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink2); text-decoration: none;
+  border-bottom: 1px solid var(--ink3);
+  padding-bottom: 2px; width: fit-content;
+  transition: opacity 0.2s;
+}
+.ox-reserve-link:hover { opacity: 0.6; }
+
+/* What to expect — right column */
+.ox-expect-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); border: 1px solid var(--red);
+  padding: 4px 10px; display: inline-block; width: fit-content;
+  margin-bottom: 32px;
+}
+.ox-expect-item {
+  display: flex; gap: 22px;
+  margin-bottom: 36px; padding-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+}
+.ox-expect-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.ox-expect-num {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 14px; color: var(--gold);
+  letter-spacing: 0.06em; flex-shrink: 0;
+  width: 28px; margin-top: 4px;
+}
+.ox-expect-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 18px; font-weight: 400;
+  color: var(--ink); margin-bottom: 8px;
+  line-height: 1.3;
+}
+.ox-expect-desc {
+  font-size: 14px; color: var(--ink2);
+  line-height: 1.7; font-weight: 300;
+}
+
+/* ════════════════════════════════════════
+   CARDS — 4枚をPC画面で一度に表示
+   4カラムグリッド、各カード9:16縦型
+   ════════════════════════════════════════ */
+.ox-cards {
+  padding: 80px 72px;
+}
+.ox-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* 9:16 portrait — both video and text card */
+.ox-video-panel,
+.ox-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Video panel */
+.ox-video-panel { background: #1a1410; }
+.ox-video-panel video,
+.ox-video-panel iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; border: none;
+}
+.ox-video-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px;
+}
+.ox-video-placeholder span {
+  font-size: 10px; color: rgba(255,255,255,0.3);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  text-align: center; padding: 0 12px;
+}
+
+/* Text card */
+.ox-card {
+  padding: 36px 28px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.ox-card.dark { background: var(--card-dark); }
+.ox-card.light { background: var(--bg); }
+.ox-card-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  display: inline-block; padding: 4px 10px;
+  border: 1px solid currentColor;
+  margin-bottom: 20px; width: fit-content;
+}
+.ox-card.dark .ox-card-label { color: rgba(201,169,110,0.85); border-color: rgba(201,169,110,0.5); }
+.ox-card.light .ox-card-label { color: var(--red); border-color: var(--red); }
+.ox-card-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(16px, 1.4vw, 22px);
+  font-weight: 400; line-height: 1.3; margin-bottom: 16px;
+}
+.ox-card.dark .ox-card-title { color: #fff; }
+.ox-card.light .ox-card-title { color: var(--ink); }
+.ox-card-title .dot { color: var(--red); }
+.ox-card-body { font-size: clamp(12px, 0.9vw, 14px); line-height: 1.75; font-weight: 300; }
+.ox-card.dark .ox-card-body { color: rgba(255,255,255,0.6); }
+.ox-card.light .ox-card-body { color: var(--ink2); }
+.ox-card-body p + p { margin-top: 12px; }
+
+/* ════════════════════════════════════════
+   THE CENTREPIECE — full black
+   ════════════════════════════════════════ */
+.ox-centrepiece {
+  background: #000;
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+}
+.ox-centrepiece-left {
+  padding: 80px 56px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.ox-centrepiece-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(201,169,110,0.9); border: 1px solid rgba(201,169,110,0.5);
+  padding: 4px 10px; display: inline-block; width: fit-content;
+  margin-bottom: 32px;
+}
+.ox-centrepiece-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 400; line-height: 1.1; color: #fff;
+}
+.ox-centrepiece-title-italic {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 400; line-height: 1.1;
+  color: #fff; font-style: italic; margin-bottom: 36px;
+}
+.ox-centrepiece-body {
+  font-size: 16px; color: rgba(255,255,255,0.45);
+  line-height: 1.8; font-weight: 300;
+}
+.ox-centrepiece-body p + p { margin-top: 16px; }
+.ox-centrepiece-right { overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: stretch; }
+
+/* ギャラリー（THE CENTREPIECE右側） */
+.ox-cp-gallery {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: center; align-items: stretch;
+  padding: 36px 32px; gap: 16px;
+}
+.ox-cp-gallery-main {
+  position: relative;
+  border-radius: 0; overflow: hidden;
+}
+.ox-cp-gallery-ratio {
+  position: relative; width: 100%; padding-top: 66%;
+}
+.ox-cp-gallery-ratio img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: opacity 0.3s;
+}
+.ox-cp-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; color: #fff;
+  transition: background 0.2s; z-index: 2;
+  backdrop-filter: blur(4px);
+}
+.ox-cp-arrow:hover { background: rgba(255,255,255,0.28); }
+.ox-cp-arrow.prev { left: 12px; }
+.ox-cp-arrow.next { right: 12px; }
+.ox-cp-thumbs {
+  display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;
+}
+.ox-cp-thumb {
+  width: 52px; aspect-ratio: 4 / 3; border-radius: 0;
+  overflow: hidden; cursor: pointer;
+  border: 2px solid transparent; opacity: 0.5;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.ox-cp-thumb.active { border-color: rgba(255,255,255,0.7); opacity: 1; }
+.ox-cp-thumb:hover { opacity: 0.85; }
+.ox-cp-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ════════════════════════════════════════
+   WHAT'S INCLUDED — simple list style
+   ════════════════════════════════════════ */
+.ox-included { padding: 56px 72px; background: var(--cream); border-top: 1px solid var(--line); }
+.ox-included-title {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red); border: 1px solid var(--red);
+  padding: 4px 10px; display: inline-block; width: fit-content;
+  margin-bottom: 32px;
+}
+.ox-inc-cols {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  margin-bottom: 48px;
+  border-top: 1px solid var(--line);
+}
+.ox-inc-col { padding: 28px 0 28px; }
+.ox-inc-col:first-child { padding-right: 48px; border-right: 1px solid var(--line); }
+.ox-inc-col:last-child { padding-left: 48px; }
+.ox-inc-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 20px; display: block;
+}
+.ox-inc-item {
+  display: flex; align-items: baseline; gap: 12px;
+  font-size: 15px; color: var(--ink2);
+  margin-bottom: 10px; line-height: 1.5; font-weight: 300;
+}
+.ox-inc-check { color: var(--green); flex-shrink: 0; font-size: 12px; }
+.ox-inc-x { color: var(--red); flex-shrink: 0; font-size: 12px; font-weight: 500; }
+.ox-options-title {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink3); font-weight: 400; margin-bottom: 0;
+}
+.ox-options-list { border-top: 1px solid var(--line); margin-top: 0; }
+.ox-option-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 32px; padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.ox-option-name {
+  font-size: 15px; color: var(--red); margin-bottom: 4px; font-weight: 400;
+}
+.ox-option-desc { font-size: 13px; color: var(--ink3); font-weight: 300; line-height: 1.5; }
+.ox-option-price {
+  font-size: 13px; color: var(--ink2); white-space: nowrap;
+  font-weight: 400;
+}
+
+/* ════════════════════════════════════════
+   FAQ
+   ════════════════════════════════════════ */
+.ox-faq { padding: 60px 72px; border-top: 1px solid var(--line); }
+.ox-faq-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 400; color: var(--ink); margin-bottom: 36px;
+}
+.ox-faq-item { border-bottom: 1px solid var(--line); }
+.ox-faq-q {
+  width: 100%; background: none; border: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 20px 0; cursor: pointer; text-align: left;
+  font-family: 'Kaisei Decol', serif; font-size: 17px;
+  font-weight: 400; color: var(--ink); transition: color 0.2s;
+}
+.ox-faq-q:hover { color: var(--red); }
+.ox-faq-icon {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink3); transition: all 0.2s;
+}
+.ox-faq-item.open .ox-faq-icon { background: var(--red); border-color: var(--red); color: #fff; }
+.ox-faq-icon svg { transition: transform 0.3s; }
+.ox-faq-item.open .ox-faq-icon svg { transform: rotate(45deg); }
+.ox-faq-a {
+  display: none; padding: 0 48px 20px 0;
+  font-size: 15px; color: var(--ink2); line-height: 1.8; font-weight: 300;
+}
+.ox-faq-item.open .ox-faq-a { display: block; }
+
+/* ════════════════════════════════════════
+   MORE EXPERIENCES
+   ════════════════════════════════════════ */
+.ox-more { padding: 60px 72px; background: var(--bg); border-top: 1px solid var(--line); }
+.ox-more-label {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink3); margin-bottom: 10px;
+}
+.ox-more-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 400; color: var(--ink); margin-bottom: 32px;
+}
+.ox-more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ox-more-card {
+  text-decoration: none; color: inherit; display: block;
+  border: 1px solid var(--line); border-radius: 0; overflow: hidden;
+  background: var(--paper); transition: transform 0.25s, box-shadow 0.25s;
+}
+.ox-more-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+.ox-more-img-ph { width: 100%; height: 160px; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--ink3); font-style: italic; }
+.ox-more-body { padding: 18px 20px; }
+.ox-more-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
+.ox-more-name { font-family: 'Kaisei Decol', serif; font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+.ox-more-foot { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 10px; font-size: 13px; color: var(--ink3); }
+
+/* ════════════════════════════════════════
+   CTA
+   ════════════════════════════════════════ */
+.ox-cta {
+  padding: 48px; text-align: center; background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+.ox-cta-btn {
+  display: inline-block; padding: 14px 40px;
+  border: 1px solid var(--ink); color: var(--ink);
+  font-family: 'Lora', serif; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  font-style: italic; text-decoration: none;
+  border-radius: 0; transition: all 0.2s;
+}
+.ox-cta-btn:hover { background: var(--ink); color: #fff; }
+
+/* ════════════════════════════════════════
+   GALLERY — 4:3 ratio, centered, not full width
+   ════════════════════════════════════════ */
+.ox-gallery { padding: 60px 72px; background: var(--bg); border-top: 1px solid var(--line); }
+.ox-gallery-inner { max-width: 760px; margin: 0 auto; }
+.ox-gallery-main {
+  position: relative; border-radius: 0; overflow: hidden; margin-bottom: 16px;
+}
+.ox-gallery-ratio {
+  position: relative; width: 100%; padding-top: 75%;
+}
+.ox-gallery-ratio img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: opacity 0.3s;
+}
+.ox-gallery-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.92); border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 22px; color: var(--ink);
+  transition: background 0.2s; z-index: 2;
+}
+.ox-gallery-arrow:hover { background: #fff; }
+.ox-gallery-arrow.prev { left: 14px; }
+.ox-gallery-arrow.next { right: 14px; }
+.ox-gallery-thumbs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.ox-gallery-thumb {
+  width: 72px; aspect-ratio: 4 / 3; border-radius: 0;
+  overflow: hidden; cursor: pointer;
+  border: 2px solid transparent; opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.ox-gallery-thumb.active { border-color: var(--ink); opacity: 1; }
+.ox-gallery-thumb:hover { opacity: 1; }
+.ox-gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ════════════════════════════════════════
+   BOOKING — dark, left text + right form card
+   ════════════════════════════════════════ */
+.ox-booking {
+  background: var(--dark);
+  display: grid; grid-template-columns: 1fr 420px;
+  min-height: 560px;
+}
+.ox-booking-left {
+  padding: 80px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--line-w);
+}
+.ox-booking-eyebrow {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 24px;
+}
+.ox-booking-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400; color: #fff;
+  line-height: 1.1; margin-bottom: 20px;
+}
+.ox-booking-sub {
+  font-family: 'Lora', serif;
+  font-size: 16px; font-style: italic;
+  color: rgba(255,255,255,0.4); line-height: 1.75;
+}
+.ox-booking-right { padding: 64px 52px; }
+.ox-price-label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 10px;
+}
+.ox-price-val {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 48px; color: #fff; line-height: 1; margin-bottom: 6px;
+}
+.ox-price-sub { font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 36px; }
+.ox-price-divider {
+  border: none; border-top: 1px solid var(--line-w); margin-bottom: 28px;
+}
+.ox-bfield { margin-bottom: 16px; }
+.ox-bfield label {
+  display: block; font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px;
+}
+.ox-bfield input, .ox-bfield select {
+  width: 100%; padding: 14px 16px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 0;
+  font-size: 15px; color: #fff; font-family: 'DM Sans', sans-serif;
+  outline: none; appearance: none; transition: border-color 0.2s;
+}
+.ox-bfield input:focus, .ox-bfield select:focus { border-color: rgba(201,169,110,0.5); }
+.ox-bfield select option { background: #1a1410; color: #fff; }
+
+/* ── カスタムカレンダー ── */
+.ox-cal-wrap { position: relative; }
+.ox-cal-trigger {
+  width: 100%; padding: 14px 16px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 15px; color: rgba(255,255,255,0.85);
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  transition: border-color 0.2s; text-align: left;
+}
+.ox-cal-trigger:hover { border-color: rgba(201,169,110,0.5); }
+.ox-calendar {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  background: #1e1b18; border: 1px solid rgba(255,255,255,0.15);
+  z-index: 999; padding: 16px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+.ox-cal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 14px;
+}
+.ox-cal-nav {
+  background: none; border: none; color: rgba(255,255,255,0.55);
+  font-size: 20px; cursor: pointer; padding: 0 6px; line-height: 1;
+  transition: color 0.2s;
+}
+.ox-cal-nav:hover { color: #fff; }
+.ox-cal-month-label {
+  font-family: 'Kaisei Decol', serif; font-size: 15px;
+  color: #fff; font-weight: 400;
+}
+.ox-cal-days-header {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  text-align: center; margin-bottom: 8px;
+}
+.ox-cal-days-header span {
+  font-size: 10px; letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.3); padding: 4px 0;
+}
+.ox-cal-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px;
+}
+.ox-cal-day {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: rgba(255,255,255,0.7);
+  cursor: pointer; border: none; background: none;
+  font-family: 'DM Sans', sans-serif; border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+}
+.ox-cal-day:hover:not(.empty):not(.past) { background: rgba(255,255,255,0.1); color: #fff; }
+.ox-cal-day.empty { cursor: default; }
+.ox-cal-day.past { color: rgba(255,255,255,0.2); cursor: default; }
+.ox-cal-day.today { color: rgba(201,169,110,0.9); font-weight: 500; }
+.ox-cal-day.selected { background: var(--red); color: #fff; }
+.ox-total-label {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 8px;
+}
+.ox-total-val {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 36px; color: #fff; margin-bottom: 24px;
+}
+.ox-send-btn {
+  width: 100%; padding: 16px; background: var(--red); color: #fff;
+  border: none; border-radius: 0; font-family: 'DM Sans', sans-serif;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s; margin-bottom: 12px;
+}
+.ox-send-btn:hover { background: #6e1414; }
+.ox-send-note {
+  font-size: 11px; color: rgba(255,255,255,0.2);
+  text-align: center; font-style: italic; line-height: 1.6;
+}
+
+/* ════════════════════════════════════════
+   POPUP
+   ════════════════════════════════════════ */
+#ox-popup {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.65); z-index: 9999;
+  align-items: center; justify-content: center; padding: 20px;
+}
+.ox-popup-box {
+  background: var(--paper); max-width: 480px; width: 100%;
+  border-radius: 0; overflow: hidden; max-height: 90vh; overflow-y: auto;
+}
+.ox-popup-head {
+  background: var(--dark); padding: 22px 28px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.ox-popup-head h3 {
+  font-family: 'Kaisei Decol', serif; font-size: 18px; color: #fff; font-weight: 400;
+}
+.ox-popup-close { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 24px; cursor: pointer; line-height: 1; }
+.ox-popup-summary { padding: 20px 28px; background: var(--cream); border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink2); line-height: 1.9; }
+.ox-popup-body { padding: 24px 28px; }
+.ox-pfield { margin-bottom: 14px; }
+.ox-pfield label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 5px; }
+.ox-pfield input, .ox-pfield textarea { width: 100%; padding: 11px 14px; border: 1px solid #ddd; border-radius: 0; font-size: 14px; background: #fff; color: var(--ink); font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; }
+.ox-pfield input:focus, .ox-pfield textarea:focus { border-color: var(--red); }
+.ox-psend { width: 100%; padding: 14px; background: var(--red); color: #fff; border: none; border-radius: 0; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; margin-top: 6px; transition: background 0.2s; }
+.ox-psend:hover { background: #6e1414; }
+.ox-pnote { font-size: 11px; color: var(--ink3); text-align: center; margin-top: 10px; font-style: italic; }
+.ox-pthanks { display: none; padding: 48px 28px; text-align: center; }
+.ox-pthanks-icon { font-size: 28px; color: var(--green); margin-bottom: 16px; }
+.ox-pthanks-title { font-family: 'Kaisei Decol', serif; font-size: 22px; color: var(--ink); margin-bottom: 10px; }
+.ox-pthanks-text { font-size: 15px; color: var(--ink2); line-height: 1.7; font-style: italic; }
+.ox-pthanks-btn { margin-top: 24px; padding: 10px 28px; background: var(--ink); color: #fff; border: none; border-radius: 0; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .ox-hero { padding: 40px 28px 52px; }
+  .ox-hero-stats { gap: 28px; }
+  .ox-hero-stat { padding-right: 28px; margin-right: 28px; }
+  .ox-experience { padding: 60px 28px; }
+  .ox-experience-inner { grid-template-columns: 1fr; gap: 40px; }
+  .ox-cards { padding: 48px 24px; }
+  .ox-cards-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ox-card { padding: 28px 20px; }
+  .ox-centrepiece { grid-template-columns: 1fr; }
+  .ox-centrepiece-left { padding: 52px 28px; }
+  .ox-centrepiece-right { min-height: 320px; }
+  .ox-included { padding: 40px 28px; }
+  .ox-inc-cols { grid-template-columns: 1fr; gap: 28px; }
+  .ox-faq { padding: 40px 28px; }
+  .ox-more { padding: 40px 28px; }
+  .ox-more-grid { grid-template-columns: 1fr 1fr; }
+  .ox-cta { padding: 40px 24px; }
+  .ox-gallery { padding: 40px 24px; }
+  .ox-booking { grid-template-columns: 1fr; }
+  .ox-booking-left { padding: 52px 28px; border-right: none; border-bottom: 1px solid var(--line-w); }
+  .ox-booking-right { padding: 40px 28px; }
+}
+</style>
+
+<div class="ox">
+
+  <div class="ox-hero">
+    <div class="ox-hero-tag">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6h4v7"/></svg>
+      Experience · Food & Culture
+    </div>
+    <h1 class="ox-hero-title">Inside Seven<br>Hidden<br>Breweries.</h1>
+    <p class="ox-hero-sub">"Sake is not just something to drink. It is how a region tells its story." — Walk Takayama's old town with a sake expert and go behind the scenes of breweries that rarely open their doors.</p>
+    <div class="ox-hero-stats">
+      <div class="ox-hero-stat"><div class="ox-hero-stat-val">¥12,000</div><div class="ox-hero-stat-label">Per Person</div></div>
+      <div class="ox-hero-stat"><div class="ox-hero-stat-val">2.5 hours</div><div class="ox-hero-stat-label">Duration</div></div>
+      <div class="ox-hero-stat"><div class="ox-hero-stat-val">2+</div><div class="ox-hero-stat-label">Group size</div></div>
+      <div class="ox-hero-stat"><div class="ox-hero-stat-val">10am – 2pm</div><div class="ox-hero-stat-label">Start times</div></div>
+    </div>
+  </div>
+
+  <div class="ox-experience">
+    <div class="ox-experience-inner">
+      <div class="ox-experience-left">
+        <div class="ox-experience-label">The Experience</div>
+        <h2 class="ox-experience-title">A town shaped by sake.</h2>
+        <p class="ox-experience-body">Takayama has seven sake breweries, most of them quietly tucked into the old town. With a guide who knows both the sake and the streets, you'll visit two to three of them — going behind the scenes, learning the craft, and tasting in places that rarely open their doors to visitors.</p>
+        <blockquote class="ox-experience-quote">"By the end, the way you think about sake will have changed."</blockquote>
+        <a href="#ox-booking" class="ox-reserve-link">Reserve your place <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <div class="ox-experience-right">
+        <div class="ox-expect-label">What to expect</div>
+        <div class="ox-expect-item">
+          <div class="ox-expect-num">01</div>
+          <div class="ox-expect-text">
+            <div class="ox-expect-title">The breweries</div>
+            <div class="ox-expect-desc">Two to three breweries chosen by your guide to match your interests — dark wooden facades, family histories going back centuries, and production areas visitors rarely see.</div>
+          </div>
+        </div>
+        <div class="ox-expect-item">
+          <div class="ox-expect-num">02</div>
+          <div class="ox-expect-text">
+            <div class="ox-expect-title">Behind the scenes</div>
+            <div class="ox-expect-desc">Inside the parts that aren't normally open — where sake is made, where rice is processed, where the seasons determine everything. What you see depends on when you visit.</div>
+          </div>
+        </div>
+        <div class="ox-expect-item">
+          <div class="ox-expect-num">03</div>
+          <div class="ox-expect-text">
+            <div class="ox-expect-title">The tasting</div>
+            <div class="ox-expect-desc">Seven or more varieties at one brewery — dry to fruity, aged to seasonal. Your guide walks you through each one: how it was made, how to drink it, what makes it different from the rest.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ox-cards">
+    <div class="ox-cards-grid">
+      <div class="ox-video-panel"><div class="ox-video-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>[ Photo / Video ]</span></div></div>
+      <div class="ox-card dark">
+        <div class="ox-card-label">The Place</div>
+        <h2 class="ox-card-title">The old town
+of Takayama<span class="dot">.</span></h2>
+        <div class="ox-card-body"><p>Takayama's seven sake breweries are hidden in plain sight — their dark wooden facades blending quietly into the Edo-period streetscape. Sake has long been woven into the fabric of this region: its festivals, its seasons, its identity. The concept of jizake — locally brewed sake that belongs to a specific place — is not just a product. It is a way of understanding where you are.</p></div>
+      </div>
+      <div class="ox-video-panel"><div class="ox-video-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>[ Photo / Video ]</span></div></div>
+      <div class="ox-card light">
+        <div class="ox-card-label">The Hosts</div>
+        <h2 class="ox-card-title">A guide who<br>knows what's in<br>the glass.<span class="dot">.</span></h2>
+        <div class="ox-card-body"><p>Your guide is a sake expert — but not the kind who lectures. They start by asking what you like, what you're curious about, and what kind of places you want to see. From there, they build the tour around you. They know the people behind the sake, the history behind the breweries, and the stories that don't make it onto any label.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ox-centrepiece">
+    <div class="ox-centrepiece-left">
+      <div class="ox-centrepiece-label">The Centrepiece</div>
+      <h2 class="ox-centrepiece-title">7+ varieties.</h2>
+      <h2 class="ox-centrepiece-title-italic">In the place they were made.</h2>
+      <div class="ox-centrepiece-body"><p>This is not a flight at a bar. At one of the breweries, you taste inside — seven or more varieties, from dry to fruity, aged to seasonal. For those who don't drink sake, yuzu liqueur and umeshu are available. For those who don't drink alcohol at all, amazake — a naturally sweet, alcohol-free rice drink — is always on hand.</p></div>
+    </div>
+    <div class="ox-centrepiece-right">
+      <div class="ox-cp-gallery">
+        <div class="ox-cp-gallery-main">
+          <div class="ox-cp-gallery-ratio"><img id="ox-main-img" src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/5b0e8a15-8ea8-4b4c-a711-ceabc9696bc4/0808_%E6%96%99%E7%90%8611.jpg?content-type=image%2Fjpeg" alt=""></div>
+          <button class="ox-cp-arrow prev" onclick="oxGallery(-1)">‹</button>
+          <button class="ox-cp-arrow next" onclick="oxGallery(1)">›</button>
+        </div>
+        <div class="ox-cp-thumbs" id="ox-thumbs"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ox-included">
+    <h2 class="ox-included-title">What's Included</h2>
+    <div class="ox-inc-cols">
+      <div class="ox-inc-col"><div class="ox-inc-label">Included</div>
+        <div class="ox-inc-item"><span class="ox-inc-check">✓</span> Expert sake guide throughout</div>
+        <div class="ox-inc-item"><span class="ox-inc-check">✓</span> Visits to 2–3 carefully selected breweries</div>
+        <div class="ox-inc-item"><span class="ox-inc-check">✓</span> Behind-the-scenes access (areas not open to the public)</div>
+        <div class="ox-inc-item"><span class="ox-inc-check">✓</span> Tasting of 7+ varieties at one brewery</div>
+        <div class="ox-inc-item"><span class="ox-inc-check">✓</span> Introduction to sake brewing and local sake culture</div>
+        <div class="ox-inc-item"><span class="ox-inc-check">✓</span> Hotel pick-up or meeting at Jinya</div>
+        <div class="ox-inc-item"><span class="ox-inc-check">✓</span> Non-alcoholic options available (yuzu liqueur, umeshu, amazake)</div>
+      </div>
+      <div class="ox-inc-col"><div class="ox-inc-label">Not Included</div>
+        <div class="ox-inc-item"><span class="ox-inc-x">✕</span> Bottle purchases</div>
+        <div class="ox-inc-item"><span class="ox-inc-x">✕</span> Food (can be combined with the Food Walking Tour)</div>
+      </div>
+    </div>
+    <h2 class="ox-options-title">Available Options</h2>
+    <div class="ox-options-list">
+      <div class="ox-option-row">
+        <div class="ox-option-left"><div class="ox-option-name">Food Walking Tour add-on</div><div class="ox-option-desc">Pair your sake tasting with a morning walk through the old town market.</div></div>
+        <div class="ox-option-price">¥4,500 / person</div>
+      </div>
+      <div class="ox-option-row">
+        <div class="ox-option-left"><div class="ox-option-name">Tea time at a local's historical Machiya house</div><div class="ox-option-desc">Visit one of the oldest machiya houses in the old town.</div></div>
+        <div class="ox-option-price">¥3,000 / person</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ox-booking" id="ox-booking">
+    <div class="ox-booking-left">
+      <div class="ox-booking-eyebrow">Reserve Your Place</div>
+      <h2 class="ox-booking-title">Private, guided,<br>built around you.</h2>
+      <p class="ox-booking-sub">Every tasting is arranged exclusively for your group. Your guide selects the breweries to match your interests. We confirm within 24 hours.</p>
+    </div>
+    <div class="ox-booking-right">
+      <div class="ox-price-label">Price Per Person</div>
+      <div class="ox-price-val">¥12,000</div>
+      <div class="ox-price-sub">Per person · min 2 · tasting 20+ only</div>
+      <hr class="ox-price-divider">
+      <div class="ox-bfield"><label>Date</label>
+        <div class="ox-cal-wrap" id="ox-cal-wrap">
+          <button type="button" class="ox-cal-trigger" id="ox-cal-trigger" onclick="oxCalToggle()">
+            <span id="ox-cal-display">Select a date</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </button>
+          <div class="ox-calendar" id="ox-calendar" style="display:none;">
+            <div class="ox-cal-header"><button type="button" class="ox-cal-nav" onclick="oxCalMonth(-1)">‹</button><span class="ox-cal-month-label" id="ox-cal-month-label"></span><button type="button" class="ox-cal-nav" onclick="oxCalMonth(1)">›</button></div>
+            <div class="ox-cal-days-header"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+            <div class="ox-cal-grid" id="ox-cal-grid"></div>
+          </div>
+        </div>
+        <input type="hidden" id="ox-date">
+      </div>
+      <div class="ox-bfield"><label>Guests</label>
+        <select id="ox-guests" onchange="oxTotal()">
+          <option value="2" selected>2 people</option>
+          <option value="3">3 people</option>
+          <option value="4">4 people</option>
+          <option value="5">5 people</option>
+          <option value="6">6 people</option>
+          <option value="8">8 people</option>
+        </select>
+      </div>
+      <div class="ox-total-label">Estimated Total</div>
+      <div class="ox-total-val" id="ox-total">¥24,000</div>
+      <button class="ox-send-btn" onclick="oxOpen()">Send Inquiry →</button>
+      <p class="ox-send-note">This sends an inquiry — not a confirmed booking.<br>We'll be in touch within 24 hours.</p>
+    </div>
+  </div>
+
+  <div class="ox-faq">
+    <h2 class="ox-faq-title">FAQs</h2>
+    <div class="ox-faq-item">
+      <button class="ox-faq-q" onclick="oxFaq(this)">What if someone in my group doesn't drink alcohol?<span class="ox-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="ox-faq-a">Non-alcoholic options are always available — yuzu liqueur, umeshu, and amazake (a sweet, alcohol-free rice drink). Non-drinkers are very welcome.</div>
+    </div>
+    <div class="ox-faq-item">
+      <button class="ox-faq-q" onclick="oxFaq(this)">What age is required for the tasting?<span class="ox-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="ox-faq-a">The tasting is for guests aged 20 and over. Younger guests are welcome to join the tour and brewery visits without participating in the tasting.</div>
+    </div>
+    <div class="ox-faq-item">
+      <button class="ox-faq-q" onclick="oxFaq(this)">I don't really like sake. Can I still join?<span class="ox-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="ox-faq-a">Absolutely. The experience is as much about the place and the stories as it is about the sake itself. Your guide will find something you'll enjoy, and the non-sake options are genuinely good.</div>
+    </div>
+    <div class="ox-faq-item">
+      <button class="ox-faq-q" onclick="oxFaq(this)">How much walking is involved?<span class="ox-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="ox-faq-a">About 30–45 minutes of walking in total, at a gentle pace. The old town is compact and flat. Comfortable shoes recommended.</div>
+    </div>
+    <div class="ox-faq-item">
+      <button class="ox-faq-q" onclick="oxFaq(this)">Which breweries will we visit?<span class="ox-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+      <div class="ox-faq-a">Your guide selects two to three from Takayama's seven based on your interests and the day's availability. We don't pre-fix the route — that's part of what makes this personal.</div>
+    </div>
+  </div>
+
+  <div class="ox-more">
+    <div class="ox-more-header"><div class="ox-more-label">You might also like</div><h2 class="ox-more-title">More experiences</h2></div>
+    <div class="ox-more-grid">
+      <a class="ox-more-card" href="/experiences/foodtour">
+        <div class="ox-more-img-ph">[ Photo ]</div>
+        <div class="ox-more-body">
+          <div class="ox-more-tag">Food & Culture</div>
+          <div class="ox-more-name">Food Walking Tour</div>
+          <div class="ox-more-foot"><span>—</span><span>—</span></div>
+        </div>
+      </a>
+      <a class="ox-more-card" href="/experiences/tea">
+        <div class="ox-more-img-ph">[ Photo ]</div>
+        <div class="ox-more-body">
+          <div class="ox-more-tag">Culture</div>
+          <div class="ox-more-name">Tea Ceremony</div>
+          <div class="ox-more-foot"><span>—</span><span>—</span></div>
+        </div>
+      </a>
+      <a class="ox-more-card" href="/experiences/cooking">
+        <div class="ox-more-img-ph">[ Photo ]</div>
+        <div class="ox-more-body">
+          <div class="ox-more-tag">Food & Culture</div>
+          <div class="ox-more-name">Cooking Experience</div>
+          <div class="ox-more-foot"><span>—</span><span>—</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="ox-cta"><a href="/experiences" class="ox-cta-btn">See all experiences</a></div>
+
+</div><!-- /ox -->
+
+<!-- POPUP -->
+<div id="ox-popup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+  <div class="ox-popup-box">
+    <div class="ox-popup-head"><h3>Your inquiry</h3><button class="ox-popup-close" onclick="oxClose()">×</button></div>
+    <div id="ox-popup-summary" class="ox-popup-summary"></div>
+    <div id="ox-popup-form" class="ox-popup-body">
+      <div class="ox-pfield"><label>Your name *</label><input type="text" id="ox-name" placeholder="First and last name"></div>
+      <div class="ox-pfield"><label>Email *</label><input type="email" id="ox-email" placeholder="your@email.com"></div>
+      <div class="ox-pfield"><label>Message / questions</label><textarea id="ox-message" rows="3" placeholder="Questions, dietary requirements, or special requests..."></textarea></div>
+      <button class="ox-psend" onclick="oxSend()">Send inquiry →</button>
+      <p class="ox-pnote">This sends an email to our team. We reply within 24 hours.</p>
+    </div>
+    <div id="ox-popup-thanks" class="ox-popup-thanks" style="display:none;">
+      <div class="ox-pthanks-icon">✓</div>
+      <h3 class="ox-pthanks-title">Inquiry sent</h3>
+      <p class="ox-pthanks-sub">We'll be in touch within 24 hours to confirm your booking.</p>
+      <button class="ox-pthanks-btn" onclick="oxClose()">Close</button>
+    </div>
+  </div>
+</div>
+<script>
+const oxImgs = [
+  'https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/5b0e8a15-8ea8-4b4c-a711-ceabc9696bc4/0808_%E6%96%99%E7%90%8611.jpg?content-type=image%2Fjpeg',
+];
+let oxIdx = 0;
+(function(){
+  const c = document.getElementById('ox-thumbs');
+  if(c) oxImgs.forEach((src,i) => {
+    const d = document.createElement('div');
+    d.className='ox-cp-thumb'+(i===0?' active':'');
+    d.onclick=()=>oxGoTo(i);
+    d.innerHTML=`<img src="${src}" alt="">`;
+    c.appendChild(d);
+  });
+})();
+function oxGoTo(n){oxIdx=(n+oxImgs.length)%oxImgs.length;const m=document.getElementById('ox-main-img');if(m)m.src=oxImgs[oxIdx];document.querySelectorAll('.ox-cp-thumb').forEach((t,i)=>t.classList.toggle('active',i===oxIdx));}
+function oxGallery(dir){oxGoTo(oxIdx+dir);}
+function oxFaq(btn){const item=btn.closest('.ox-faq-item');const open=item.classList.contains('open');document.querySelectorAll('.ox-faq-item.open').forEach(el=>el.classList.remove('open'));if(!open)item.classList.add('open');}
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+let oxCalYear,oxCalMonth2,oxCalSelected=null;
+(function(){const n=new Date();oxCalYear=n.getFullYear();oxCalMonth2=n.getMonth();})();
+function oxCalToggle(){const cal=document.getElementById('ox-calendar');if(cal.style.display==='none'){oxCalRender();cal.style.display='block';document.addEventListener('click',oxCalOutside,true);}else{cal.style.display='none';document.removeEventListener('click',oxCalOutside,true);}}
+function oxCalOutside(e){if(!document.getElementById('ox-cal-wrap').contains(e.target)){document.getElementById('ox-calendar').style.display='none';document.removeEventListener('click',oxCalOutside,true);}}
+function oxCalMonth(dir){oxCalMonth2+=dir;if(oxCalMonth2>11){oxCalMonth2=0;oxCalYear++;}if(oxCalMonth2<0){oxCalMonth2=11;oxCalYear--;};oxCalRender();}
+function oxCalRender(){
+  document.getElementById('ox-cal-month-label').textContent=MONTHS[oxCalMonth2]+' '+oxCalYear;
+  const grid=document.getElementById('ox-cal-grid');grid.innerHTML='';
+  const today=new Date();today.setHours(0,0,0,0);
+  const firstDay=new Date(oxCalYear,oxCalMonth2,1).getDay();
+  const daysInMonth=new Date(oxCalYear,oxCalMonth2+1,0).getDate();
+  for(let i=0;i<firstDay;i++){const el=document.createElement('button');el.className='ox-cal-day empty';el.type='button';grid.appendChild(el);}
+  for(let d=1;d<=daysInMonth;d++){
+    const date=new Date(oxCalYear,oxCalMonth2,d);
+    const el=document.createElement('button');el.className='ox-cal-day';el.type='button';el.textContent=d;
+    if(date<today)el.classList.add('past');
+    if(date.toDateString()===today.toDateString())el.classList.add('today');
+    const iso=`${oxCalYear}-${String(oxCalMonth2+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    if(oxCalSelected===iso)el.classList.add('selected');
+    if(!el.classList.contains('past')){el.onclick=()=>{oxCalSelected=iso;document.getElementById('ox-date').value=iso;document.getElementById('ox-cal-display').textContent=MONTHS[oxCalMonth2]+' '+d+', '+oxCalYear;document.getElementById('ox-cal-display').style.color='#fff';document.getElementById('ox-calendar').style.display='none';document.removeEventListener('click',oxCalOutside,true);};}
+    grid.appendChild(el);
+  }
+}
+const OX_PRICE=12000;
+function oxTotal(){const g=parseInt(document.getElementById('ox-guests').value)||2;document.getElementById('ox-total').textContent='¥'+(g*OX_PRICE).toLocaleString();}
+function oxOpen(){
+  const date=document.getElementById('ox-date').value;
+  const g=parseInt(document.getElementById('ox-guests').value)||2;
+  if(!date){alert('Please select a date.');return;}
+  const df=new Date(date).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('ox-popup-summary').innerHTML=`<div style="font-family:'Kaisei Decol',serif;font-size:16px;color:var(--ink);margin-bottom:8px;">Sake Tasting</div><div>Date &nbsp;&nbsp;&nbsp;&nbsp;${df}</div><div>Guests &nbsp;&nbsp;${g} × ¥${OX_PRICE.toLocaleString()} = <strong style="color:var(--ink)">¥${(g*OX_PRICE).toLocaleString()}</strong></div>`;
+  document.getElementById('ox-popup-form').style.display='block';
+  document.getElementById('ox-popup-thanks').style.display='none';
+  document.getElementById('ox-popup').style.display='flex';
+}
+function oxClose(){document.getElementById('ox-popup').style.display='none';}
+document.getElementById('ox-popup').addEventListener('click',e=>{if(e.target===document.getElementById('ox-popup'))oxClose();});
+function oxSend(){
+  const n=document.getElementById('ox-name').value.trim();
+  const em=document.getElementById('ox-email').value.trim();
+  const date=document.getElementById('ox-date').value;
+  const g=document.getElementById('ox-guests').value;
+  const msg=document.getElementById('ox-message').value.trim();
+  if(!n){alert('Please enter your name.');return;}
+  if(!em||!em.includes('@')){alert('Please enter a valid email.');return;}
+  const subj=encodeURIComponent('Inquiry — Sake Tasting');
+  const body=encodeURIComponent('Experience: Sake Tasting\nDate: '+date+'\nGuests: '+g+'\nTotal: ¥'+(parseInt(g)*OX_PRICE).toLocaleString()+'\n\nName: '+n+'\nEmail: '+em+'\n\nMessage:\n'+(msg||'—'));
+  window.location.href='mailto:info@takayamaandbeyond.com?cc='+encodeURIComponent(em)+'&subject='+subj+'&body='+body;
+  document.getElementById('ox-popup-form').style.display='none';
+  document.getElementById('ox-popup-thanks').style.display='block';
+}
+</script>

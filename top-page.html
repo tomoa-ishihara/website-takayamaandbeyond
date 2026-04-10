@@ -1,0 +1,814 @@
+<!-- ============================================================
+     TOP PAGE — Squarespace Code Block
+     Takayama & Beyond
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+.tp-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.tp-wrap {
+  --ink:       #2b2420;
+  --ink2:      #5a4f48;
+  --ink3:      #9a8f88;
+  --paper:     #f7f4f0;
+  --paper2:    #ede8e2;
+  --paper3:    #e4ddd5;
+  --red:       #8b1a1a;
+  --red-light: #f3e8e8;
+  --line:      rgba(43,36,32,0.12);
+  font-family: "DM Sans", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  max-width: 100%;
+  margin: 0 auto;
+}
+.sqs-block-code { padding: 0 !important; margin: 0 !important; }
+.tp-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 90vh; background: var(--paper); }
+.tp-hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; }
+.tp-hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-style: italic; margin-bottom: 20px; font-family: "Lora", serif; }
+.tp-hero-title { font-family: "Kaisei Decol", serif; font-size: clamp(36px, 4vw, 58px); font-weight: 400; line-height: 1.15; color: var(--ink); margin-bottom: 20px; }
+.tp-hero-sub { font-size: 17px; color: var(--ink2); line-height: 1.8; margin-bottom: 36px; max-width: 440px; font-family: "DM Sans", sans-serif; font-weight: 300; }
+.tp-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.tp-btn-primary { display: inline-block; padding: 13px 28px; background: var(--ink); color: var(--paper); font-family: "DM Sans", sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+.tp-btn-primary:hover { background: var(--red); }
+.tp-btn-outline { display: inline-block; padding: 13px 28px; border: 1px solid var(--line); color: var(--ink); font-family: "DM Sans", sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+.tp-btn-outline:hover { background: var(--paper2); }
+.tp-hero-right { position: relative; overflow: hidden; background: var(--paper2); }
+.tp-hero-right img { width: 100%; height: 100%; object-fit: cover; }
+.tp-hero-scroll { position: absolute; bottom: 24px; right: 24px; font-size: 11px; color: var(--ink3); letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; writing-mode: vertical-rl; font-family: "Lora", serif; }
+.tp-section { padding: 80px 60px; }
+.tp-section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-style: italic; margin-bottom: 8px; font-family: "Lora", serif; }
+.tp-section-title { font-family: "Kaisei Decol", serif; font-size: clamp(26px, 3vw, 38px); font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 8px; }
+.tp-section-sub { font-size: 17px; color: var(--ink2); line-height: 1.75; max-width: 520px; font-family: "DM Sans", sans-serif; font-weight: 300; }
+/* ── FIND YOUR TOUR — 2-axis matrix ── */
+.tp-persona { background: #2a2218; padding: 48px 60px 52px; }
+.tp-persona .tp-section-label { color: var(--gold); }
+.tp-persona .tp-section-title { color: #fff; }
+.tp-persona .tp-section-sub { color: rgba(255,255,255,0.4); }
+
+/* ── Widget: Step indicator ── */
+.tp-widget {
+  margin-top: 32px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #3a3228;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+}
+.tp-widget-step {
+  display: none;
+  animation: tpStepIn 0.38s ease;
+}
+.tp-widget-step.active { display: block; }
+@keyframes tpStepIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+/* Progress bar */
+.tp-widget-progress {
+  height: 3px; background: rgba(255,255,255,0.08);
+  position: relative;
+}
+.tp-widget-progress-fill {
+  position: absolute; top:0; left:0; height:100%;
+  background: linear-gradient(90deg, #c9a96e, #e8c88a);
+  transition: width 0.5s ease;
+}
+
+/* Step header */
+.tp-widget-head {
+  padding: 16px 24px 10px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: #3a3228;
+}
+.tp-widget-step-label {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #c9a96e;
+}
+.tp-widget-step-count {
+  font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+
+/* Step question */
+.tp-widget-q {
+  padding: 4px 24px 16px;
+  background: #3a3228;
+}
+.tp-widget-q-text {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(17px, 1.8vw, 22px);
+  color: #fff; font-weight: 400; margin-bottom: 3px; line-height: 1.2;
+}
+.tp-widget-q-sub {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  font-family: 'Lora', serif; font-style: italic;
+}
+
+/* Group tiles — circular, clearly selectable */
+.tp-group-grid {
+  display: grid; grid-template-columns: repeat(6,1fr);
+  padding: 16px 16px 20px;
+  gap: 6px;
+  background: #2e2820;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.tp-group-tile {
+  cursor: pointer; position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  text-align: center; padding: 8px 4px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+.tp-group-tile:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.1); }
+.tp-group-tile.selected {
+  background: rgba(201,169,110,0.15);
+  border-color: #c9a96e;
+  transform: translateY(-2px);
+}
+.tp-group-check { display: none; }
+.tp-group-circle {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tp-group-tile.selected .tp-group-circle {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transform: scale(1.05);
+}
+.tp-group-tile .tp-group-badge {
+  position: absolute; top: 2px; right: 50%;
+  transform: translateX(22px);
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #c9a96e; display: none;
+  align-items: center; justify-content: center;
+  font-size: 9px; color: #2a2218; font-weight: 700;
+}
+.tp-group-tile.selected .tp-group-badge { display: flex; }
+.tp-group-icon { width: 26px; height: 26px; }
+.tp-group-name {
+  font-size: 10px; color: rgba(255,255,255,0.5);
+  font-family: 'Kaisei Decol', serif; line-height: 1.2;
+  transition: color 0.2s;
+}
+.tp-group-tile.selected .tp-group-name { color: #e8c88a; font-size: 10px; }
+
+/* Interest pills — colorful rounded, clearly selectable */
+.tp-interest-row {
+  padding: 14px 20px 18px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  background: #2e2820;
+}
+.tp-interest-pill {
+  padding: 7px 16px;
+  border: 1.5px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  font-size: 12px; color: rgba(255,255,255,0.5);
+  cursor: pointer; transition: all 0.18s;
+  background: rgba(255,255,255,0.05); font-family: 'DM Sans', sans-serif;
+}
+.tp-interest-pill:hover { color: #fff; border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.1); }
+.tp-interest-pill[data-key="cooking"].selected   { background: rgba(255,180,130,0.22); border-color: #f0a870; color: #f0b888; }
+.tp-interest-pill[data-key="craft"].selected     { background: rgba(200,170,120,0.22); border-color: #c8a870; color: #d4b880; }
+.tp-interest-pill[data-key="nature"].selected    { background: rgba(120,210,140,0.22); border-color: #78c888; color: #90d89e; }
+.tp-interest-pill[data-key="onsen"].selected     { background: rgba(100,210,230,0.22); border-color: #64c8d8; color: #80d8e8; }
+.tp-interest-pill[data-key="history"].selected   { background: rgba(180,160,220,0.22); border-color: #b4a0d8; color: #c4b0e4; }
+.tp-interest-pill[data-key="sake"].selected      { background: rgba(240,160,190,0.22); border-color: #f0a0be; color: #f8b4cc; }
+.tp-interest-pill[data-key="culture"].selected   { background: rgba(240,210,120,0.22); border-color: #e8c870; color: #f0d480; }
+.tp-interest-pill[data-key="adventure"].selected { background: rgba(100,220,170,0.22); border-color: #64d8aa; color: #80e4b8; }
+
+/* Widget footer nav */
+.tp-widget-nav {
+  padding: 12px 20px 14px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: #2e2820;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.tp-widget-skip {
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); text-decoration: none; transition: color 0.2s;
+  background: none; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+}
+.tp-widget-skip:hover { color: rgba(255,255,255,0.5); }
+.tp-widget-back {
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); background: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; transition: color 0.2s;
+}
+.tp-widget-back:hover { color: rgba(255,255,255,0.65); }
+.tp-widget-next {
+  padding: 8px 22px; border: 1.5px solid rgba(255,255,255,0.3); cursor: pointer; border-radius: 20px;
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s, transform 0.15s, border-color 0.2s;
+  background: transparent; color: rgba(255,255,255,0.5);
+}
+.tp-widget-next:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.5); }
+.tp-widget-next.active { background: #fff; color: #201d1a; border-color: #fff; }
+.tp-widget-next.active:hover { background: var(--gold); border-color: var(--gold); transform: scale(1.03); }
+.tp-search-btn {
+  padding: 8px 22px; border: 1.5px solid rgba(201,169,110,0.6); cursor: pointer; border-radius: 20px;
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+  transition: background 0.2s, transform 0.15s, border-color 0.2s;
+  background: transparent; color: rgba(201,169,110,0.7);
+}
+.tp-search-btn:hover { background: rgba(201,169,110,0.15); color: var(--gold); border-color: var(--gold); }
+.tp-search-btn.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+.tp-search-btn.active:hover { background: #e8c080; border-color: #e8c080; transform: scale(1.03); }
+.tp-reset-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); font-family: 'DM Sans', sans-serif; transition: color 0.2s;
+}
+.tp-reset-btn:hover { color: rgba(255,255,255,0.55); }
+.tp-tours-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; }
+.tp-view-all { font-family: "DM Sans", sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink2); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: color 0.2s; }
+.tp-view-all:hover { color: var(--red); }
+/* Tours: 横スクロール、2.5枚見え */
+.tp-tours-scroll-wrap {
+  overflow-x: auto; overflow-y: visible;
+  margin: 0 -60px; padding: 0 60px 16px;
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+.tp-tours-scroll-wrap::-webkit-scrollbar { display: none; }
+.tp-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, calc(43% - 8px));
+  gap: 14px;
+  width: max-content;
+  min-width: 100%;
+}
+.tp-tour-card {
+  text-decoration: none; color: inherit;
+  background: var(--paper); overflow: hidden;
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line);
+  transition: transform 0.25s, box-shadow 0.25s;
+  flex-shrink: 0;
+}
+.tp-tour-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(43,36,32,0.15); }
+.tp-tour-card.hidden { display: none; }
+.tp-tour-img-wrap { position: relative; overflow: hidden; }
+.tp-tour-img { width: 100%; height: 300px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.tp-tour-card:hover .tp-tour-img { transform: scale(1.04); }
+.tp-tour-img-placeholder {
+  width: 100%; height: 300px;
+  background: var(--paper2); display: flex; align-items: center;
+  justify-content: center; font-size: 11px; color: var(--ink3); font-style: italic;
+}
+.tp-tour-days-badge {
+  position: absolute; bottom: 12px; right: 12px;
+  background: rgba(20,18,16,0.7); backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.85); font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 5px 12px; font-family: "DM Sans", sans-serif;
+}
+.tp-tour-body {
+  padding: 20px 22px 18px; display: flex; flex-direction: column; flex: 1;
+}
+.tp-tour-tag {
+  font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  font-family: "DM Sans", sans-serif;
+}
+.tp-tour-name {
+  font-family: "Kaisei Decol", serif; font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 400; color: var(--ink); line-height: 1.25; margin-bottom: 8px;
+}
+.tp-tour-desc {
+  font-size: 13px; color: var(--ink2); line-height: 1.65;
+  margin-bottom: 16px; font-family: "DM Sans", sans-serif; font-weight: 300; flex: 1;
+}
+.tp-tour-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto;
+}
+.tp-tour-price { font-size: 15px; color: var(--ink); font-family: "Kaisei Decol", serif; }
+.tp-tour-days { font-size: 10px; color: var(--ink3); font-family: "DM Sans", sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+.tp-exp { background: var(--paper2); }
+.tp-exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+.tp-exp-card {
+  border: 1px solid var(--line); overflow: hidden; text-decoration: none;
+  color: inherit; display: flex; flex-direction: column; background: var(--paper);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tp-exp-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(43,36,32,0.1); }
+.tp-exp-img-placeholder {
+  width: 100%; height: 200px;
+  background: var(--paper2); display: flex; align-items: center;
+  justify-content: center; font-size: 11px; color: var(--ink3); font-style: italic;
+}
+.tp-exp-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.tp-exp-body { padding: 18px 20px; display: flex; flex-direction: column; flex: 1; }
+.tp-exp-tag {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 8px; font-family: "DM Sans", sans-serif;
+}
+.tp-exp-name {
+  font-family: "Kaisei Decol", serif; font-size: 20px;
+  font-weight: 400; color: var(--ink); margin-bottom: 8px; line-height: 1.25;
+}
+.tp-exp-desc {
+  font-size: 14px; color: var(--ink2); line-height: 1.65;
+  font-family: "DM Sans", sans-serif; font-weight: 300;
+  margin-bottom: 14px; flex: 1;
+}
+.tp-exp-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto;
+}
+.tp-exp-price { font-size: 15px; color: var(--ink); font-family: "Kaisei Decol", serif; }
+.tp-exp-duration {
+  font-size: 10px; color: var(--ink3); font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.tp-how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
+.tp-how-step { text-align: center; }
+.tp-how-num { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: "Kaisei Decol", serif; font-size: 18px; color: var(--ink); }
+.tp-how-title { font-family: "Kaisei Decol", serif; font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 10px; }
+.tp-how-desc { font-size: 16px; color: var(--ink2); line-height: 1.7; font-family: "DM Sans", sans-serif; font-weight: 300; }
+.tp-test { background: var(--paper2); }
+.tp-test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+.tp-test-card { background: var(--paper); border: 1px solid var(--line); border-radius: 3px; padding: 24px 26px; }
+.tp-test-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.tp-test-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--paper3); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: "Kaisei Decol", serif; font-size: 14px; color: var(--ink2); }
+.tp-test-meta { flex: 1; }
+.tp-test-name { font-family: "Kaisei Decol", serif; font-size: 14px; color: var(--ink); margin-bottom: 2px; }
+.tp-test-stars { font-size: 12px; color: var(--red); letter-spacing: 2px; }
+.tp-test-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); border: 1px solid var(--line); padding: 3px 8px; border-radius: 1px; font-family: "DM Sans", sans-serif; }
+.tp-test-quote { font-size: 16px; color: var(--ink2); line-height: 1.75; font-family: "DM Sans", sans-serif; font-weight: 300; }
+.tp-cta { background: var(--ink); padding: 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.tp-cta-title { font-family: "Kaisei Decol", serif; font-size: clamp(22px, 3vw, 34px); font-weight: 400; color: #fff; margin-bottom: 8px; }
+.tp-cta-sub { font-size: 16px; color: rgba(255,255,255,0.55); font-family: "DM Sans", sans-serif; font-weight: 300; }
+.tp-cta-btn { display: inline-block; padding: 14px 36px; background: var(--red); color: #fff; font-family: "DM Sans", sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; text-decoration: none; white-space: nowrap; transition: background 0.2s; }
+.tp-cta-btn:hover { background: #6e1414; }
+@media (max-width: 768px) {
+  .tp-hero { grid-template-columns: 1fr; min-height: auto; }
+  .tp-hero-left { padding: 60px 24px; }
+  .tp-hero-right { height: 280px; }
+  .tp-section { padding: 56px 24px; }
+  .tp-persona-grid { grid-template-columns: repeat(2, 1fr); }
+  .tp-group-grid { grid-template-columns: repeat(3, 1fr); }
+  .tp-tour-card { width: 80vw; }
+  .tp-tours-scroll-wrap { margin: 0 -24px; padding: 0 24px 16px; }
+  .tp-exp-grid { grid-template-columns: 1fr 1fr; }
+  .tp-how-grid { grid-template-columns: 1fr; gap: 28px; }
+  .tp-test-grid { grid-template-columns: 1fr; }
+  .tp-cta { flex-direction: column; text-align: center; padding: 48px 24px; }
+}
+</style>
+
+<div class="tp-wrap">
+
+  <!-- ── HERO ── -->
+  <div class="tp-hero">
+    <div class="tp-hero-left">
+      <div class="tp-hero-eyebrow">Takayama & Beyond</div>
+      <h1 class="tp-hero-title">Private Tours &<br>Unique Experiences<br>in Takayama.</h1>
+      <p class="tp-hero-sub">Enter a world few ever see. Real food, real people, real life in Takayama. Beyond sightseeing, into something lasting.</p>
+      <div class="tp-hero-btns">
+        <a href="#tp-persona" class="tp-btn-primary">Find my tour</a>
+        <a href="/tours" class="tp-btn-outline">Browse all</a>
+      </div>
+    </div>
+    <div class="tp-hero-right">
+      <!-- ↓ Hero画像URLに変更 -->
+      <div style="width:100%;height:100%;background:var(--paper2);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink3);font-style:italic;">[ Hero image ]</div>
+      <div class="tp-hero-scroll">scroll ↓</div>
+    </div>
+  </div>
+
+  <!-- ── FIND YOUR TOUR — compact widget ── -->
+  <div class="tp-section tp-persona" id="tp-persona">
+    <div class="tp-section-label">Find your tour</div>
+    <h2 class="tp-section-title">Who's travelling with you?</h2>
+    <p class="tp-section-sub">Tell us about your group and interests — we'll show you where to start.</p>
+
+    <div class="tp-widget">
+
+      <!-- Progress bar -->
+      <div class="tp-widget-progress">
+        <div class="tp-widget-progress-fill" id="tp-progress-fill" style="width:50%;"></div>
+      </div>
+
+      <!-- Step 1: Group -->
+      <div class="tp-widget-step active" id="tp-ws-1">
+        <div class="tp-widget-head">
+          <span class="tp-widget-step-label">Step 1 — Your group</span>
+          <span class="tp-widget-step-count">1 / 2</span>
+        </div>
+        <div class="tp-widget-q">
+          <div class="tp-widget-q-text">Who's with you?</div>
+          <div class="tp-widget-q-sub">Select all that apply.</div>
+        </div>
+        <div class="tp-group-grid" id="tp-group-grid"></div>
+        <div class="tp-widget-nav">
+          <button class="tp-widget-skip" onclick="tpShowAll()">Skip — show all tours</button>
+          <button class="tp-widget-next" id="tp-next-1" onclick="if(this.classList.contains('active'))tpGoStep(2)">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Interests -->
+      <div class="tp-widget-step" id="tp-ws-2">
+        <div class="tp-widget-head">
+          <span class="tp-widget-step-label">Step 2 — Your interests</span>
+          <span class="tp-widget-step-count">2 / 2</span>
+        </div>
+        <div class="tp-widget-q">
+          <div class="tp-widget-q-text">What excites you?</div>
+          <div class="tp-widget-q-sub">Pick as many as you like.</div>
+        </div>
+        <div class="tp-interest-row" id="tp-interest-pills"></div>
+        <div class="tp-widget-nav">
+          <button class="tp-widget-back" onclick="tpGoStep(1)">← Back</button>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="tp-search-btn" id="tp-search-btn" onclick="if(this.classList.contains('active'))tpSearch()">Find my tours &amp; experiences →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FEATURED TOURS ── -->
+  <div class="tp-section" id="tp-tours">
+    <div class="tp-tours-header">
+      <div>
+        <div class="tp-section-label">Tours</div>
+        <h2 class="tp-section-title">Multi-day experiences</h2>
+      </div>
+      <a href="/tours" class="tp-view-all">View all tours →</a>
+    </div>
+    <div class="tp-tours-scroll-wrap">
+    <div class="tp-tours-grid">
+
+      <a class="tp-tour-card" href="/tours/nature" data-groups="couple,friends,seniors,honeymoon" data-tags="nature,adventure,history,culture">
+        <div class="tp-tour-img-wrap"><div class="tp-tour-img-placeholder">[ Photo ]</div><div class="tp-tour-days-badge">2 days</div></div>
+        <div class="tp-tour-body">
+          <div class="tp-tour-tag" style="color:#2d6a3f;">
+            <svg width="10" height="10" viewBox="0 0 96 96" fill="none"><polygon points="48,8 82,66 14,66" stroke="#2d6a3f" stroke-width="6" stroke-linejoin="round"/><rect x="43" y="66" width="10" height="22" rx="3" stroke="#2d6a3f" stroke-width="6"/></svg>
+            Nature lover
+          </div>
+          <div class="tp-tour-name">Shirakawa-go & Kamikochi Explorer</div>
+          <div class="tp-tour-desc">A two-day escape into Japan's alpine heartland.</div>
+          <div class="tp-tour-footer">
+            <span class="tp-tour-price">From ¥68,000</span>
+            <span class="tp-tour-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tp-tour-card" href="/tours/family" data-groups="kids,family,seniors" data-tags="cooking,culture">
+        <div class="tp-tour-img-wrap"><div class="tp-tour-img-placeholder">[ Photo ]</div><div class="tp-tour-days-badge">1 day</div></div>
+        <div class="tp-tour-body">
+          <div class="tp-tour-tag" style="color:#c45e1a;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#c45e1a" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="18" cy="8" r="2.5"/><path d="M21 21v-1.5a3 3 0 0 0-2-2.83"/></svg>
+            Family · Little Kids
+          </div>
+          <div class="tp-tour-name">Little Chefs of Takayama</div>
+          <div class="tp-tour-desc">A full day of tasting, making and cooking together.</div>
+          <div class="tp-tour-footer">
+            <span class="tp-tour-price">From ¥60,000</span>
+            <span class="tp-tour-days">1 day</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tp-tour-card" href="/tours/wood" data-groups="couple,honeymoon,friends,seniors" data-tags="craft,culture,history">
+        <div class="tp-tour-img-wrap"><div class="tp-tour-img-placeholder">[ Photo ]</div><div class="tp-tour-days-badge">2 days</div></div>
+        <div class="tp-tour-body">
+          <div class="tp-tour-tag" style="color:#7a4f2d;">
+            <svg width="10" height="10" viewBox="0 0 96 96" fill="none"><line x1="42" y1="42" x2="86" y2="86" stroke="#7a4f2d" stroke-width="10" stroke-linecap="round"/><rect x="6" y="16" width="46" height="22" rx="5" stroke="#7a4f2d" stroke-width="7" transform="rotate(-45 29 27)"/></svg>
+            Craft fan
+          </div>
+          <div class="tp-tour-name">The Art of Japanese Wood</div>
+          <div class="tp-tour-desc">From ancient temples to modern furniture — two days with Japanese wood.</div>
+          <div class="tp-tour-footer">
+            <span class="tp-tour-price">From ¥120,000</span>
+            <span class="tp-tour-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+    </div><!-- /tp-tours-grid -->
+    </div><!-- /tp-tours-scroll-wrap -->
+  </div>
+
+  <!-- ── FEATURED EXPERIENCES ── -->
+  <div class="tp-section tp-exp">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:0;">
+      <div>
+        <div class="tp-section-label">Experiences</div>
+        <h2 class="tp-section-title">Single-day experiences</h2>
+        <p class="tp-section-sub" style="margin-top:8px;">Book any experience on its own, or add to your tour.</p>
+      </div>
+      <a href="/experiences" class="tp-view-all">View all →</a>
+    </div>
+    <div class="tp-exp-grid">
+
+      <a class="tp-exp-card" href="/experiences/cooking" data-tags="cooking,culture">
+        <div class="tp-exp-img-placeholder">[ Photo ]</div>
+        <div class="tp-exp-body">
+          <div class="tp-exp-tag">Family · Food lover</div>
+          <div class="tp-exp-name">Cooking Experience</div>
+          <div class="tp-exp-desc">Cook a traditional Hida meal with a local family in their 200-year-old machiya.</div>
+          <div class="tp-exp-footer">
+            <span class="tp-exp-price">¥40,000 / person</span>
+            <span class="tp-exp-duration">Half day</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tp-exp-card" href="/experiences/foodtour" data-tags="cooking,sake,culture">
+        <div class="tp-exp-img-placeholder">[ Photo ]</div>
+        <div class="tp-exp-body">
+          <div class="tp-exp-tag">Food lover</div>
+          <div class="tp-exp-name">Food Walking Tour</div>
+          <div class="tp-exp-desc">Explore Takayama's morning market and historic streets through its finest local food.</div>
+          <div class="tp-exp-footer">
+            <span class="tp-exp-price">¥40,000 / person</span>
+            <span class="tp-exp-duration">3 hours</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tp-exp-card" href="/experiences/countryside" data-tags="nature,adventure">
+        <div class="tp-exp-img-placeholder">[ Photo ]</div>
+        <div class="tp-exp-body">
+          <div class="tp-exp-tag">Nature lover</div>
+          <div class="tp-exp-name">Countryside Walk</div>
+          <div class="tp-exp-desc">A guided walk through rice paddies, mountain villages and hidden shrines.</div>
+          <div class="tp-exp-footer">
+            <span class="tp-exp-price">¥40,000 / person</span>
+            <span class="tp-exp-duration">Half day</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tp-exp-card" href="/experiences/sake-tasting" data-tags="sake,cooking">
+        <div class="tp-exp-img-placeholder">[ Photo ]</div>
+        <div class="tp-exp-body">
+          <div class="tp-exp-tag">Food lover</div>
+          <div class="tp-exp-name">Sake Tasting</div>
+          <div class="tp-exp-desc">Visit one of Takayama's historic breweries and learn to read a sake label.</div>
+          <div class="tp-exp-footer">
+            <span class="tp-exp-price">¥40,000 / person</span>
+            <span class="tp-exp-duration">2 hours</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tp-exp-card" href="/experiences/tea" data-tags="culture,history">
+        <div class="tp-exp-img-placeholder">[ Photo ]</div>
+        <div class="tp-exp-body">
+          <div class="tp-exp-tag">Family · Culture</div>
+          <div class="tp-exp-name">Tea Ceremony</div>
+          <div class="tp-exp-desc">A quiet hour in a traditional tatami room, learning the art of Japanese tea.</div>
+          <div class="tp-exp-footer">
+            <span class="tp-exp-price">¥40,000 / person</span>
+            <span class="tp-exp-duration">2 hours</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="tp-exp-card" href="/experiences">
+        <div class="tp-exp-img-placeholder" style="background:var(--ink); color:rgba(255,255,255,0.4);">[ Coming soon ]</div>
+        <div class="tp-exp-body">
+          <div class="tp-exp-tag">—</div>
+          <div class="tp-exp-name" style="color:var(--ink3);">More coming soon</div>
+          <div class="tp-exp-footer">
+            <span class="tp-exp-price" style="color:var(--ink3);">—</span>
+            <span class="tp-exp-duration">—</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ── HOW IT WORKS ── -->
+  <div class="tp-section">
+    <div style="text-align:center; max-width:560px; margin:0 auto;">
+      <div class="tp-section-label">How it works</div>
+      <h2 class="tp-section-title">Every tour is private.<br>Every detail is arranged.</h2>
+    </div>
+    <div class="tp-how-grid">
+      <div class="tp-how-step">
+        <div class="tp-how-num">1</div>
+        <div class="tp-how-title">Choose your experience</div>
+        <p class="tp-how-desc">Browse tours and experiences, pick what speaks to you. Each one is designed around a specific interest — not a general itinerary.</p>
+      </div>
+      <div class="tp-how-step">
+        <div class="tp-how-num">2</div>
+        <div class="tp-how-title">Send an inquiry</div>
+        <p class="tp-how-desc">Tell us your dates, group size, and any questions. We'll reply within 24 hours to confirm and tailor the details to your group.</p>
+      </div>
+      <div class="tp-how-step">
+        <div class="tp-how-num">3</div>
+        <div class="tp-how-title">We arrange everything</div>
+        <p class="tp-how-desc">From artisan visits to restaurant reservations. You just show up — we take care of the rest.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TESTIMONIALS ── -->
+  <div class="tp-section tp-test">
+    <div class="tp-section-label">What guests say</div>
+    <h2 class="tp-section-title">Voices from the road</h2>
+    <div class="tp-test-grid">
+
+      <div class="tp-test-card">
+        <div class="tp-test-header">
+          <div class="tp-test-avatar">S</div>
+          <div class="tp-test-meta">
+            <div class="tp-test-name">Sarah M.</div>
+            <div class="tp-test-stars">★★★★★</div>
+          </div>
+          <span class="tp-test-tag">Nature lover</span>
+        </div>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
+      </div>
+
+      <div class="tp-test-card">
+        <div class="tp-test-header">
+          <div class="tp-test-avatar">J</div>
+          <div class="tp-test-meta">
+            <div class="tp-test-name">James K.</div>
+            <div class="tp-test-stars">★★★★★</div>
+          </div>
+          <span class="tp-test-tag">Family</span>
+        </div>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
+      </div>
+
+      <div class="tp-test-card">
+        <div class="tp-test-header">
+          <div class="tp-test-avatar">A</div>
+          <div class="tp-test-meta">
+            <div class="tp-test-name">Anna L.</div>
+            <div class="tp-test-stars">★★★★★</div>
+          </div>
+          <span class="tp-test-tag">Craft fan</span>
+        </div>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
+      </div>
+
+      <div class="tp-test-card">
+        <div class="tp-test-header">
+          <div class="tp-test-avatar">M</div>
+          <div class="tp-test-meta">
+            <div class="tp-test-name">Mark T.</div>
+            <div class="tp-test-stars">★★★★★</div>
+          </div>
+          <span class="tp-test-tag">Food lover</span>
+        </div>
+        <p class="tp-test-quote">[ Testimonial placeholder — add your guest review here ]</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CTA ── -->
+  <div class="tp-cta">
+    <div>
+      <div class="tp-cta-title">Ready to go beyond<br>sightseeing?</div>
+      <div class="tp-cta-sub">Every tour is private. Every experience is real.</div>
+    </div>
+    <a href="/contact" class="tp-cta-btn">Book now</a>
+  </div>
+
+</div><!-- /tp-wrap -->
+
+<script>
+const TP_ICONS = {
+  kids: `<svg viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="10" r="6"/><path d="M6 32c0-6.627 5.373-12 12-12s12 5.373 12 12"/><circle cx="28" cy="14" r="3.5" stroke="rgba(255,255,255,0.3)"/><path d="M24.5 28c1.5-1.5 3.5-2.2 5.5-1.8" stroke="rgba(255,255,255,0.3)"/></svg>`,
+  honeymoon: `<svg viewBox="0 0 36 36" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="22" r="8" stroke="rgba(255,255,255,0.65)" stroke-width="1.8"/><circle cx="22" cy="22" r="8" stroke="rgba(255,255,255,0.65)" stroke-width="1.8"/><path d="M18 16 L18 8" stroke="rgba(255,255,255,0.4)" stroke-width="1.3"/><circle cx="18" cy="7" r="3" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/><path d="M15.5 7 L20.5 7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>`,
+  couple: `<svg viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5.5"/><path d="M2 32c0-5.523 4.477-10 10-10"/><circle cx="25" cy="10" r="5.5"/><path d="M34 32c0-5.523-4.477-10-10-10"/><line x1="12" y1="22" x2="25" y2="22" stroke="rgba(255,255,255,0.22)"/></svg>`,
+  family: `<svg viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4.5"/><path d="M2 32c0-4.418 3.134-7 7-7"/><circle cx="27" cy="8" r="4.5"/><path d="M34 32c0-4.418-3.134-7-7-7"/><circle cx="18" cy="17" r="4" stroke="rgba(255,255,255,0.42)"/><path d="M12 32c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="rgba(255,255,255,0.42)"/></svg>`,
+  seniors: `<svg viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="10" r="6"/><path d="M6 32c0-6.627 5.373-12 12-12s12 5.373 12 12"/><line x1="26" y1="26" x2="30" y2="36"/></svg>`,
+  friends: `<svg viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="9" r="5"/><circle cx="26" cy="9" r="5"/><circle cx="18" cy="9" r="5" stroke="rgba(255,255,255,0.38)"/><path d="M2 32c0-4.97 3.582-9 8-9"/><path d="M34 32c0-4.97-3.582-9-8-9"/><path d="M10 32c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="rgba(255,255,255,0.42)"/></svg>`,
+};
+const TP_GROUPS = [
+  {key:'kids',      name:'With kids'},
+  {key:'honeymoon', name:'Honeymoon'},
+  {key:'couple',    name:'Couple'},
+  {key:'family',    name:'Family'},
+  {key:'seniors',   name:'Seniors'},
+  {key:'friends',   name:'Friends'},
+];
+const TP_INTERESTS = [
+  {key:'cooking',   name:'Cooking'},
+  {key:'craft',     name:'Crafts'},
+  {key:'nature',    name:'Nature'},
+  {key:'onsen',     name:'Onsen'},
+  {key:'history',   name:'History'},
+  {key:'sake',      name:'Sake'},
+  {key:'culture',   name:'Culture'},
+  {key:'adventure', name:'Adventure'},
+];
+
+let tpGroups = new Set();
+let tpInterests = new Set();
+let tpSearched = false;
+let tpCurrentStep = 1;
+
+// Build group tiles
+const GROUP_COLORS = {
+  kids:'#f59e42', honeymoon:'#e879a0', couple:'#818cf8',
+  family:'#34d399', seniors:'#94a3b8', friends:'#fb923c',
+};
+document.getElementById('tp-group-grid').innerHTML = TP_GROUPS.map(g => `
+  <div class="tp-group-tile" id="tpg-${g.key}" onclick="tpToggleGroup('${g.key}')">
+    <div class="tp-group-circle" style="background:${GROUP_COLORS[g.key]}28; border: 1.5px solid ${GROUP_COLORS[g.key]}60;">
+      <svg class="tp-group-icon" viewBox="0 0 36 36" fill="none" stroke="${GROUP_COLORS[g.key]}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${TP_ICONS[g.key].replace(/<svg[^>]*>/,'').replace('</svg>','')}</svg>
+    </div>
+    <div class="tp-group-badge">✓</div>
+    <div class="tp-group-name">${g.name}</div>
+  </div>`).join('');
+
+// Build interest pills
+const pillWrap = document.getElementById('tp-interest-pills');
+pillWrap.innerHTML = TP_INTERESTS.map(i => `
+  <div class="tp-interest-pill" id="tpi-${i.key}" data-key="${i.key}" onclick="tpToggleInterest('${i.key}')">${i.name}</div>`).join('');
+
+function tpToggleGroup(key) {
+  tpGroups.has(key) ? tpGroups.delete(key) : tpGroups.add(key);
+  document.getElementById('tpg-' + key).classList.toggle('selected', tpGroups.has(key));
+  document.getElementById('tp-next-1').classList.toggle('active', tpGroups.size > 0);
+}
+
+function tpToggleInterest(key) {
+  tpInterests.has(key) ? tpInterests.delete(key) : tpInterests.add(key);
+  document.getElementById('tpi-' + key).classList.toggle('selected', tpInterests.has(key));
+  document.getElementById('tp-search-btn').classList.toggle('active', tpInterests.size > 0);
+}
+
+function tpGoStep(n) {
+  document.querySelectorAll('.tp-widget-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('tp-ws-' + n).classList.add('active');
+  tpCurrentStep = n;
+  document.getElementById('tp-progress-fill').style.width = n === 1 ? '50%' : '100%';
+}
+
+function tpSearch() {
+  tpSearched = true;
+  const btn = document.getElementById('tp-search-btn');
+  btn.textContent = 'Results shown ↓  ·  Reset';
+  btn.onclick = () => tpReset();
+
+  // ── Tours: group + interest score ──
+  document.querySelectorAll('.tp-tour-card').forEach(card => {
+    const cardGroups = (card.dataset.groups || '').split(',');
+    const cardTags   = (card.dataset.tags   || '').split(',');
+    const gs = [...tpGroups].filter(g => cardGroups.includes(g)).length;
+    const ts = [...tpInterests].filter(t => cardTags.includes(t)).length;
+    card._score = gs * 2 + ts * 3;
+  });
+  const tourCards = [...document.querySelectorAll('.tp-tour-card')];
+  tourCards.forEach(c => {
+    c.style.order = c._score > 0 ? String(-c._score) : '0';
+    c.style.opacity = c._score > 0 ? '1' : '0.2';
+    c.style.transition = 'opacity 0.4s';
+  });
+
+  // ── Experiences: interest only ──
+  document.querySelectorAll('.tp-exp-card').forEach(card => {
+    const cardTags = (card.dataset.tags || '').split(',');
+    const score = [...tpInterests].filter(t => cardTags.includes(t)).length;
+    card.style.order = score > 0 ? String(-score) : '0';
+    card.style.opacity = score > 0 ? '1' : '0.15';
+    card.style.transition = 'opacity 0.4s';
+  });
+
+  setTimeout(() => {
+    document.getElementById('tp-tours').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function tpReset() {
+  tpSearched = false;
+  tpGroups.clear(); tpInterests.clear();
+  document.querySelectorAll('.tp-group-tile').forEach(t => t.classList.remove('selected'));
+  document.querySelectorAll('.tp-interest-pill').forEach(p => p.classList.remove('selected'));
+  document.getElementById('tp-next-1').classList.remove('active');
+  const btn = document.getElementById('tp-search-btn');
+  btn.classList.remove('active');
+  btn.textContent = 'Find my tours & experiences →';
+  btn.onclick = function(){ if(this.classList.contains('active')) tpSearch(); };
+  document.querySelectorAll('.tp-tour-card, .tp-exp-card').forEach(c => {
+    c.style.order = '0'; c.style.opacity = '1';
+  });
+  tpGoStep(1);
+}
+
+function tpShowAll() {
+  tpReset();
+  setTimeout(() => {
+    document.getElementById('tp-tours').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+</script>
+
+
+

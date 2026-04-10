@@ -1,0 +1,972 @@
+<!-- ============================================================
+     TOUR DETAIL PAGE — Squarespace Code Block
+     Takayama & Beyond — Family Tour
+     貼り付け先: Edit Page > Add Block > Code
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+.td-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.td-wrap {
+  --ink:        #2b2420;
+  --ink2:       #5a4f48;
+  --ink3:       #9a8f88;
+  --paper:      #f7f4f0;
+  --paper2:     #ede8e2;
+  --paper3:     #e4ddd5;
+  --red:        #7a4f2d;
+  --red-light:  #f2ece5;
+  --line:       rgba(43,36,32,0.12);
+  font-family: 'Lora', serif;
+  color: var(--ink);
+  background: var(--paper);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 0 40px;
+}
+
+/* Squarespace padding override */
+.sqs-block-code { padding: 0 !important; margin: 0 !important; }
+
+/* Hero */
+.td-hero { position: relative; height: 480px; overflow: hidden; background: #1e1a17; }
+.td-hero img { width: 100%; height: 100%; object-fit: cover; opacity: 0.82; transition: transform 9s ease; }
+.td-hero:hover img { transform: scale(1.05); }
+.td-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(30,26,23,0.78) 0%, rgba(30,26,23,0.15) 50%, transparent 75%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 40px 44px;
+}
+.td-persona-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(122,79,45,0.88); color: #fff;
+  font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; font-style: italic;
+  padding: 5px 14px; border-radius: 1px;
+  margin-bottom: 14px; width: fit-content;
+}
+.td-tour-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(30px, 5vw, 48px); font-weight: 400; color: #fff;
+  line-height: 1.15; letter-spacing: 0.01em;
+}
+.td-tour-subtitle {
+  font-family: 'Lora', serif; font-size: 15px;
+  color: rgba(255,255,255,0.72); margin-top: 8px;
+  font-style: italic; font-weight: 400;
+}
+
+/* Hero illustration */
+.td-hero-illo {
+  position: absolute; top: 20px; right: 24px;
+  width: 96px; height: 96px; opacity: 0.22;
+  pointer-events: none;
+}
+
+/* Photo gallery */
+.td-stop-imgs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6px; margin-bottom: 0;
+}
+.td-stop-imgs .td-stop-img { height: 200px; }
+
+/* Stats */
+.td-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); background: var(--paper); }
+.td-stat { padding: 20px 16px; border-right: 1px solid var(--line); text-align: center; }
+.td-stat:last-child { border-right: none; }
+.td-stat-value { font-family: 'Kaisei Decol', serif; font-size: 24px; font-weight: 400; color: var(--ink); line-height: 1; }
+.td-stat-learn { font-family: 'Kaisei Decol', serif; font-size: 13px; font-weight: 400; color: var(--ink); line-height: 1.4; }
+.td-stat-label { font-size: 11px; color: var(--ink3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 5px; font-family: 'Lora', serif; }
+
+/* Section */
+.td-section { padding: 44px 44px 0; }
+.td-section-title {
+  font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--red); font-style: italic;
+  margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+}
+.td-section-title::after { content: ''; flex: 1; height: 1px; background: var(--red-light); }
+
+/* Selling points */
+.td-selling { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.td-sp-card { padding: 26px 20px; border-right: 1px solid var(--line); transition: background 0.25s; }
+.td-sp-card:last-child { border-right: none; }
+.td-sp-card:hover { background: var(--paper2); }
+.td-sp-icon { display: block; margin-bottom: 14px; color: var(--red); }
+.td-sp-title { font-family: 'Kaisei Decol', serif; font-size: 16px; font-weight: 400; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
+.td-sp-desc { font-size: 13px; color: var(--ink3); line-height: 1.7; font-family: 'Lora', serif; font-style: italic; }
+
+/* Day tabs */
+.td-day-tabs { display: flex; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 32px; width: fit-content; }
+.td-day-tab {
+  padding: 10px 32px; font-family: 'Lora', serif; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
+  cursor: pointer; transition: all 0.2s; background: var(--paper); color: var(--ink3); border: none;
+}
+.td-day-tab.active { background: var(--ink); color: var(--paper); }
+.td-day-tab:hover:not(.active) { background: var(--paper2); color: var(--ink); }
+
+/* Timeline */
+.td-timeline { display: none; }
+.td-timeline.active { display: block; }
+.td-stop { display: grid; grid-template-columns: 60px 1fr; gap: 0 22px; }
+.td-stop-time-col { display: flex; flex-direction: column; align-items: center; }
+.td-stop-time { font-size: 11px; color: var(--ink3); letter-spacing: 0.06em; white-space: nowrap; padding-top: 2px; font-family: 'Lora', serif; }
+.td-stop-line-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; padding-top: 8px; }
+.td-stop-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--red); flex-shrink: 0; border: 2px solid var(--paper); outline: 1px solid var(--red); }
+.td-stop-vline { width: 1px; background: var(--line); flex: 1; min-height: 28px; }
+.td-stop-body { padding-bottom: 32px; }
+.td-stop-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.td-stop-name { font-family: 'Kaisei Decol', serif; font-size: 21px; font-weight: 400; line-height: 1.2; color: var(--ink); }
+.td-stop-type {
+  font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.13em;
+  text-transform: uppercase; font-style: italic;
+  color: var(--red); background: var(--red-light);
+  padding: 4px 10px; border-radius: 1px; white-space: nowrap; margin-top: 4px;
+}
+.td-stop-desc { font-size: 15px; color: var(--ink2); line-height: 1.75; font-style: italic; margin-bottom: 12px; }
+.td-stop-img { width: 100%; height: 240px; object-fit: cover; border-radius: 2px; display: block; }
+.td-stop-img-placeholder {
+  width: 100%; height: 140px; background: var(--paper2); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--ink3); letter-spacing: 0.06em;
+  border: 1px dashed var(--line); font-style: italic;
+}
+
+/* Inclusions */
+.td-inclusions { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 4px; }
+.td-inc-group-title { font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); font-style: italic; margin-bottom: 14px; }
+.td-inc-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--ink2); margin-bottom: 10px; line-height: 1.6; }
+.td-inc-icon { flex-shrink: 0; margin-top: 3px; }
+
+/* Booking */
+.td-booking { margin: 44px 44px 0; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.td-booking-top { background: var(--ink); padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.td-price-label { font-family: 'Lora', serif; font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; margin-bottom: 5px; }
+.td-price { font-family: 'Kaisei Decol', serif; font-size: 38px; font-weight: 400; color: #fff; line-height: 1; }
+.td-price-sub { font-family: 'Lora', serif; font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; font-style: italic; }
+.td-avail { text-align: right; }
+.td-avail-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #7ecba1; margin-right: 6px; vertical-align: middle; }
+.td-avail-text { font-family: 'Lora', serif; font-size: 13px; color: rgba(255,255,255,0.65); font-style: italic; }
+.td-booking-form { padding: 24px 32px; background: var(--paper2); }
+.td-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.td-field label { display: block; font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; color: var(--ink3); margin-bottom: 6px; }
+.td-field input, .td-field select {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 2px;
+  font-size: 14px; background: var(--paper); color: var(--ink);
+  font-family: 'Lora', serif; appearance: none; outline: none; transition: border-color 0.2s;
+}
+.td-field input:focus, .td-field select:focus { border-color: var(--red); }
+.td-book-btn {
+  width: 100%; padding: 15px; background: var(--red); color: #fff; border: none; border-radius: 2px;
+  font-family: 'Lora', serif; font-size: 13px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-style: italic; cursor: pointer; transition: background 0.2s, transform 0.1s;
+}
+.td-book-btn:hover { background: #5c3a20; }
+.td-book-btn:active { transform: scale(0.99); }
+
+/* Related tours */
+.td-related { padding: 44px 44px 0; }
+.td-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.td-rel-card {
+  border: 1px solid var(--line); border-radius: 2px; overflow: hidden;
+  cursor: pointer; transition: transform 0.25s, box-shadow 0.25s;
+  text-decoration: none; display: block; color: inherit;
+}
+.td-rel-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(43,36,32,0.1); }
+.td-rel-img { width: 100%; height: 120px; object-fit: cover; display: block; }
+.td-rel-img-placeholder {
+  width: 100%; height: 120px; background: var(--paper2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--ink3); font-style: italic;
+  border-bottom: 1px dashed var(--line);
+}
+.td-rel-body { padding: 14px 16px; }
+.td-rel-tag { font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; color: var(--red); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.td-rel-name { font-family: 'Kaisei Decol', serif; font-size: 17px; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 10px; }
+.td-rel-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 10px; }
+.td-rel-price { font-size: 13px; color: var(--ink2); }
+.td-rel-days { font-size: 11px; color: var(--ink3); font-style: italic; }
+
+/* FAQ */
+.td-faq { padding: 44px 44px 0; }
+.td-faq-list { border-top: 1px solid var(--line); }
+.td-faq-item { border-bottom: 1px solid var(--line); }
+.td-faq-q {
+  width: 100%; background: none; border: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 20px 0; cursor: pointer;
+  text-align: left; font-family: 'Kaisei Decol', serif;
+  font-size: 17px; font-weight: 400; color: var(--ink);
+  line-height: 1.4; transition: color 0.2s;
+}
+.td-faq-q:hover { color: var(--red); }
+.td-faq-icon {
+  flex-shrink: 0; width: 20px; height: 20px;
+  border: 1px solid var(--line); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  color: var(--ink3);
+}
+.td-faq-item.open .td-faq-icon {
+  background: var(--red); border-color: var(--red); color: #fff;
+}
+.td-faq-icon svg { transition: transform 0.3s; }
+.td-faq-item.open .td-faq-icon svg { transform: rotate(45deg); }
+.td-faq-a {
+  display: none; padding: 0 32px 20px 0;
+  font-family: 'Lora', serif; font-size: 15px;
+  color: var(--ink2); line-height: 1.8;
+  font-style: italic;
+}
+.td-faq-item.open .td-faq-a { display: block; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .td-hero { height: 340px; }
+  .td-hero-overlay { padding: 24px 22px; }
+  .td-stats { grid-template-columns: repeat(2, 1fr); }
+  .td-stat:nth-child(2) { border-right: none; }
+  .td-stat:nth-child(1), .td-stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .td-section { padding: 32px 22px 0; }
+  .td-selling { grid-template-columns: repeat(2, 1fr); }
+  .td-sp-card:nth-child(2) { border-right: none; }
+  .td-sp-card:nth-child(1), .td-sp-card:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .td-inclusions { grid-template-columns: 1fr; }
+  .td-booking { margin: 32px 22px 0; }
+  .td-booking-top { flex-direction: column; align-items: flex-start; }
+  .td-avail { text-align: left; }
+  .td-form-row { grid-template-columns: 1fr; }
+  .td-stop { grid-template-columns: 48px 1fr; }
+  .td-faq { padding: 32px 22px 0; }
+
+  .td-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<div class="td-wrap">
+
+  <!-- HERO -->
+  <div class="td-hero">
+    <!-- ↓ src をあなたの画像URLに変更 -->
+    <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/60ae6e84-c2d5-456b-9fa9-4a6fee29a132/%E3%81%8A%E6%B0%97%E3%81%AB%E5%85%A5%E3%82%8A+-+11+%EF%BC%8F+17.jpeg?content-type=image%2Fjpeg" alt="Takayama Family Tour">
+    <!-- Wood illustration: layered tree -->
+    <svg class="td-hero-illo" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 幹 -->
+      <rect x="43" y="72" width="10" height="18" rx="3" stroke="white" stroke-width="4"/>
+      <!-- 葉 下段 -->
+      <polygon points="48,38 76,72 20,72" stroke="white" stroke-width="4" stroke-linejoin="round"/>
+      <!-- 葉 中段 -->
+      <polygon points="48,20 70,52 26,52" stroke="white" stroke-width="4" stroke-linejoin="round"/>
+      <!-- 葉 上段 -->
+      <polygon points="48,6 64,34 32,34" stroke="white" stroke-width="4" stroke-linejoin="round"/>
+    </svg>
+    <div class="td-hero-overlay">
+      <span class="td-persona-tag">
+        <svg width="13" height="13" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="42" y1="42" x2="86" y2="86" stroke="white" stroke-width="8" stroke-linecap="round"/>
+          <rect x="6" y="16" width="46" height="22" rx="5" stroke="white" stroke-width="5" transform="rotate(-45 29 27)"/>
+        </svg>
+        Craft fan
+      </span>
+      <h1 class="td-tour-title">The Art of<br>Japanese Wood</h1>
+      <p class="td-tour-subtitle">From ancient temples to modern furniture — two days with Japanese wood</p>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="td-stats">
+    <div class="td-stat">
+      <div class="td-stat-value">2</div>
+      <div class="td-stat-label">Days</div>
+    </div>
+    <div class="td-stat">
+      <div class="td-stat-value">2–8</div>
+      <div class="td-stat-label">Guests</div>
+    </div>
+    <div class="td-stat">
+      <div class="td-stat-value">Easy</div>
+      <div class="td-stat-label">Difficulty</div>
+    </div>
+    <div class="td-stat">
+      <div class="td-stat-learn">Traditional joinery, lacquerware & woodcraft</div>
+      <div class="td-stat-label">You'll learn</div>
+    </div>
+  </div>
+
+  <!-- SELLING POINTS -->
+  <div class="td-section">
+    <div class="td-section-title">Why this tour</div>
+    <div class="td-selling">
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+        </svg>
+        <div class="td-sp-title">Ancient & modern</div>
+        <p class="td-sp-desc">Day 1 is centuries-old tradition. Day 2 is world-class furniture. Two sides of the same wood.</p>
+      </div>
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+        </svg>
+        <div class="td-sp-title">Real access</div>
+        <p class="td-sp-desc">Into working workshops, factory floors, and 200-year-old machiya. Not tourist stops.</p>
+      </div>
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+        <div class="td-sp-title">Make & take home</div>
+        <p class="td-sp-desc">Shunkei lacquerware on Day 1, a wood craft of your own on Day 2. Both go home with you.</p>
+      </div>
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <div class="td-sp-title">Hida no Takumi</div>
+        <p class="td-sp-desc">Takayama's master carpenters built Japan's great temples. Walk through their legacy.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ITINERARY -->
+  <div class="td-section">
+    <div class="td-section-title">Itinerary</div>
+    <div class="td-day-tabs">
+      <button class="td-day-tab active" onclick="tdShowDay(1)">Day 1 — Ancient Wood</button>
+      <button class="td-day-tab" onclick="tdShowDay(2)">Day 2 — Living Wood</button>
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="td-timeline active" id="td-day-1">
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">10:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Takayama Jinya & Machiya Walk</div>
+            <span class="td-stop-type">Architecture</span>
+          </div>
+          <p class="td-stop-desc">Your guide leads you through the Jinya — the best-preserved Edo-period government building in Japan — and into the old merchant district. You'll learn how Hida's master carpenters built without a single nail, using interlocking joints that have held for centuries. The same techniques that raised Nara's great temples were born in this mountain town.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Jinya / Machiya ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">11:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Meet the Wood Artists</div>
+            <span class="td-stop-type">Workshop visit</span>
+          </div>
+          <p class="td-stop-desc">Inside the Jinya grounds and the surrounding lanes, working artisans keep the craft alive. You'll meet woodcarvers practicing Ichi-i Ittōbori — single-knife carving from yew — and see the intricate process up close. These are not demonstrations for tourists. This is how they work every day.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Wood artist ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">12:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Craft Shop Tour — Ichi-i Ittōbori & Shunkei</div>
+            <span class="td-stop-type">Shopping</span>
+          </div>
+          <p class="td-stop-desc">A walk through Takayama's finest craft shops. Your guide explains what separates a master's work from an imitation — the grain, the finish, the weight of a well-made piece. Shunkei lacquerware glows amber under the light. Woodcarvings that took weeks to complete sit quietly in small storefronts that have been here for generations.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Craft shops ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">13:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot" style="background:var(--paper2);outline-color:var(--ink3);"></div><div class="td-stop-vline" style="border-left: 2px dashed rgba(43,36,32,0.15); width:0; background:none;"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Lunch — self-guided</div>
+            <span class="td-stop-type">Free time</span>
+          </div>
+          <p class="td-stop-desc">Time on your own. We'll suggest a few spots nearby — from quiet soba shops to riverside cafés. Reconvene at 14:30 for the afternoon experience.</p>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">14:30</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Shunkei Lacquerware Experience</div>
+            <span class="td-stop-type">Workshop</span>
+          </div>
+          <p class="td-stop-desc">In a working lacquerware studio, you'll try your hand at Shunkei — Takayama's signature style of natural lacquer over pale wood. The grain shows through, warm and luminous. A craftsperson guides you through the process, and the piece you make goes home with you. About one hour.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Shunkei lacquerware ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">16:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">200-Year Machiya — Architecture & Tea</div>
+            <span class="td-stop-type">Cultural</span>
+          </div>
+          <p class="td-stop-desc">The day ends in a beautifully preserved townhouse that has stood for two centuries. Your guide walks you through the construction — the dark timber frame, the interlocking joints, the earthen walls. Then tea, quietly, in a room that has seen a lot of history.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Machiya interior ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">17:30</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot" style="background:var(--ink);outline-color:var(--ink);"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Day 1 ends</div>
+            <span class="td-stop-type">Finish</span>
+          </div>
+          <p class="td-stop-desc">We finish in central Takayama. Your evening is free — and if you'd like to add the optional pottery workshop tonight, we'll arrange everything in advance.</p>
+        </div>
+      </div>
+
+    </div><!-- /day-1 -->
+
+    <!-- DAY 2 -->
+    <div class="td-timeline" id="td-day-2">
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">9:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Furniture Factory Visit — Morning</div>
+            <span class="td-stop-type">Factory tour</span>
+          </div>
+          <p class="td-stop-desc">Hida is home to some of Japan's most celebrated furniture makers. Your first factory visit shows the full process — from raw timber to finished chair. You'll see craftspeople working with the same care and precision as the temple builders of a thousand years ago, now making objects for modern homes around the world.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Furniture factory ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">12:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Lunch in Nature</div>
+            <span class="td-stop-type">Lunch</span>
+          </div>
+          <p class="td-stop-desc">A meal at a restaurant surrounded by the Hida countryside — local ingredients, mountain air, a moment to slow down between the two factory visits.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Nature restaurant ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">13:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Second Furniture Factory Visit</div>
+            <span class="td-stop-type">Factory tour</span>
+          </div>
+          <p class="td-stop-desc">A second factory, a different philosophy. Hida's furniture makers each have their own approach to wood — grain selection, joinery, finish. By seeing two in one day, you begin to understand what makes Hida furniture genuinely special in a way that words alone can't convey.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Second factory ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">14:30</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Wood Craft Workshop</div>
+            <span class="td-stop-type">Workshop</span>
+          </div>
+          <p class="td-stop-desc">Your turn to work with wood. In a hands-on workshop, you'll craft a small object — a cutting board, a small tray, or a similar piece — guided by a craftsperson who will show you the basics of shaping and finishing. What you make, you take home.</p>
+          <div class="td-stop-img-placeholder">[ Photo: Wood workshop ]</div>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">16:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Furniture Shops — Self-guided</div>
+            <span class="td-stop-type">Free time</span>
+          </div>
+          <p class="td-stop-desc">Back in central Takayama, the afternoon is yours to browse the furniture and craft shops at your own pace. After two days, you'll know exactly what you're looking at — and what you want to bring home.</p>
+        </div>
+      </div>
+
+      <div class="td-stop">
+        <div class="td-stop-time-col">
+          <span class="td-stop-time">18:00</span>
+          <div class="td-stop-line-wrap"><div class="td-stop-dot" style="background:var(--ink);outline-color:var(--ink);"></div></div>
+        </div>
+        <div class="td-stop-body">
+          <div class="td-stop-header">
+            <div class="td-stop-name">Tour ends</div>
+            <span class="td-stop-type">Finish</span>
+          </div>
+          <p class="td-stop-desc">Two days, one material, a completely different understanding of Japanese wood. We hope you take something home — made by hand, or chosen with new eyes.</p>
+        </div>
+      </div>
+
+    </div><!-- /day-2 -->
+  </div>
+
+  <!-- INCLUSIONS -->
+  <div class="td-section">
+    <div class="td-section-title">Inclusions</div>
+    <div class="td-inclusions">
+      <div>
+        <div class="td-inc-group-title">Included</div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          English-speaking guide (both days, morning)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Shunkei lacquerware experience (Day 1, incl. materials)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Tea at 200-year machiya (Day 1)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          2 furniture factory visits (Day 2)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Wood craft workshop — take home your piece (Day 2)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Lunch in nature (Day 2)
+        </div>
+      </div>
+      <div>
+        <div class="td-inc-group-title">Not included</div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Lunch Day 1 (self-guided)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Pottery workshop — optional ¥40,000/person (Day 1 evening)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Hotel / accommodation
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Transport to Takayama
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Travel insurance
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING PANEL -->
+  <div class="td-booking">
+    <div class="td-booking-top">
+      <div style="flex:1;">
+        <div class="td-price-label">Pricing</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; margin-top:8px;">
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Adults (18+)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥150,000</div>
+          </div>
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Teens (13–17)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥140,000</div>
+          </div>
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Children (4–12)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥120,000</div>
+          </div>
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Infants (0–3)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">Free</div>
+          </div>
+        </div>
+      </div>
+      <div class="td-avail">
+        <span class="td-avail-dot"></span>
+        <span class="td-avail-text">Dates available</span>
+      </div>
+    </div>
+    <div class="td-booking-form">
+      <div class="td-form-row">
+        <div class="td-field">
+          <label>Date</label>
+          <input type="date" id="td-date">
+        </div>
+        <div class="td-field">
+          <label>Adults <span style="font-size:10px; font-style:italic;">(18+)</span></label>
+          <select id="td-adults" onchange="tdUpdateTotal()">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6+</option>
+          </select>
+        </div>
+      </div>
+      <div class="td-form-row">
+        <div class="td-field">
+          <label>Teens <span style="font-size:10px; font-style:italic;">(13-17)</span></label>
+          <select id="td-teens" onchange="tdUpdateTotal()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="td-field">
+          <label>Children <span style="font-size:10px; font-style:italic;">(4-12)</span></label>
+          <select id="td-children" onchange="tdUpdateTotal()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </div>
+      <div class="td-form-row">
+        <div class="td-field">
+          <label>Infants <span style="font-size:10px; font-style:italic;">(0-3, free)</span></label>
+          <select id="td-infants" onchange="tdUpdateTotal()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="td-field" style="display:flex; align-items:flex-end;">
+          <div style="width:100%; padding:10px 14px; background:var(--paper); border:1px solid var(--line); border-radius:2px;">
+            <div style="font-size:10px; color:var(--ink3); letter-spacing:0.1em; text-transform:uppercase; font-style:italic; margin-bottom:3px;">Estimated total</div>
+            <div id="td-total" style="font-family:'Kaisei Decol',serif; font-size:20px; color:var(--ink);">¥300,000</div>
+          </div>
+        </div>
+      </div>
+      <button class="td-book-btn" onclick="tdOpenPopup()">
+        Book this tour →
+      </button>
+    </div>
+  </div>
+
+  <!-- BOOKING POPUP -->
+  <div id="td-popup-overlay" style="display:none; position:fixed; inset:0; background:rgba(26,20,16,0.6); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:var(--paper); max-width:480px; width:100%; border-radius:3px; overflow:hidden; max-height:90vh; overflow-y:auto;">
+
+      <!-- Popup header -->
+      <div style="background:var(--ink); padding:20px 28px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="font-family:'Kaisei Decol',serif; font-size:18px; color:#fff; font-weight:400;">Your booking request</div>
+        <button onclick="tdClosePopup()" style="background:none; border:none; color:rgba(255,255,255,0.6); font-size:22px; cursor:pointer; line-height:1; padding:0;">×</button>
+      </div>
+
+      <!-- Summary -->
+      <div id="td-popup-summary" style="padding:20px 28px; background:var(--paper2); border-bottom:1px solid var(--line); font-family:'Lora',serif; font-size:14px; color:var(--ink2); line-height:1.9;"></div>
+
+      <!-- Form -->
+      <div id="td-popup-form" style="padding:24px 28px;">
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Your name *</label>
+          <input type="text" id="td-name" placeholder="First and last name" style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none;">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Email *</label>
+          <input type="email" id="td-email" placeholder="your@email.com" style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none;">
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Message / questions</label>
+          <textarea id="td-message" rows="3" placeholder="Any dietary requirements, questions, or special requests..." style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none; resize:vertical;"></textarea>
+        </div>
+        <button onclick="tdSendInquiry()" style="width:100%; padding:14px; background:var(--red); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; font-style:italic; cursor:pointer;">
+          Send inquiry
+        </button>
+        <p style="font-size:11px; color:var(--ink3); text-align:center; margin-top:12px; font-style:italic;">We'll reply within 24 hours to confirm your booking.</p>
+      </div>
+
+      <!-- Thank you message (hidden initially) -->
+      <div id="td-popup-thanks" style="display:none; padding:40px 28px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:16px;">✓</div>
+        <div style="font-family:'Kaisei Decol',serif; font-size:20px; color:var(--ink); margin-bottom:8px;">Request sent!</div>
+        <p style="font-family:'Lora',serif; font-size:14px; color:var(--ink2); font-style:italic; line-height:1.7;">Thank you! We'll be in touch at your email address within 24 hours to confirm your booking.</p>
+        <button onclick="tdClosePopup()" style="margin-top:24px; padding:10px 28px; background:var(--ink); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; cursor:pointer;">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="td-faq">
+    <div class="td-section-title">Frequently asked questions</div>
+    <div class="td-faq-list">
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is Shunkei lacquerware?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Shunkei is Takayama's signature lacquerware style, developed in the 16th century. Unlike most lacquer — which covers and conceals — Shunkei uses a translucent natural lacquer that lets the wood grain show through. The result is warm, luminous, and entirely unique to this region. In the workshop, a craftsperson will guide you through applying the lacquer to your own piece, which you take home when it's done.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is the optional pottery workshop?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">On the evening of Day 1, we can arrange a visit to a pottery workshop about 10 minutes from central Takayama. You'll see the kiln, learn about the local ceramic tradition, and paint your own piece — which is then fired and sent to you at home, wherever in the world you are. The cost is ¥40,000 per person and is booked separately. Please let us know at the time of booking if you're interested.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          Which furniture factories do we visit on Day 2?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Hida is home to several world-class furniture manufacturers whose pieces appear in homes and hotels across Japan and beyond. We visit two factories on Day 2, chosen for the contrast in their approach to wood. The specific factories may vary depending on availability and season — we'll confirm your itinerary in advance. Factory tours are not generally open to the public; this access is arranged specifically for our guests.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What do we make in the wood craft workshop?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">You'll choose from a small object or a cutting board, guided by a craftsperson who will teach you the basics of shaping and finishing Hida wood. No prior experience is needed — the process is designed so anyone can produce something genuinely beautiful in about 90 minutes. Everything you make comes home with you.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is the best time of year for this tour?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">This tour runs year-round. Spring and autumn are the most popular — the old town is beautiful in cherry blossom season and in the golden light of October. Winter has its own appeal: snow on the machiya rooftops, warm workshops, and far fewer visitors. Summer is green and atmospheric. The craft workshops and factory visits are indoors, so weather has little effect on the experience.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          Can this be done as a 1-day tour?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Yes — we can arrange a 1-day version focused on either Day 1 (traditional craft and architecture) or Day 2 (furniture factories and wood workshop). If you have a specific combination in mind, just let us know when you get in touch and we'll put together something that works for your schedule and interests.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is "Book this tour" — is it a confirmed reservation?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Pressing "Book this tour" sends us an inquiry — not a confirmed booking. Every tour we run is private and tailored, so we arrange each one individually. Once we receive your message, we'll be in touch within 24 hours to confirm availability, discuss any adjustments to the itinerary you'd like, and finalise the details together. Payment is arranged directly with us after confirmation.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is your cancellation policy?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Cancellations 14 or more days before the tour date receive a full refund. Cancellations 7–13 days before receive a 50% refund. Within 7 days, refunds are not available — but we're happy to move your booking to another date at no charge where availability allows. We strongly recommend travel insurance.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RELATED TOURS -->
+  <!-- ★ CMS連携メモ: 将来Airtable連携時はこのグリッドをJS描画に置き換えます -->
+  <div class="td-related">
+    <div class="td-section-title">You might also like</div>
+    <div class="td-related-grid">
+
+      <a class="td-rel-card" href="/tours/nature">
+        <div class="td-rel-img-placeholder">Photo</div>
+        <div class="td-rel-body">
+          <div class="td-rel-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M5 3a7 7 0 0 0 7 7 7 7 0 0 0 7-7"/><path d="M5 3h14"/></svg>
+            Nature lover
+          </div>
+          <div class="td-rel-name">Shirakawa-go & Kamikochi Explorer</div>
+          <div class="td-rel-footer">
+            <span class="td-rel-price">From ¥68,000</span>
+            <span class="td-rel-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="td-rel-card" href="/tours/craft">
+        <div class="td-rel-img-placeholder">Photo</div>
+        <div class="td-rel-body">
+          <div class="td-rel-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            Craft fan
+          </div>
+          <div class="td-rel-name">Kyoto Artisan Trail</div>
+          <div class="td-rel-footer">
+            <span class="td-rel-price">From ¥55,000</span>
+            <span class="td-rel-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="td-rel-card" href="/tours/food">
+        <div class="td-rel-img-placeholder">Photo</div>
+        <div class="td-rel-body">
+          <div class="td-rel-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6h4v7"/></svg>
+            Food lover
+          </div>
+          <div class="td-rel-name">Hida Food &amp; Market Walk</div>
+          <div class="td-rel-footer">
+            <span class="td-rel-price">From ¥38,000</span>
+            <span class="td-rel-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /td-wrap -->
+
+<script>
+const ADULT_PRICE = 150000;
+const TEEN_PRICE  = 140000;
+const CHILD_PRICE = 120000;
+const INFANT_PRICE = 0;
+
+function tdUpdateTotal() {
+  const adults   = parseInt(document.getElementById('td-adults').value)   || 0;
+  const teens    = parseInt(document.getElementById('td-teens').value)    || 0;
+  const children = parseInt(document.getElementById('td-children').value) || 0;
+  const total = (adults * ADULT_PRICE) + (teens * TEEN_PRICE) + (children * CHILD_PRICE);
+  document.getElementById('td-total').textContent = '¥' + total.toLocaleString();
+}
+
+function tdOpenPopup() {
+  const date     = document.getElementById('td-date').value;
+  const adults   = parseInt(document.getElementById('td-adults').value)   || 0;
+  const teens    = parseInt(document.getElementById('td-teens').value)    || 0;
+  const children = parseInt(document.getElementById('td-children').value) || 0;
+  const infants  = parseInt(document.getElementById('td-infants').value)  || 0;
+  const total    = (adults * ADULT_PRICE) + (teens * TEEN_PRICE) + (children * CHILD_PRICE);
+
+  if (!date) { alert('Please select a date.'); return; }
+
+  const dateFormatted = new Date(date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+  const row = (label, n, price, subtotal) => n > 0
+    ? `<div>${label.padEnd(12)} ${n} × ¥${price.toLocaleString()} = <strong style="color:var(--ink)">¥${subtotal.toLocaleString()}</strong></div>`
+    : '';
+  const infantRow = infants > 0
+    ? `<div>Infants &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${infants} × Free</div>` : '';
+
+  document.getElementById('td-popup-summary').innerHTML = `
+    <div style="margin-bottom:8px; font-weight:500; color:var(--ink); font-family:'Kaisei Decol',serif; font-size:16px;">The Art of Japanese Wood</div>
+    <div style="margin-bottom:4px;">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dateFormatted}</div>
+    ${row('Adults', adults, ADULT_PRICE, adults * ADULT_PRICE)}
+    ${row('Teens', teens, TEEN_PRICE, teens * TEEN_PRICE)}
+    ${row('Children', children, CHILD_PRICE, children * CHILD_PRICE)}
+    ${infantRow}
+    <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:'Kaisei Decol',serif; font-size:17px; color:var(--ink);">Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¥${total.toLocaleString()}</div>
+  `;
+
+  document.getElementById('td-popup-form').style.display = 'block';
+  document.getElementById('td-popup-thanks').style.display = 'none';
+  document.getElementById('td-popup-overlay').style.display = 'flex';
+}
+
+function tdClosePopup() {
+  document.getElementById('td-popup-overlay').style.display = 'none';
+}
+
+document.getElementById('td-popup-overlay').addEventListener('click', function(e) {
+  if (e.target === this) tdClosePopup();
+});
+
+function tdSendInquiry() {
+  const name     = document.getElementById('td-name').value.trim();
+  const email    = document.getElementById('td-email').value.trim();
+  const message  = document.getElementById('td-message').value.trim();
+  const date     = document.getElementById('td-date').value;
+  const adults   = document.getElementById('td-adults').value;
+  const teens    = document.getElementById('td-teens').value;
+  const children = document.getElementById('td-children').value;
+  const infants  = document.getElementById('td-infants').value;
+  const total    = (parseInt(adults)*ADULT_PRICE) + (parseInt(teens)*TEEN_PRICE) + (parseInt(children)*CHILD_PRICE);
+
+  if (!name)  { alert('Please enter your name.'); return; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+  const subject = encodeURIComponent('Booking Request — The Art of Japanese Wood');
+  const body = encodeURIComponent(
+    'Tour: The Art of Japanese Wood\n' +
+    'Date: ' + date + '\n' +
+    'Adults (18+): ' + adults + '\n' +
+    'Teens (13-17): ' + teens + '\n' +
+    'Children (4-12): ' + children + '\n' +
+    'Infants (0-3, free): ' + infants + '\n' +
+    'Estimated total: ¥' + total.toLocaleString() + '\n\n' +
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n\n' +
+    'Message:\n' + (message || '—')
+  );
+
+  window.location.href = 'mailto:info@takayamaandbeyond.com?cc=' + encodeURIComponent(email) + '&subject=' + subject + '&body=' + body;
+
+  document.getElementById('td-popup-form').style.display = 'none';
+  document.getElementById('td-popup-thanks').style.display = 'block';
+}
+
+function tdToggleFaq(btn) {
+  const item = btn.closest('.td-faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.td-faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function tdShowDay(n) {
+  document.querySelectorAll('.td-timeline').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.td-day-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('td-day-' + n).classList.add('active');
+  document.querySelectorAll('.td-day-tab')[n - 1].classList.add('active');
+}
+</script>

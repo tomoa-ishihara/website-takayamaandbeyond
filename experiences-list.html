@@ -1,0 +1,333 @@
+<!-- ============================================================
+     EXPERIENCES 一覧ページ — Squarespace Code Block
+     Takayama & Beyond
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+.el-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.el-wrap {
+  --ink:    #1c1917;
+  --ink2:   #57534e;
+  --ink3:   #a8a29e;
+  --paper:  #fafaf9;
+  --paper2: #f5f5f4;
+  --paper3: #e7e5e4;
+  --red:    #8b1a1a;
+  --line:   rgba(28,25,23,0.1);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+.sqs-block-code { padding: 0 !important; margin: 0 !important; }
+
+/* ── HERO ── */
+.el-hero {
+  padding: 80px 60px 60px;
+  border-bottom: 1px solid var(--line);
+}
+.el-hero-label {
+  font-family: 'Lora', serif;
+  font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink3);
+  margin-bottom: 20px;
+}
+.el-hero-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 400; line-height: 1.1;
+  color: var(--ink); max-width: 700px;
+  margin-bottom: 20px;
+}
+.el-hero-sub {
+  font-size: 17px; color: var(--ink2);
+  line-height: 1.75; max-width: 520px;
+  font-weight: 300;
+}
+
+/* ── FILTER ── */
+.el-filter {
+  padding: 28px 60px;
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px;
+  flex-wrap: wrap;
+}
+.el-filter-label {
+  font-size: 11px; color: var(--ink3);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-right: 8px; font-family: 'Lora', serif;
+  font-style: italic;
+}
+.el-pill {
+  padding: 6px 18px; border-radius: 20px;
+  border: 1px solid var(--line);
+  font-size: 13px; color: var(--ink2);
+  cursor: pointer; transition: all 0.2s;
+  background: var(--paper); font-family: 'DM Sans', sans-serif;
+}
+.el-pill:hover { border-color: var(--ink2); color: var(--ink); }
+.el-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ── GRID ── */
+.el-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+}
+.el-card {
+  background: var(--paper);
+  text-decoration: none; color: inherit;
+  display: block; overflow: hidden;
+  transition: background 0.2s;
+}
+.el-card:hover { background: var(--paper2); }
+.el-card.hidden { display: none; }
+.el-card-img { width: 100%; height: 260px; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.el-card:hover .el-card-img { transform: scale(1.03); }
+.el-card-img-wrap { overflow: hidden; }
+.el-card-img-placeholder {
+  width: 100%; height: 260px;
+  background: var(--paper3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--ink3); font-style: italic;
+}
+.el-card-body { padding: 28px 32px 32px; }
+.el-card-tag {
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink3);
+  font-family: 'Lora', serif; font-style: italic;
+  margin-bottom: 10px;
+}
+.el-card-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 24px; font-weight: 400;
+  color: var(--ink); line-height: 1.25;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+.el-card:hover .el-card-title { color: var(--red); }
+.el-card-desc {
+  font-size: 14px; color: var(--ink2);
+  line-height: 1.7; font-weight: 300;
+  margin-bottom: 20px;
+}
+.el-card-footer {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.el-card-price {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 20px; color: var(--ink);
+}
+.el-card-price-sub { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+.el-card-duration {
+  font-size: 12px; color: var(--ink3);
+  font-family: 'Lora', serif; font-style: italic;
+}
+
+/* ── ADD-ON BANNER ── */
+.el-addon {
+  padding: 60px;
+  background: var(--paper2);
+  border-top: 1px solid var(--line);
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 40px;
+}
+.el-addon-text h3 {
+  font-family: 'Kaisei Decol', serif;
+  font-size: 26px; font-weight: 400;
+  color: var(--ink); margin-bottom: 8px;
+}
+.el-addon-text p {
+  font-size: 15px; color: var(--ink2);
+  line-height: 1.7; font-weight: 300;
+  max-width: 480px;
+}
+.el-addon-btn {
+  display: inline-block; padding: 12px 28px;
+  background: var(--ink); color: var(--paper);
+  font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; border-radius: 1px;
+  text-decoration: none; white-space: nowrap;
+  transition: background 0.2s;
+}
+.el-addon-btn:hover { background: var(--red); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .el-hero { padding: 60px 24px 40px; }
+  .el-filter { padding: 20px 24px; }
+  .el-grid { grid-template-columns: 1fr 1fr; }
+  .el-addon { flex-direction: column; padding: 40px 24px; }
+}
+@media (max-width: 600px) {
+  .el-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="el-wrap">
+
+  <!-- HERO -->
+  <div class="el-hero">
+    <div class="el-hero-label">Takayama & Beyond</div>
+    <h1 class="el-hero-title">Experiences</h1>
+    <p class="el-hero-sub">Single experiences you can book on their own — or add to any tour. Each one runs privately, exclusively for your group.</p>
+  </div>
+
+  <!-- FILTER -->
+  <div class="el-filter">
+    <span class="el-filter-label">Filter by</span>
+    <button class="el-pill active" onclick="elFilter('all', this)">All</button>
+    <button class="el-pill" onclick="elFilter('food', this)">Food & Drink</button>
+    <button class="el-pill" onclick="elFilter('nature', this)">Nature</button>
+    <button class="el-pill" onclick="elFilter('culture', this)">Culture</button>
+    <button class="el-pill" onclick="elFilter('family', this)">Family</button>
+  </div>
+
+  <!-- GRID -->
+  <div class="el-grid">
+
+    <!-- Cooking -->
+    <a class="el-card" href="/experiences/cooking" data-persona="food family">
+      <div class="el-card-img-wrap">
+        <div class="el-card-img-placeholder">[ Photo ]</div>
+      </div>
+      <div class="el-card-body">
+        <div class="el-card-tag">Food · Family</div>
+        <div class="el-card-title">Cooking Experience</div>
+        <p class="el-card-desc">Cook a traditional Hida meal with a local family in their 200-year home. Hands-on, intimate, unforgettable.</p>
+        <div class="el-card-footer">
+          <div>
+            <div class="el-card-price">¥40,000</div>
+            <div class="el-card-price-sub">per person</div>
+          </div>
+          <div class="el-card-duration">Half day</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Food walking tour -->
+    <a class="el-card" href="/experiences/foodtour" data-persona="food">
+      <div class="el-card-img-wrap">
+        <div class="el-card-img-placeholder">[ Photo ]</div>
+      </div>
+      <div class="el-card-body">
+        <div class="el-card-tag">Food</div>
+        <div class="el-card-title">Food Walking Tour</div>
+        <p class="el-card-desc">Graze through Takayama's morning market and Sanmachi Suji — dango, hida beef, miso, sake. A delicious way to read a town.</p>
+        <div class="el-card-footer">
+          <div>
+            <div class="el-card-price">¥40,000</div>
+            <div class="el-card-price-sub">per person</div>
+          </div>
+          <div class="el-card-duration">3 hours</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Countryside -->
+    <a class="el-card" href="/experiences/countryside" data-persona="nature">
+      <div class="el-card-img-wrap">
+        <div class="el-card-img-placeholder">[ Photo ]</div>
+      </div>
+      <div class="el-card-body">
+        <div class="el-card-tag">Nature</div>
+        <div class="el-card-title">Countryside Walk</div>
+        <p class="el-card-desc">Into the Hida countryside — rice paddies, mountain villages, and the slow rhythm of rural Japan. Far from the tourist trail.</p>
+        <div class="el-card-footer">
+          <div>
+            <div class="el-card-price">¥40,000</div>
+            <div class="el-card-price-sub">per person</div>
+          </div>
+          <div class="el-card-duration">Half day</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Sake tasting -->
+    <a class="el-card" href="/experiences/sake-tasting" data-persona="food">
+      <div class="el-card-img-wrap">
+        <div class="el-card-img-placeholder">[ Photo ]</div>
+      </div>
+      <div class="el-card-body">
+        <div class="el-card-tag">Food & Drink</div>
+        <div class="el-card-title">Sake Tasting</div>
+        <p class="el-card-desc">Inside a 300-year-old brewery, learn how Takayama's famous sake is made — and taste your way through the range with a guide who knows every barrel.</p>
+        <div class="el-card-footer">
+          <div>
+            <div class="el-card-price">¥40,000</div>
+            <div class="el-card-price-sub">per person</div>
+          </div>
+          <div class="el-card-duration">2 hours</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Tea ceremony -->
+    <a class="el-card" href="/experiences/tea" data-persona="culture family">
+      <div class="el-card-img-wrap">
+        <div class="el-card-img-placeholder">[ Photo ]</div>
+      </div>
+      <div class="el-card-body">
+        <div class="el-card-tag">Culture · Family</div>
+        <div class="el-card-title">Tea Ceremony</div>
+        <p class="el-card-desc">A private tea ceremony in a traditional setting — not a performance, but a real practice. Slow, quiet, and entirely your own.</p>
+        <div class="el-card-footer">
+          <div>
+            <div class="el-card-price">¥40,000</div>
+            <div class="el-card-price-sub">per person</div>
+          </div>
+          <div class="el-card-duration">2 hours</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Coming soon -->
+    <div class="el-card" style="cursor:default; background:var(--paper2);">
+      <div class="el-card-img-wrap">
+        <div class="el-card-img-placeholder" style="background:var(--paper3); color:var(--ink3);">More coming soon</div>
+      </div>
+      <div class="el-card-body">
+        <div class="el-card-tag">—</div>
+        <div class="el-card-title" style="color:var(--ink3);">New experience</div>
+        <p class="el-card-desc" style="color:var(--ink3);">We're constantly adding new ways to experience Takayama. Get in touch if you have something specific in mind.</p>
+        <div class="el-card-footer">
+          <div>
+            <div class="el-card-price" style="color:var(--ink3);">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ADD-ON BANNER -->
+  <div class="el-addon">
+    <div class="el-addon-text">
+      <h3>Want to combine experiences?</h3>
+      <p>Any experience can be added to a tour, or combined into a custom day. Tell us what you're looking for and we'll put something together.</p>
+    </div>
+    <a href="/contact" class="el-addon-btn">Get in touch</a>
+  </div>
+
+</div>
+
+<script>
+function elFilter(persona, btn) {
+  document.querySelectorAll('.el-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.el-card[data-persona]').forEach(card => {
+    const personas = card.dataset.persona || '';
+    if (persona === 'all' || personas.includes(persona)) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>

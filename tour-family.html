@@ -1,0 +1,864 @@
+<!-- ============================================================
+     TOUR DETAIL PAGE — Squarespace Code Block
+     Takayama & Beyond — Family Tour
+     貼り付け先: Edit Page > Add Block > Code
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+.td-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.td-wrap {
+  --ink:        #2b2420;
+  --ink2:       #5a4f48;
+  --ink3:       #9a8f88;
+  --paper:      #f7f4f0;
+  --paper2:     #ede8e2;
+  --paper3:     #e4ddd5;
+  --red:        #c45e1a;
+  --red-light:  #faeee5;
+  --line:       rgba(43,36,32,0.12);
+  font-family: 'Lora', serif;
+  color: var(--ink);
+  background: var(--paper);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 0 40px;
+}
+
+/* Squarespace padding override */
+.sqs-block-code { padding: 0 !important; margin: 0 !important; }
+
+/* Hero */
+.td-hero { position: relative; height: 480px; overflow: hidden; background: #1e1a17; }
+.td-hero img { width: 100%; height: 100%; object-fit: cover; opacity: 0.82; transition: transform 9s ease; }
+.td-hero:hover img { transform: scale(1.05); }
+.td-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(30,26,23,0.78) 0%, rgba(30,26,23,0.15) 50%, transparent 75%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 40px 44px;
+}
+.td-persona-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(196,94,26,0.88); color: #fff;
+  font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; font-style: italic;
+  padding: 5px 14px; border-radius: 1px;
+  margin-bottom: 14px; width: fit-content;
+}
+.td-tour-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(30px, 5vw, 48px); font-weight: 400; color: #fff;
+  line-height: 1.15; letter-spacing: 0.01em;
+}
+.td-tour-subtitle {
+  font-family: 'Lora', serif; font-size: 15px;
+  color: rgba(255,255,255,0.72); margin-top: 8px;
+  font-style: italic; font-weight: 400;
+}
+
+/* Hero illustration */
+.td-hero-illo {
+  position: absolute; top: 20px; right: 24px;
+  width: 96px; height: 96px; opacity: 0.22;
+  pointer-events: none;
+}
+
+/* Photo gallery */
+.td-stop-imgs {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6px; margin-bottom: 0;
+}
+.td-stop-imgs .td-stop-img { height: 200px; }
+
+/* Stats */
+.td-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); background: var(--paper); }
+.td-stat { padding: 20px 16px; border-right: 1px solid var(--line); text-align: center; }
+.td-stat:last-child { border-right: none; }
+.td-stat-value { font-family: 'Kaisei Decol', serif; font-size: 24px; font-weight: 400; color: var(--ink); line-height: 1; }
+.td-stat-learn { font-family: 'Kaisei Decol', serif; font-size: 13px; font-weight: 400; color: var(--ink); line-height: 1.4; }
+.td-stat-label { font-size: 11px; color: var(--ink3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 5px; font-family: 'Lora', serif; }
+
+/* Section */
+.td-section { padding: 44px 44px 0; }
+.td-section-title {
+  font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--red); font-style: italic;
+  margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+}
+.td-section-title::after { content: ''; flex: 1; height: 1px; background: var(--red-light); }
+
+/* Selling points */
+.td-selling { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.td-sp-card { padding: 26px 20px; border-right: 1px solid var(--line); transition: background 0.25s; }
+.td-sp-card:last-child { border-right: none; }
+.td-sp-card:hover { background: var(--paper2); }
+.td-sp-icon { display: block; margin-bottom: 14px; color: var(--red); }
+.td-sp-title { font-family: 'Kaisei Decol', serif; font-size: 16px; font-weight: 400; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
+.td-sp-desc { font-size: 13px; color: var(--ink3); line-height: 1.7; font-family: 'Lora', serif; font-style: italic; }
+
+/* Day tabs */
+.td-day-tabs { display: flex; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 32px; width: fit-content; }
+.td-day-tab {
+  padding: 10px 32px; font-family: 'Lora', serif; font-size: 13px;
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: italic;
+  cursor: pointer; transition: all 0.2s; background: var(--paper); color: var(--ink3); border: none;
+}
+.td-day-tab.active { background: var(--ink); color: var(--paper); }
+.td-day-tab:hover:not(.active) { background: var(--paper2); color: var(--ink); }
+
+/* Timeline */
+.td-timeline { display: none; }
+.td-timeline.active { display: block; }
+.td-stop { display: grid; grid-template-columns: 60px 1fr; gap: 0 22px; }
+.td-stop-time-col { display: flex; flex-direction: column; align-items: center; }
+.td-stop-time { font-size: 11px; color: var(--ink3); letter-spacing: 0.06em; white-space: nowrap; padding-top: 2px; font-family: 'Lora', serif; }
+.td-stop-line-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; padding-top: 8px; }
+.td-stop-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--red); flex-shrink: 0; border: 2px solid var(--paper); outline: 1px solid var(--red); }
+.td-stop-vline { width: 1px; background: var(--line); flex: 1; min-height: 28px; }
+.td-stop-body { padding-bottom: 32px; }
+.td-stop-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.td-stop-name { font-family: 'Kaisei Decol', serif; font-size: 21px; font-weight: 400; line-height: 1.2; color: var(--ink); }
+.td-stop-type {
+  font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.13em;
+  text-transform: uppercase; font-style: italic;
+  color: var(--red); background: var(--red-light);
+  padding: 4px 10px; border-radius: 1px; white-space: nowrap; margin-top: 4px;
+}
+.td-stop-desc { font-size: 15px; color: var(--ink2); line-height: 1.75; font-style: italic; margin-bottom: 12px; }
+.td-stop-img { width: 100%; height: 240px; object-fit: cover; border-radius: 2px; display: block; }
+.td-stop-img-placeholder {
+  width: 100%; height: 140px; background: var(--paper2); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--ink3); letter-spacing: 0.06em;
+  border: 1px dashed var(--line); font-style: italic;
+}
+
+/* Inclusions */
+.td-inclusions { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 4px; }
+.td-inc-group-title { font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); font-style: italic; margin-bottom: 14px; }
+.td-inc-item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--ink2); margin-bottom: 10px; line-height: 1.6; }
+.td-inc-icon { flex-shrink: 0; margin-top: 3px; }
+
+/* Booking */
+.td-booking { margin: 44px 44px 0; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.td-booking-top { background: var(--ink); padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.td-price-label { font-family: 'Lora', serif; font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; margin-bottom: 5px; }
+.td-price { font-family: 'Kaisei Decol', serif; font-size: 38px; font-weight: 400; color: #fff; line-height: 1; }
+.td-price-sub { font-family: 'Lora', serif; font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; font-style: italic; }
+.td-avail { text-align: right; }
+.td-avail-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #7ecba1; margin-right: 6px; vertical-align: middle; }
+.td-avail-text { font-family: 'Lora', serif; font-size: 13px; color: rgba(255,255,255,0.65); font-style: italic; }
+.td-booking-form { padding: 24px 32px; background: var(--paper2); }
+.td-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.td-field label { display: block; font-family: 'Lora', serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; color: var(--ink3); margin-bottom: 6px; }
+.td-field input, .td-field select {
+  width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 2px;
+  font-size: 14px; background: var(--paper); color: var(--ink);
+  font-family: 'Lora', serif; appearance: none; outline: none; transition: border-color 0.2s;
+}
+.td-field input:focus, .td-field select:focus { border-color: var(--red); }
+.td-book-btn {
+  width: 100%; padding: 15px; background: var(--red); color: #fff; border: none; border-radius: 2px;
+  font-family: 'Lora', serif; font-size: 13px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-style: italic; cursor: pointer; transition: background 0.2s, transform 0.1s;
+}
+.td-book-btn:hover { background: #9e4b13; }
+.td-book-btn:active { transform: scale(0.99); }
+
+/* Related tours */
+.td-related { padding: 44px 44px 0; }
+.td-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.td-rel-card {
+  border: 1px solid var(--line); border-radius: 2px; overflow: hidden;
+  cursor: pointer; transition: transform 0.25s, box-shadow 0.25s;
+  text-decoration: none; display: block; color: inherit;
+}
+.td-rel-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(43,36,32,0.1); }
+.td-rel-img { width: 100%; height: 120px; object-fit: cover; display: block; }
+.td-rel-img-placeholder {
+  width: 100%; height: 120px; background: var(--paper2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--ink3); font-style: italic;
+  border-bottom: 1px dashed var(--line);
+}
+.td-rel-body { padding: 14px 16px; }
+.td-rel-tag { font-family: 'Lora', serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-style: italic; color: var(--red); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.td-rel-name { font-family: 'Kaisei Decol', serif; font-size: 17px; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 10px; }
+.td-rel-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 10px; }
+.td-rel-price { font-size: 13px; color: var(--ink2); }
+.td-rel-days { font-size: 11px; color: var(--ink3); font-style: italic; }
+
+/* FAQ */
+.td-faq { padding: 44px 44px 0; }
+.td-faq-list { border-top: 1px solid var(--line); }
+.td-faq-item { border-bottom: 1px solid var(--line); }
+.td-faq-q {
+  width: 100%; background: none; border: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 20px 0; cursor: pointer;
+  text-align: left; font-family: 'Kaisei Decol', serif;
+  font-size: 17px; font-weight: 400; color: var(--ink);
+  line-height: 1.4; transition: color 0.2s;
+}
+.td-faq-q:hover { color: var(--red); }
+.td-faq-icon {
+  flex-shrink: 0; width: 20px; height: 20px;
+  border: 1px solid var(--line); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  color: var(--ink3);
+}
+.td-faq-item.open .td-faq-icon {
+  background: var(--red); border-color: var(--red); color: #fff;
+}
+.td-faq-icon svg { transition: transform 0.3s; }
+.td-faq-item.open .td-faq-icon svg { transform: rotate(45deg); }
+.td-faq-a {
+  display: none; padding: 0 32px 20px 0;
+  font-family: 'Lora', serif; font-size: 15px;
+  color: var(--ink2); line-height: 1.8;
+  font-style: italic;
+}
+.td-faq-item.open .td-faq-a { display: block; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .td-hero { height: 340px; }
+  .td-hero-overlay { padding: 24px 22px; }
+  .td-stats { grid-template-columns: repeat(2, 1fr); }
+  .td-stat:nth-child(2) { border-right: none; }
+  .td-stat:nth-child(1), .td-stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .td-section { padding: 32px 22px 0; }
+  .td-selling { grid-template-columns: repeat(2, 1fr); }
+  .td-sp-card:nth-child(2) { border-right: none; }
+  .td-sp-card:nth-child(1), .td-sp-card:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .td-inclusions { grid-template-columns: 1fr; }
+  .td-booking { margin: 32px 22px 0; }
+  .td-booking-top { flex-direction: column; align-items: flex-start; }
+  .td-avail { text-align: left; }
+  .td-form-row { grid-template-columns: 1fr; }
+  .td-stop { grid-template-columns: 48px 1fr; }
+  .td-faq { padding: 32px 22px 0; }
+
+  .td-related-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<div class="td-wrap">
+
+  <!-- HERO -->
+  <div class="td-hero">
+    <!-- ↓ src をあなたの画像URLに変更 -->
+    <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/60ae6e84-c2d5-456b-9fa9-4a6fee29a132/%E3%81%8A%E6%B0%97%E3%81%AB%E5%85%A5%E3%82%8A+-+11+%EF%BC%8F+17.jpeg?content-type=image%2Fjpeg" alt="Takayama Family Tour">
+    <!-- Family illustration: 3 stick figures, stroke only -->
+    <svg class="td-hero-illo" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 大人（左） -->
+      <circle cx="22" cy="22" r="9" stroke="white" stroke-width="4"/>
+      <line x1="22" y1="31" x2="22" y2="60" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="8" y1="44" x2="36" y2="44" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="22" y1="60" x2="12" y2="80" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="22" y1="60" x2="32" y2="80" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <!-- 大人（右） -->
+      <circle cx="74" cy="22" r="9" stroke="white" stroke-width="4"/>
+      <line x1="74" y1="31" x2="74" y2="60" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="60" y1="44" x2="88" y2="44" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="74" y1="60" x2="64" y2="80" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="74" y1="60" x2="84" y2="80" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <!-- 子供（中央・小さい） -->
+      <circle cx="48" cy="34" r="7" stroke="white" stroke-width="4"/>
+      <line x1="48" y1="41" x2="48" y2="64" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="36" y1="50" x2="60" y2="50" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="48" y1="64" x2="40" y2="80" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <line x1="48" y1="64" x2="56" y2="80" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <div class="td-hero-overlay">
+      <span class="td-persona-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="18" cy="8" r="2.5"/><path d="M21 21v-1.5a3 3 0 0 0-2-2.83"/></svg>
+        Family · Little Kids
+      </span>
+      <h1 class="td-tour-title">Little Chefs<br>of Takayama</h1>
+      <p class="td-tour-subtitle">A full day of tasting, making, and cooking together in Japan's most delicious mountain town</p>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="td-stats">
+    <div class="td-stat">
+      <div class="td-stat-value">1</div>
+      <div class="td-stat-label">Day</div>
+    </div>
+    <div class="td-stat">
+      <div class="td-stat-value">All</div>
+      <div class="td-stat-label">Ages</div>
+    </div>
+    <div class="td-stat">
+      <div class="td-stat-value">Easy</div>
+      <div class="td-stat-label">Difficulty</div>
+    </div>
+    <div class="td-stat">
+      <div class="td-stat-learn">Market culture, food science & Japanese cooking</div>
+      <div class="td-stat-label">You'll learn</div>
+    </div>
+  </div>
+
+  <!-- SELLING POINTS -->
+  <div class="td-section">
+    <div class="td-section-title">Why this tour</div>
+    <div class="td-selling">
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/>
+          <path d="M12 8v4l3 3"/>
+        </svg>
+        <div class="td-sp-title">Farm to table, literally</div>
+        <p class="td-sp-desc">You see the vegetables at the morning market. By evening, they're on your plate — cooked by your own hands.</p>
+      </div>
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/>
+          <path d="M21 15V2a5 5 0 0 0-5 5v6h4v7"/>
+        </svg>
+        <div class="td-sp-title">Real kitchen skills</div>
+        <p class="td-sp-desc">Dashi from scratch, the difference between soy sauces, Hida beef — knowledge that lasts longer than the meal.</p>
+      </div>
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="7" r="3"/>
+          <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+          <circle cx="18" cy="8" r="2.5"/>
+          <path d="M21 21v-1.5a3 3 0 0 0-2-2.83"/>
+        </svg>
+        <div class="td-sp-title">Kids cook for real</div>
+        <p class="td-sp-desc">A 5-course dinner including Hida beef, designed so children lead every step.</p>
+      </div>
+
+      <div class="td-sp-card">
+        <svg class="td-sp-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+          <line x1="6" y1="1" x2="6" y2="4"/>
+          <line x1="10" y1="1" x2="10" y2="4"/>
+          <line x1="14" y1="1" x2="14" y2="4"/>
+        </svg>
+        <div class="td-sp-title">Built-in free time</div>
+        <p class="td-sp-desc">Midday is yours — rest by the river, explore at your own pace, recharge before the afternoon.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ITINERARY — 1日ツアーのためタブなし -->
+  <div class="td-section">
+    <div class="td-section-title">Itinerary</div>
+
+    <div class="td-stop">
+      <div class="td-stop-time-col">
+        <span class="td-stop-time">9:00</span>
+        <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+      </div>
+      <div class="td-stop-body">
+        <div class="td-stop-header">
+          <div class="td-stop-name">Takayama Morning Market</div>
+          <span class="td-stop-type">Food walk</span>
+        </div>
+        <p class="td-stop-desc">We start at Jinya-mae Morning Market — one of Japan's oldest. Stalls of pickled vegetables, fresh tofu, local miso, and mountain honey line the riverbank. Your guide introduces the vendors, and kids get to taste as they go. Expect sticky fingers by 9:30.</p>
+        <div class="td-stop-imgs">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/dc361384-c491-421b-996b-3065d29b058d/%E6%9C%80%E8%BF%91%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%9F%E9%A0%85%E7%9B%AE+-+1+%EF%BC%8F+1+%286%29.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Morning Market 1">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/c4f2a310-d6f4-4d2e-9032-f60a92dbd648/%E6%9C%80%E8%BF%91%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%9F%E9%A0%85%E7%9B%AE+-+1+%EF%BC%8F+1+%287%29.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Morning Market 2">
+        </div>
+      </div>
+    </div>
+
+    <div class="td-stop">
+      <div class="td-stop-time-col">
+        <span class="td-stop-time">10:00</span>
+        <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+      </div>
+      <div class="td-stop-body">
+        <div class="td-stop-header">
+          <div class="td-stop-name">Sanmachi Suji Food Walk</div>
+          <span class="td-stop-type">Food walk</span>
+        </div>
+        <p class="td-stop-desc">Through Takayama's beautifully preserved merchant district — mitarashi dango fresh off the grill, hida beef skewers, mitarashi-flavoured soft serve. Your guide picks the best stops for kids and tells the stories behind each one. The whole family eats well.</p>
+        <div class="td-stop-imgs">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/50a64e9f-406b-47cc-844e-284554879e8e/%E3%81%8A%E6%B0%97%E3%81%AB%E5%85%A5%E3%82%8A+-+5+%EF%BC%8F+5.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Sanmachi Suji 1">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/aa6f0d15-44de-4433-bb54-236d02c980fd/%E3%81%8A%E6%B0%97%E3%81%AB%E5%85%A5%E3%82%8A+-+1+%EF%BC%8F+5.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Sanmachi Suji 2">
+        </div>
+      </div>
+    </div>
+
+    <div class="td-stop">
+      <div class="td-stop-time-col">
+        <span class="td-stop-time">12:00</span>
+        <div class="td-stop-line-wrap"><div class="td-stop-dot" style="background:var(--paper2);outline-color:var(--ink3);"></div><div class="td-stop-vline" style="border-left: 2px dashed rgba(43,36,32,0.15); width:0; background:none;"></div></div>
+      </div>
+      <div class="td-stop-body">
+        <div class="td-stop-header">
+          <div class="td-stop-name">Free time — lunch &amp; rest</div>
+          <span class="td-stop-type">Self-guided</span>
+        </div>
+        <p class="td-stop-desc">This time is yours. If you're still full from the walk, take a stroll along the Miyagawa river and let the kids play by the water. If you're hungry, grab lunch at one of our recommended spots nearby. We reconvene at 1:30 — rested and ready to make things.</p>
+      </div>
+    </div>
+
+    <div class="td-stop">
+      <div class="td-stop-time-col">
+        <span class="td-stop-time">13:30</span>
+        <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+      </div>
+      <div class="td-stop-body">
+        <div class="td-stop-header">
+          <div class="td-stop-name">Food Sample Workshop</div>
+          <span class="td-stop-type">Workshop</span>
+        </div>
+        <p class="td-stop-desc">Japan's famous plastic food displays — but you make them yourself. Using coloured wax, you craft hyper-realistic replicas of Japanese dishes: sushi, parfait, ice cream, whatever you choose. Every piece goes home with you as a keepsake. They can't be eaten, but they last forever — and they look astonishingly real.</p>
+        <div class="td-stop-imgs">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/b7dcb88f-197b-4895-875e-7e787fe85041/%E6%9C%80%E8%BF%91%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%9F%E9%A0%85%E7%9B%AE+-+1+%EF%BC%8F+1+%284%29.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Food Sample 1">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/2ec81b95-b518-4d2e-8fcb-1458889eb62e/%E6%9C%80%E8%BF%91%E4%BF%9D%E5%AD%98%E3%81%97%E3%81%9F%E9%A0%85%E7%9B%AE+-+1+%EF%BC%8F+1+%282%29.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Food Sample 2">
+        </div>
+      </div>
+    </div>
+
+    <div class="td-stop">
+      <div class="td-stop-time-col">
+        <span class="td-stop-time">16:00</span>
+        <div class="td-stop-line-wrap"><div class="td-stop-dot"></div><div class="td-stop-vline"></div></div>
+      </div>
+      <div class="td-stop-body">
+        <div class="td-stop-header">
+          <div class="td-stop-name">Cooking Experience in a 200-Year Machiya</div>
+          <span class="td-stop-type">Cooking</span>
+        </div>
+        <p class="td-stop-desc">Inside a beautifully preserved 200-year-old townhouse, your family cooks a 5-course dinner together — including Hida beef. Every dish is designed so children can lead the preparation. Along the way you'll learn how to make dashi from scratch using kombu and katsuobushi, understand the difference between light and dark soy sauce, and see how these fundamentals shape everything in Japanese cooking. Food education at its most hands-on — and at the end, you eat what you made.</p>
+        <div class="td-stop-imgs">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/5b0e8a15-8ea8-4b4c-a711-ceabc9696bc4/0808_%E6%96%99%E7%90%8611.jpg?content-type=image%2Fjpeg" class="td-stop-img" alt="Machiya Cooking 1">
+          <img src="https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/9f78100c-4d7a-4231-8f83-00fb9ab26a38/%E3%81%99%E3%81%B8%E3%82%99%E3%81%A6%E3%81%AE%E7%B5%90%E6%9E%9C+-+1+%EF%BC%8F+1.jpeg?content-type=image%2Fjpeg" class="td-stop-img" alt="Machiya Cooking 2">
+        </div>
+      </div>
+    </div>
+
+    <div class="td-stop">
+      <div class="td-stop-time-col">
+        <span class="td-stop-time">19:00</span>
+        <div class="td-stop-line-wrap"><div class="td-stop-dot" style="background:var(--ink);outline-color:var(--ink);"></div></div>
+      </div>
+      <div class="td-stop-body">
+        <div class="td-stop-header">
+          <div class="td-stop-name">Tour ends — full and happy</div>
+          <span class="td-stop-type">Finish</span>
+        </div>
+        <p class="td-stop-desc">We wrap up at 7pm in central Takayama, a short walk from most hotels. The kids will sleep well tonight.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INCLUSIONS -->
+  <div class="td-section">
+    <div class="td-section-title">Inclusions</div>
+    <div class="td-inclusions">
+      <div>
+        <div class="td-inc-group-title">Included</div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          English-speaking family guide (morning)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Morning market tastings &amp; food walk snacks
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Food sample workshop — wax replicas to take home (incl. materials)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7ecba1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          5-course cooking experience &amp; dinner in a 200-year machiya (incl. Hida beef)
+        </div>
+      </div>
+      <div>
+        <div class="td-inc-group-title">Not included</div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Lunch during free time (self-guided)
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Hotel / accommodation
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Transport to Takayama
+        </div>
+        <div class="td-inc-item">
+          <svg class="td-inc-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c49a9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Travel insurance
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOKING PANEL -->
+  <div class="td-booking">
+    <div class="td-booking-top">
+      <div style="flex:1;">
+        <div class="td-price-label">Pricing</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; margin-top:8px;">
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Adults (18+)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥86,000</div>
+          </div>
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Teens (13–17)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥80,000</div>
+          </div>
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Children (4–12)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">¥60,000</div>
+          </div>
+          <div>
+            <div style="font-family:'Lora',serif; font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.1em; text-transform:uppercase; font-style:italic;">Infants (0–3)</div>
+            <div style="font-family:'Kaisei Decol',serif; font-size:22px; color:#fff;">Free</div>
+          </div>
+        </div>
+      </div>
+      <div class="td-avail">
+        <span class="td-avail-dot"></span>
+        <span class="td-avail-text">Dates available</span>
+      </div>
+    </div>
+    <div class="td-booking-form">
+      <div class="td-form-row">
+        <div class="td-field">
+          <label>Date</label>
+          <input type="date" id="td-date">
+        </div>
+        <div class="td-field">
+          <label>Adults <span style="font-size:10px; font-style:italic;">(18+)</span></label>
+          <select id="td-adults" onchange="tdUpdateTotal()">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6+</option>
+          </select>
+        </div>
+      </div>
+      <div class="td-form-row">
+        <div class="td-field">
+          <label>Teens <span style="font-size:10px; font-style:italic;">(13-17)</span></label>
+          <select id="td-teens" onchange="tdUpdateTotal()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="td-field">
+          <label>Children <span style="font-size:10px; font-style:italic;">(4-12)</span></label>
+          <select id="td-children" onchange="tdUpdateTotal()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </div>
+      <div class="td-form-row">
+        <div class="td-field">
+          <label>Infants <span style="font-size:10px; font-style:italic;">(0-3, free)</span></label>
+          <select id="td-infants" onchange="tdUpdateTotal()">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="td-field" style="display:flex; align-items:flex-end;">
+          <div style="width:100%; padding:10px 14px; background:var(--paper); border:1px solid var(--line); border-radius:2px;">
+            <div style="font-size:10px; color:var(--ink3); letter-spacing:0.1em; text-transform:uppercase; font-style:italic; margin-bottom:3px;">Estimated total</div>
+            <div id="td-total" style="font-family:'Kaisei Decol',serif; font-size:20px; color:var(--ink);">¥172,000</div>
+          </div>
+        </div>
+      </div>
+      <button class="td-book-btn" onclick="tdOpenPopup()">
+        Book this tour →
+      </button>
+    </div>
+  </div>
+
+  <!-- BOOKING POPUP -->
+  <div id="td-popup-overlay" style="display:none; position:fixed; inset:0; background:rgba(26,20,16,0.6); z-index:9999; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:var(--paper); max-width:480px; width:100%; border-radius:3px; overflow:hidden; max-height:90vh; overflow-y:auto;">
+
+      <!-- Popup header -->
+      <div style="background:var(--ink); padding:20px 28px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="font-family:'Kaisei Decol',serif; font-size:18px; color:#fff; font-weight:400;">Your booking request</div>
+        <button onclick="tdClosePopup()" style="background:none; border:none; color:rgba(255,255,255,0.6); font-size:22px; cursor:pointer; line-height:1; padding:0;">×</button>
+      </div>
+
+      <!-- Summary -->
+      <div id="td-popup-summary" style="padding:20px 28px; background:var(--paper2); border-bottom:1px solid var(--line); font-family:'Lora',serif; font-size:14px; color:var(--ink2); line-height:1.9;"></div>
+
+      <!-- Form -->
+      <div id="td-popup-form" style="padding:24px 28px;">
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Your name *</label>
+          <input type="text" id="td-name" placeholder="First and last name" style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none;">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Email *</label>
+          <input type="email" id="td-email" placeholder="your@email.com" style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none;">
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block; font-family:'Lora',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; color:var(--ink3); margin-bottom:5px;">Message / questions</label>
+          <textarea id="td-message" rows="3" placeholder="Any dietary requirements, questions, or special requests..." style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:2px; font-size:14px; font-family:'Lora',serif; background:var(--paper); color:var(--ink); outline:none; resize:vertical;"></textarea>
+        </div>
+        <button onclick="tdSendInquiry()" style="width:100%; padding:14px; background:var(--red); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; font-style:italic; cursor:pointer;">
+          Send inquiry
+        </button>
+        <p style="font-size:11px; color:var(--ink3); text-align:center; margin-top:12px; font-style:italic;">We'll reply within 24 hours to confirm your booking.</p>
+      </div>
+
+      <!-- Thank you message (hidden initially) -->
+      <div id="td-popup-thanks" style="display:none; padding:40px 28px; text-align:center;">
+        <div style="font-size:28px; margin-bottom:16px;">✓</div>
+        <div style="font-family:'Kaisei Decol',serif; font-size:20px; color:var(--ink); margin-bottom:8px;">Request sent!</div>
+        <p style="font-family:'Lora',serif; font-size:14px; color:var(--ink2); font-style:italic; line-height:1.7;">Thank you! We'll be in touch at your email address within 24 hours to confirm your booking.</p>
+        <button onclick="tdClosePopup()" style="margin-top:24px; padding:10px 28px; background:var(--ink); color:#fff; border:none; border-radius:2px; font-family:'Lora',serif; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; font-style:italic; cursor:pointer;">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="td-faq">
+    <div class="td-section-title">Frequently asked questions</div>
+    <div class="td-faq-list">
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What age is this tour suitable for?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">All ages — genuinely. We've run this tour with toddlers in carriers, 6-year-olds who turned out to be natural chefs, and grandparents who hadn't cooked anything new in years. The food sample workshop works for ages 3 and up. The cooking experience is designed so every family member, whatever their age or ability, has a meaningful role.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What do we do during the free time at lunch?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">That's entirely up to you. After three hours of tasting through the market and Sanmachi Suji, many families aren't hungry — so a walk along the Miyagawa river or some quiet time at the hotel is perfect. If you want lunch, we'll give you a short list of family-friendly spots within easy walking distance. We reconvene at 1:30pm for the food sample workshop.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What exactly is the food sample workshop?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Japan is famous for its hyper-realistic plastic food displays in restaurant windows. In the workshop, you make your own using coloured wax and traditional moulds — sushi, parfait, ramen, whatever you choose. Then you make real ice cream together, Japanese-style. Each child takes their wax creation home. It's one of those activities that sounds simple and turns out to be genuinely brilliant.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is a machiya and what do we cook there?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">A machiya is a traditional Japanese townhouse. Ours dates back 200 years and is beautifully preserved — dark timber beams, a central hearth, and a working kitchen where generations of families have cooked. You'll prepare a 5-course dinner including Hida beef, learning how to make dashi from kombu and katsuobushi, and how different soy sauces change a dish. Every step is designed so children can take the lead. Simple techniques, real ingredients, and food knowledge that travels home with you.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          Can dietary requirements be accommodated?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Please tell us at the time of booking. Vegetarian adjustments are straightforward. Nut allergies and most common intolerances can be managed with advance notice. Strict gluten-free or halal diets are more difficult in this setting — we'll always be honest about what's possible and what isn't rather than promise something we can't deliver.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is "Book this tour" — is it a confirmed reservation?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Pressing "Book this tour" sends us an inquiry — not a confirmed booking. Every tour we run is private and tailored, so we arrange each one individually. Once we receive your message, we'll be in touch within 24 hours to confirm availability, discuss any adjustments you'd like, and finalise the details together. Payment is arranged directly with us after confirmation.</div>
+      </div>
+
+      <div class="td-faq-item">
+        <button class="td-faq-q" onclick="tdToggleFaq(this)">
+          What is your cancellation policy?
+          <span class="td-faq-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="td-faq-a">Cancellations 14 or more days before the tour date receive a full refund. Cancellations 7–13 days before receive a 50% refund. Within 7 days, refunds are not available — but we're happy to move your booking to another date at no charge where availability allows. We recommend travel insurance, especially when travelling with children.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RELATED TOURS -->
+  <!-- ★ CMS連携メモ: 将来Airtable連携時はこのグリッドをJS描画に置き換えます -->
+  <div class="td-related">
+    <div class="td-section-title">You might also like</div>
+    <div class="td-related-grid">
+
+      <a class="td-rel-card" href="/tours/nature">
+        <div class="td-rel-img-placeholder">Photo</div>
+        <div class="td-rel-body">
+          <div class="td-rel-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M5 3a7 7 0 0 0 7 7 7 7 0 0 0 7-7"/><path d="M5 3h14"/></svg>
+            Nature lover
+          </div>
+          <div class="td-rel-name">Shirakawa-go & Kamikochi Explorer</div>
+          <div class="td-rel-footer">
+            <span class="td-rel-price">From ¥68,000</span>
+            <span class="td-rel-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="td-rel-card" href="/tours/craft">
+        <div class="td-rel-img-placeholder">Photo</div>
+        <div class="td-rel-body">
+          <div class="td-rel-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            Craft fan
+          </div>
+          <div class="td-rel-name">Kyoto Artisan Trail</div>
+          <div class="td-rel-footer">
+            <span class="td-rel-price">From ¥55,000</span>
+            <span class="td-rel-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="td-rel-card" href="/tours/food">
+        <div class="td-rel-img-placeholder">Photo</div>
+        <div class="td-rel-body">
+          <div class="td-rel-tag">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6h4v7"/></svg>
+            Food lover
+          </div>
+          <div class="td-rel-name">Hida Food &amp; Market Walk</div>
+          <div class="td-rel-footer">
+            <span class="td-rel-price">From ¥38,000</span>
+            <span class="td-rel-days">2 days</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div><!-- /td-wrap -->
+
+<script>
+const ADULT_PRICE = 86000;
+const TEEN_PRICE  = 80000;
+const CHILD_PRICE = 60000;
+const INFANT_PRICE = 0;
+
+function tdUpdateTotal() {
+  const adults   = parseInt(document.getElementById('td-adults').value)   || 0;
+  const teens    = parseInt(document.getElementById('td-teens').value)    || 0;
+  const children = parseInt(document.getElementById('td-children').value) || 0;
+  const total = (adults * ADULT_PRICE) + (teens * TEEN_PRICE) + (children * CHILD_PRICE);
+  document.getElementById('td-total').textContent = '¥' + total.toLocaleString();
+}
+
+function tdOpenPopup() {
+  const date     = document.getElementById('td-date').value;
+  const adults   = parseInt(document.getElementById('td-adults').value)   || 0;
+  const teens    = parseInt(document.getElementById('td-teens').value)    || 0;
+  const children = parseInt(document.getElementById('td-children').value) || 0;
+  const infants  = parseInt(document.getElementById('td-infants').value)  || 0;
+  const total    = (adults * ADULT_PRICE) + (teens * TEEN_PRICE) + (children * CHILD_PRICE);
+
+  if (!date) { alert('Please select a date.'); return; }
+
+  const dateFormatted = new Date(date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+  const row = (label, n, price, subtotal) => n > 0
+    ? `<div>${label.padEnd(12)} ${n} × ¥${price.toLocaleString()} = <strong style="color:var(--ink)">¥${subtotal.toLocaleString()}</strong></div>`
+    : '';
+  const infantRow = infants > 0
+    ? `<div>Infants &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${infants} × Free</div>` : '';
+
+  document.getElementById('td-popup-summary').innerHTML = `
+    <div style="margin-bottom:8px; font-weight:500; color:var(--ink); font-family:'Kaisei Decol',serif; font-size:16px;">Little Chefs of Takayama</div>
+    <div style="margin-bottom:4px;">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dateFormatted}</div>
+    ${row('Adults', adults, ADULT_PRICE, adults * ADULT_PRICE)}
+    ${row('Teens', teens, TEEN_PRICE, teens * TEEN_PRICE)}
+    ${row('Children', children, CHILD_PRICE, children * CHILD_PRICE)}
+    ${infantRow}
+    <div style="margin-top:10px; padding-top:10px; border-top:1px solid var(--line); font-family:'Kaisei Decol',serif; font-size:17px; color:var(--ink);">Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;¥${total.toLocaleString()}</div>
+  `;
+
+  document.getElementById('td-popup-form').style.display = 'block';
+  document.getElementById('td-popup-thanks').style.display = 'none';
+  document.getElementById('td-popup-overlay').style.display = 'flex';
+}
+
+function tdClosePopup() {
+  document.getElementById('td-popup-overlay').style.display = 'none';
+}
+
+document.getElementById('td-popup-overlay').addEventListener('click', function(e) {
+  if (e.target === this) tdClosePopup();
+});
+
+function tdSendInquiry() {
+  const name     = document.getElementById('td-name').value.trim();
+  const email    = document.getElementById('td-email').value.trim();
+  const message  = document.getElementById('td-message').value.trim();
+  const date     = document.getElementById('td-date').value;
+  const adults   = document.getElementById('td-adults').value;
+  const teens    = document.getElementById('td-teens').value;
+  const children = document.getElementById('td-children').value;
+  const infants  = document.getElementById('td-infants').value;
+  const total    = (parseInt(adults)*ADULT_PRICE) + (parseInt(teens)*TEEN_PRICE) + (parseInt(children)*CHILD_PRICE);
+
+  if (!name)  { alert('Please enter your name.'); return; }
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+  const subject = encodeURIComponent('Booking Request — Little Chefs of Takayama');
+  const body = encodeURIComponent(
+    'Tour: Little Chefs of Takayama\n' +
+    'Date: ' + date + '\n' +
+    'Adults (18+): ' + adults + '\n' +
+    'Teens (13-17): ' + teens + '\n' +
+    'Children (4-12): ' + children + '\n' +
+    'Infants (0-3, free): ' + infants + '\n' +
+    'Estimated total: ¥' + total.toLocaleString() + '\n\n' +
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n\n' +
+    'Message:\n' + (message || '—')
+  );
+
+  window.location.href = 'mailto:info@takayamaandbeyond.com?cc=' + encodeURIComponent(email) + '&subject=' + subject + '&body=' + body;
+
+  document.getElementById('td-popup-form').style.display = 'none';
+  document.getElementById('td-popup-thanks').style.display = 'block';
+}
+
+function tdToggleFaq(btn) {
+  const item = btn.closest('.td-faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.td-faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function tdShowDay(n) {
+  document.querySelectorAll('.td-timeline').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.td-day-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('td-day-' + n).classList.add('active');
+  document.querySelectorAll('.td-day-tab')[n - 1].classList.add('active');
+}
+</script>

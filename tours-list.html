@@ -1,0 +1,543 @@
+<!-- ============================================================
+     TOURS — 2-Step Group + Interest Quiz
+     Takayama & Beyond — Clean rebuild
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+.tq * { box-sizing: border-box; margin: 0; padding: 0; }
+.tq {
+  --ink:  #1a1a1a;
+  --ink2: #555;
+  --ink3: #999;
+  --paper: #fafaf9;
+  --cream: #f0eeeb;
+  --dark:  #141210;
+  --red:   #8b1a1a;
+  --gold:  #c9a96e;
+  --line:  rgba(0,0,0,0.1);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  background: var(--dark);
+  min-height: 100vh;
+}
+.sqs-block-code { padding: 0 !important; margin: 0 !important; }
+
+/* ── QUIZ ── */
+.tq-quiz {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  padding: 48px 72px 64px;
+  transition: opacity 0.32s;
+}
+.tq-progress-wrap {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 60px;
+}
+.tq-progress-bar {
+  flex: 1; height: 1px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden;
+}
+.tq-progress-fill {
+  position: absolute; inset: 0; background: var(--gold);
+  width: 50%; transition: width 0.5s ease;
+}
+.tq-progress-label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.28); white-space: nowrap;
+}
+.tq-step { display: none; flex: 1; flex-direction: column; animation: tqUp 0.42s ease; }
+.tq-step.active { display: flex; }
+@keyframes tqUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+
+.tq-q-label {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.tq-q-text {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(26px, 3.8vw, 50px);
+  font-weight: 400; line-height: 1.1; color: #fff;
+  margin-bottom: 10px; max-width: 600px;
+}
+.tq-q-sub {
+  font-family: 'Lora', serif; font-size: 14px; font-style: italic;
+  color: rgba(255,255,255,0.32); margin-bottom: 40px;
+}
+
+/* tiles */
+.tq-tiles { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.tq-tiles-4 { grid-template-columns: repeat(4,1fr); }
+
+.tq-tile {
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 22px 18px;
+  cursor: pointer; position: relative;
+  background: rgba(255,255,255,0.03);
+  display: flex; flex-direction: column; gap: 10px;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.tq-tile:hover { border-color: rgba(255,255,255,0.26); background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+.tq-tile.selected { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+
+.tq-tile-check {
+  position: absolute; top: 12px; right: 12px;
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: transparent; font-weight: 700;
+  transition: all 0.18s;
+}
+.tq-tile.selected .tq-tile-check { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+.tq-tile-icon { width: 36px; height: 36px; }
+.tq-tile-title { font-family: 'Kaisei Decol', serif; font-size: 16px; color: #fff; line-height: 1.2; }
+.tq-tile-desc { font-size: 12px; color: rgba(255,255,255,0.36); line-height: 1.5; font-weight: 300; }
+
+/* nav */
+.tq-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; }
+.tq-btn-next {
+  padding: 12px 30px; background: #fff; color: var(--dark); border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 500; transition: background 0.2s;
+}
+.tq-btn-next:hover { background: var(--gold); }
+.tq-btn-next:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.2); cursor: not-allowed; }
+.tq-btn-back {
+  background: none; border: none; cursor: pointer;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); font-family: 'DM Sans', sans-serif; transition: color 0.2s;
+}
+.tq-btn-back:hover { color: rgba(255,255,255,0.6); }
+.tq-skip-link {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.18); text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1px; transition: color 0.2s;
+}
+.tq-skip-link:hover { color: rgba(255,255,255,0.48); }
+
+/* ── RESULTS ── */
+.tq-results { display: none; background: var(--paper); animation: tqFade 0.38s ease; }
+@keyframes tqFade { from { opacity:0; } to { opacity:1; } }
+
+.tq-result-hero {
+  background: var(--dark); padding: 48px 72px 52px;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;
+}
+.tq-result-badge {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(201,169,110,0.4);
+  padding: 4px 12px; display: inline-block; margin-bottom: 18px;
+}
+.tq-result-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(28px, 3.8vw, 48px);
+  font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 12px;
+}
+.tq-result-sub {
+  font-family: 'Lora', serif; font-size: 15px; font-style: italic;
+  color: rgba(255,255,255,0.38); line-height: 1.7; max-width: 500px;
+}
+.tq-restart-btn {
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.42); padding: 8px 18px; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; white-space: nowrap;
+}
+.tq-restart-btn:hover { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.85); }
+
+/* ── TOUR CARDS — 4-col grid ── */
+.tq-cards {
+  padding: 36px 48px 52px;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+}
+.tq-card {
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line);
+  transition: box-shadow 0.25s, transform 0.25s;
+  background: var(--paper);
+}
+.tq-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.1); }
+.tq-card.dim { opacity: 0.45; }
+.tq-card.dim:hover { opacity: 1; }
+
+.tq-card-img-wrap { position: relative; overflow: hidden; }
+.tq-card-img-wrap::after { content:''; display:block; padding-top:66%; }
+.tq-card-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.tq-card:hover .tq-card-img { transform: scale(1.05); }
+.tq-card-img-ph {
+  position: absolute; inset: 0;
+  background: var(--cream); display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--ink3); font-style: italic;
+}
+.tq-card-days-badge {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(20,18,16,0.65); backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.8); font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px;
+}
+.tq-card-match-badge {
+  position: absolute; top: 10px; left: 10px;
+  background: var(--gold); color: var(--dark);
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 10px; font-weight: 600;
+}
+
+.tq-card-body { padding: 16px 16px 18px; display: flex; flex-direction: column; flex: 1; }
+.tq-card-tag {
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 3px 8px; border: 1px solid currentColor;
+  display: inline-block; margin-bottom: 10px; width: fit-content;
+}
+.tq-card-title {
+  font-family: 'Kaisei Decol', serif;
+  font-size: clamp(16px, 1.5vw, 21px);
+  font-weight: 400; line-height: 1.25; color: var(--ink); margin-bottom: 8px;
+}
+.tq-card-desc { font-size: 12px; color: var(--ink2); line-height: 1.6; font-weight: 300; flex: 1; }
+.tq-card-footer {
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.tq-card-price { font-family: 'Kaisei Decol', serif; font-size: 18px; color: var(--ink); }
+.tq-card-days-label { font-size: 10px; color: var(--ink3); }
+
+.tq-cards-divider {
+  grid-column: 1/-1; padding: 16px 0 4px;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink3); border-top: 1px solid var(--line);
+}
+
+/* responsive */
+@media (max-width: 1100px) { .tq-cards { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 700px) {
+  .tq-quiz { padding: 36px 24px 48px; }
+  .tq-tiles { grid-template-columns: 1fr 1fr; }
+  .tq-tiles-4 { grid-template-columns: 1fr 1fr; }
+  .tq-result-hero { flex-direction: column; padding: 36px 24px 44px; }
+  .tq-cards { grid-template-columns: 1fr; padding: 20px 20px 32px; }
+}
+</style>
+
+<script>
+// ── Icons: muted white line art, gold accent only where meaningful ──
+const ICONS = {
+  kids: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="10" r="6"/>
+    <path d="M6 32c0-6.627 5.373-12 12-12s12 5.373 12 12"/>
+    <circle cx="28" cy="14" r="3.5" stroke="rgba(255,255,255,0.3)"/>
+    <path d="M24.5 28c1.5-1.5 3.5-2.2 5.5-1.8" stroke="rgba(255,255,255,0.3)"/>
+  </svg>`,
+
+  honeymoon: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 5 L9 21 Q13 32 18 32 Q23 32 27 21 L23 5Z"/>
+    <line x1="9.5" y1="15" x2="26.5" y2="15" stroke="rgba(255,255,255,0.28)"/>
+    <line x1="18" y1="32" x2="18" y2="36"/>
+    <line x1="13" y1="36" x2="23" y2="36"/>
+  </svg>`,
+
+  couple: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="10" r="5.5"/>
+    <path d="M2 32c0-5.523 4.477-10 10-10"/>
+    <circle cx="25" cy="10" r="5.5"/>
+    <path d="M34 32c0-5.523-4.477-10-10-10"/>
+    <line x1="12" y1="22" x2="25" y2="22" stroke="rgba(255,255,255,0.22)"/>
+  </svg>`,
+
+  family: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="9" cy="8" r="4.5"/>
+    <path d="M2 32c0-4.418 3.134-7 7-7"/>
+    <circle cx="27" cy="8" r="4.5"/>
+    <path d="M34 32c0-4.418-3.134-7-7-7"/>
+    <circle cx="18" cy="17" r="4" stroke="rgba(255,255,255,0.42)"/>
+    <path d="M12 32c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="rgba(255,255,255,0.42)"/>
+  </svg>`,
+
+  seniors: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="10" r="6"/>
+    <path d="M6 32c0-6.627 5.373-12 12-12s12 5.373 12 12"/>
+    <line x1="26" y1="26" x2="30" y2="36"/>
+  </svg>`,
+
+  friends: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10" cy="9" r="5"/>
+    <circle cx="26" cy="9" r="5"/>
+    <circle cx="18" cy="9" r="5" stroke="rgba(255,255,255,0.38)"/>
+    <path d="M2 32c0-4.97 3.582-9 8-9"/>
+    <path d="M34 32c0-4.97-3.582-9-8-9"/>
+    <path d="M10 32c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="rgba(255,255,255,0.42)"/>
+  </svg>`,
+
+  cooking: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="16" cy="21" rx="11" ry="9"/>
+    <line x1="5" y1="19" x2="27" y2="19"/>
+    <line x1="16" y1="12" x2="16" y2="5"/>
+    <line x1="27" y1="18" x2="32" y2="16" stroke="rgba(201,169,110,0.7)"/>
+    <circle cx="16" cy="5" r="1.5" fill="rgba(255,255,255,0.35)" stroke="none"/>
+  </svg>`,
+
+  craft: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="17" y1="17" x2="33" y2="33"/>
+    <rect x="2" y="5" width="19" height="10" rx="2.5" transform="rotate(-45 11 10)"/>
+  </svg>`,
+
+  nature: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="18,3 33,30 3,30"/>
+    <line x1="18" y1="30" x2="18" y2="36"/>
+    <line x1="3" y1="30" x2="33" y2="30"/>
+    <line x1="11" y1="21" x2="25" y2="21" stroke="rgba(255,255,255,0.22)"/>
+  </svg>`,
+
+  onsen: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 22 Q18 14 30 22 Q18 30 6 22Z"/>
+    <path d="M13 9 Q12 4 17 2" stroke="rgba(201,169,110,0.6)"/>
+    <path d="M21 11 Q20 6 25 4" stroke="rgba(201,169,110,0.6)"/>
+  </svg>`,
+
+  history: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="20" width="20" height="14"/>
+    <polygon points="3,20 18,9 33,20"/>
+    <polygon points="7,9 18,2 29,9" stroke="rgba(255,255,255,0.3)"/>
+    <rect x="14" y="26" width="8" height="8"/>
+  </svg>`,
+
+  sake: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 6 L9 16 Q9 32 18 32 Q27 32 27 16 L23 6Z"/>
+    <line x1="9.5" y1="18" x2="26.5" y2="18" stroke="rgba(255,255,255,0.25)"/>
+    <line x1="13" y1="6" x2="23" y2="6"/>
+    <line x1="18" y1="6" x2="18" y2="2"/>
+  </svg>`,
+
+  culture: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="9" r="6.5"/>
+    <path d="M6 34 L10 20 L18 24 L26 20 L30 34"/>
+    <line x1="10" y1="20" x2="26" y2="20" stroke="rgba(255,255,255,0.28)"/>
+  </svg>`,
+
+  adventure: `<svg class="tq-tile-icon" viewBox="0 0 36 36" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="3,30 10,13 18,20 26,6 33,30"/>
+    <circle cx="26" cy="6" r="2.5" fill="rgba(201,169,110,0.8)" stroke="rgba(201,169,110,0.8)"/>
+    <line x1="2" y1="30" x2="34" y2="30"/>
+  </svg>`,
+};
+
+const TOURS = {
+  nature: {
+    id:'nature', persona:'Nature lover', color:'#2d6a3f',
+    days:'2 days', title:'Shirakawa-go &\nKamikochi Explorer',
+    desc:'UNESCO farmhouses, mountain trails, and a night in a working gassho-zukuri inn.',
+    price:'From ¥68,000', href:'/tours/nature', img:'',
+    tags:['nature','culture','adventure','history'],
+    groups:['couple','friends','seniors','honeymoon'],
+  },
+  family: {
+    id:'family', persona:'Family · Little Kids', color:'#c45e1a',
+    days:'1 day', title:'Little Chefs\nof Takayama',
+    desc:'Morning market walk, food sample workshop, and a 5-course dinner in a 200-year machiya.',
+    price:'From ¥60,000', href:'/tours/family',
+    img:'https://images.squarespace-cdn.com/content/69c3bbf600ab084957fb1480/60ae6e84-c2d5-456b-9fa9-4a6fee29a132/%E3%81%8A%E6%B0%97%E3%81%AB%E5%85%A5%E3%82%8A+-+11+%EF%BC%8F+17.jpeg?content-type=image%2Fjpeg',
+    tags:['cooking','culture'], groups:['kids','family','seniors'],
+  },
+  craft: {
+    id:'craft', persona:'Craft fan', color:'#7a4f2d',
+    days:'2 days', title:'The Art of\nJapanese Wood',
+    desc:'From nail-free temple architecture to world-class furniture factories.',
+    price:'From ¥120,000', href:'/tours/wood', img:'',
+    tags:['craft','culture','history'],
+    groups:['couple','honeymoon','friends','seniors'],
+  },
+  food: {
+    id:'food', persona:'Food lover', color:'#b83232',
+    days:'2 days', title:'Hida Food &\nMarket Walk',
+    desc:'Fermented miso, mountain vegetables, sake breweries, and a chef\'s table in the old town.',
+    price:'From ¥68,000', href:'/tours/food', img:'',
+    tags:['cooking','culture','sake'],
+    groups:['couple','honeymoon','friends','seniors'],
+  },
+};
+
+const GROUP_TILES = [
+  {key:'kids',      icon:'kids',      title:'With young kids',  desc:'Activities that genuinely work for children.'},
+  {key:'honeymoon', icon:'honeymoon', title:'Honeymoon',        desc:'Something special for just the two of you.'},
+  {key:'couple',    icon:'couple',    title:'Couple',           desc:'Shared experiences you\'ll talk about for years.'},
+  {key:'family',    icon:'family',    title:'Multi-gen family', desc:'Grandparents to grandkids — everyone included.'},
+  {key:'seniors',   icon:'seniors',   title:'With seniors',     desc:'Depth and comfort — still adventurous, not rushed.'},
+  {key:'friends',   icon:'friends',   title:'Friends group',    desc:'More interesting than a standard itinerary.'},
+];
+const INTEREST_TILES = [
+  {key:'cooking',   icon:'cooking',   title:'Cooking',          desc:'Hands-on time in a real kitchen.'},
+  {key:'craft',     icon:'craft',     title:'Crafts & making',  desc:'Woodworking, lacquerware, ceramics.'},
+  {key:'nature',    icon:'nature',    title:'Nature & hiking',  desc:'Mountains, rivers, alpine scenery.'},
+  {key:'onsen',     icon:'onsen',     title:'Onsen & ryokan',   desc:'Hot springs and tatami rooms.'},
+  {key:'history',   icon:'history',   title:'History',          desc:'Edo-period streets, UNESCO villages.'},
+  {key:'sake',      icon:'sake',      title:'Sake & drinks',    desc:'Breweries and local tastings.'},
+  {key:'culture',   icon:'culture',   title:'Culture & people', desc:'Real local life — not tourist Japan.'},
+  {key:'adventure', icon:'adventure', title:'Adventure',        desc:'Trails and earning a view.'},
+];
+
+let selectedGroups = new Set();
+let selectedInterests = new Set();
+let currentStep = 1;
+
+function toggleTile(el, key, setName) {
+  const set = setName === 'group' ? selectedGroups : selectedInterests;
+  set.has(key) ? (set.delete(key), el.classList.remove('selected'))
+               : (set.add(key),    el.classList.add('selected'));
+  document.getElementById('tq-next-' + currentStep).disabled =
+    currentStep === 1 ? selectedGroups.size === 0 : selectedInterests.size === 0;
+}
+
+function goStep(n) {
+  document.querySelectorAll('.tq-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('tq-step-' + n).classList.add('active');
+  currentStep = n;
+  document.getElementById('tq-fill').style.width = n === 1 ? '50%' : '100%';
+  document.getElementById('tq-plabel').textContent = 'Step ' + n + ' of 2';
+  document.getElementById('tq-next-' + n).disabled =
+    n === 1 ? selectedGroups.size === 0 : selectedInterests.size === 0;
+}
+
+function ranked() {
+  const s = {};
+  Object.values(TOURS).forEach(t => {
+    s[t.id] = 0;
+    t.groups.forEach(g => { if (selectedGroups.has(g)) s[t.id] += 2; });
+    t.tags.forEach(i   => { if (selectedInterests.has(i)) s[t.id] += 3; });
+  });
+  return Object.keys(s).sort((a,b) => s[b]-s[a]);
+}
+
+function buildCard(key, best) {
+  const t = TOURS[key];
+  const img = t.img
+    ? `<img class="tq-card-img" src="${t.img}" alt="">`
+    : `<div class="tq-card-img-ph">[ Photo ]</div>`;
+  return `
+    <a class="tq-card${best?'':' dim'}" href="${t.href}">
+      <div class="tq-card-img-wrap">
+        ${img}
+        <div class="tq-card-days-badge">${t.days}</div>
+        ${best?'<div class="tq-card-match-badge">Best match</div>':''}
+      </div>
+      <div class="tq-card-body">
+        <span class="tq-card-tag" style="color:${t.color};border-color:${t.color};">${t.persona}</span>
+        <h2 class="tq-card-title">${t.title.replace('\n','<br>')}</h2>
+        <p class="tq-card-desc">${t.desc}</p>
+        <div class="tq-card-footer">
+          <div class="tq-card-price">${t.price}</div>
+          <span class="tq-card-days-label">${t.days}</span>
+        </div>
+      </div>
+    </a>`;
+}
+
+function showResults() {
+  const q = document.querySelector('.tq-quiz');
+  q.style.opacity = '0';
+  setTimeout(() => {
+    q.style.display = 'none';
+    const r = ranked();
+    const best = TOURS[r[0]];
+    document.getElementById('tq-result-badge').textContent = '✓ Best match for you';
+    document.getElementById('tq-result-title').textContent = best.title.replace('\n',' ');
+    document.getElementById('tq-result-sub').textContent = best.desc;
+    let html = buildCard(r[0], true);
+    if (r.length > 1) {
+      html += `<div class="tq-cards-divider">Other tours you might enjoy</div>`;
+      r.slice(1).forEach(k => { html += buildCard(k, false); });
+    }
+    document.getElementById('tq-cards').innerHTML = html;
+    document.getElementById('tq-results').style.display = 'block';
+  }, 300);
+}
+
+function showAll() {
+  document.querySelector('.tq-quiz').style.display = 'none';
+  document.getElementById('tq-result-badge').textContent = 'All tours';
+  document.getElementById('tq-result-title').textContent = 'Private Tours.';
+  document.getElementById('tq-result-sub').textContent = 'Every tour runs exclusively for your group. Browse them all.';
+  document.getElementById('tq-cards').innerHTML =
+    Object.keys(TOURS).map((k,i) => buildCard(k, i===0)).join('');
+  document.getElementById('tq-results').style.display = 'block';
+}
+
+function tqRestart() {
+  selectedGroups.clear(); selectedInterests.clear();
+  document.querySelectorAll('.tq-tile').forEach(t => t.classList.remove('selected'));
+  document.getElementById('tq-results').style.display = 'none';
+  const q = document.querySelector('.tq-quiz');
+  q.style.cssText = 'display:flex; opacity:0;';
+  goStep(1);
+  setTimeout(() => { q.style.opacity = '1'; q.style.transition = 'opacity 0.3s'; }, 30);
+}
+
+function buildTiles(tiles, setName, id) {
+  document.getElementById(id).innerHTML = tiles.map(t => `
+    <div class="tq-tile" onclick="toggleTile(this,'${t.key}','${setName}')">
+      <div class="tq-tile-check">✓</div>
+      ${ICONS[t.icon]}
+      <div class="tq-tile-title">${t.title}</div>
+      <div class="tq-tile-desc">${t.desc}</div>
+    </div>`).join('');
+}
+</script>
+
+<div class="tq">
+  <!-- QUIZ -->
+  <div class="tq-quiz">
+    <div class="tq-progress-wrap">
+      <div class="tq-progress-bar"><div class="tq-progress-fill" id="tq-fill" style="width:50%;"></div></div>
+      <div class="tq-progress-label" id="tq-plabel">Step 1 of 2</div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="tq-step active" id="tq-step-1">
+      <div class="tq-q-label">Step 1 — Your group</div>
+      <h2 class="tq-q-text">Who's travelling with you?</h2>
+      <p class="tq-q-sub">Select all that apply.</p>
+      <div class="tq-tiles" id="tq-group-tiles"></div>
+      <div class="tq-nav">
+        <a href="#" class="tq-skip-link" onclick="showAll();return false;">Skip — show all tours</a>
+        <button class="tq-btn-next" id="tq-next-1" disabled onclick="goStep(2)">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="tq-step" id="tq-step-2">
+      <div class="tq-q-label">Step 2 — Your interests</div>
+      <h2 class="tq-q-text">What excites you most?</h2>
+      <p class="tq-q-sub">Pick as many as you like.</p>
+      <div class="tq-tiles tq-tiles-4" id="tq-interest-tiles"></div>
+      <div class="tq-nav">
+        <button class="tq-btn-back" onclick="goStep(1)">← Back</button>
+        <button class="tq-btn-next" id="tq-next-2" disabled onclick="showResults()">Find my tour →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="tq-results" id="tq-results">
+    <div class="tq-result-hero">
+      <div>
+        <div class="tq-result-badge" id="tq-result-badge"></div>
+        <h2 class="tq-result-title" id="tq-result-title"></h2>
+        <p class="tq-result-sub" id="tq-result-sub"></p>
+      </div>
+      <div style="display:flex;gap:10px;flex-shrink:0;">
+        <button class="tq-restart-btn" onclick="tqRestart()">← Try again</button>
+        <button class="tq-restart-btn" onclick="showAll()" style="border-color:rgba(255,255,255,0.35);color:rgba(255,255,255,0.65);">See all tours</button>
+      </div>
+    </div>
+    <div class="tq-cards" id="tq-cards"></div>
+  </div>
+</div>
+
+<script>
+buildTiles(GROUP_TILES, 'group', 'tq-group-tiles');
+buildTiles(INTEREST_TILES, 'interest', 'tq-interest-tiles');
+</script>

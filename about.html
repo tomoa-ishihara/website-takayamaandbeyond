@@ -1,0 +1,330 @@
+<!-- ============================================================
+     ABOUT US — Takayama & Beyond
+     Emotional, collage-style, photo-scattered design
+     ============================================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700&family=Lora:ital,wght@0,400;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+.ab * { box-sizing: border-box; margin: 0; padding: 0; }
+.ab {
+  --ink:   #1c1916;
+  --ink2:  #5a5048;
+  --ink3:  #9a9088;
+  --paper: #f8f6f2;
+  --cream: #ede9e2;
+  --dark:  #141210;
+  --red:   #8b1a1a;
+  --gold:  #c9a96e;
+  --line:  rgba(28,25,22,0.12);
+  font-family: "DM Sans", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+.sqs-block-code { padding: 0 !important; margin: 0 !important; }
+
+/* ══ SCATTERED PHOTO BASE ══ */
+.ab-photo {
+  position: absolute;
+  background: var(--cream);
+  box-shadow: 0 4px 24px rgba(28,25,22,0.15), 0 1px 3px rgba(28,25,22,0.08);
+  overflow: hidden;
+}
+.ab-photo-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--ink3); font-style: italic;
+  text-align: center; padding: 6px; line-height: 1.4;
+}
+.ab-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ══ SECTION 1: OPENING ══ */
+.ab-open {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 72px 100px;
+  display: flex; flex-direction: column; justify-content: center;
+  overflow: hidden;
+  background: var(--paper);
+}
+.ab-p1 { width: 148px; height: 190px; top: 56px;  right: 72px;  transform: rotate(3deg); }
+.ab-p2 { width: 112px; height: 146px; top: 210px; right: 246px; transform: rotate(-5deg); }
+.ab-p3 { width: 88px;  height: 116px; top: 130px; right: 430px; transform: rotate(2deg); opacity: 0.8; }
+.ab-p4 { width: 168px; height: 124px; bottom: 130px; right: 52px; transform: rotate(-3deg); }
+.ab-p5 { width: 104px; height: 136px; bottom: 72px;  right: 270px; transform: rotate(6deg); }
+.ab-p6 { width: 76px;  height: 98px;  bottom: 200px; right: 420px; transform: rotate(-2deg); opacity: 0.65; }
+
+.ab-open-inner { position: relative; z-index: 2; max-width: 580px; }
+.ab-open-eyebrow {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 24px;
+}
+.ab-open-title {
+  font-family: "Kaisei Decol", serif;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 400; line-height: 0.95; color: var(--ink);
+  letter-spacing: -0.03em; margin-bottom: 36px;
+}
+.ab-open-title em { font-style: italic; color: var(--red); }
+.ab-open-sub {
+  font-family: "DM Sans", sans-serif; font-style: normal; font-weight: 300;
+  font-size: 15px; color: var(--ink3); line-height: 1.75;
+  max-width: 420px; letter-spacing: 0.02em;
+}
+
+/* ══ SECTION 2: STORY (DARK) ══ */
+.ab-story {
+  padding: 100px 72px;
+  background: var(--dark);
+  position: relative; overflow: hidden;
+}
+.ab-story-label {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(201,169,110,0.55); margin-bottom: 44px;
+}
+.ab-story-body { max-width: 680px; position: relative; z-index: 2; }
+.ab-story-p {
+  font-family: "Kaisei Decol", serif;
+  font-size: clamp(15px, 1.6vw, 20px);
+  font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.7);
+  margin-bottom: 44px;
+}
+.ab-story-p:last-child { margin-bottom: 0; }
+.ab-story-p em  { color: var(--red); font-style: italic; }
+.ab-story-p strong { color: #fff; }
+
+.ab-sp1 { width: 180px; height: 240px; right: 72px;  top: 80px;    transform: rotate(2deg);  background: #2a2420; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+.ab-sp2 { width: 136px; height: 176px; right: 210px; bottom: 80px; transform: rotate(-4deg); background: #2a2420; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+.ab-sp3 { width: 104px; height: 136px; right: 68px;  bottom: 100px; transform: rotate(7deg); background: #2a2420; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+
+/* ══ SECTION 3: QUOTE (BIG) ══ */
+.ab-quote {
+  padding: 100px 72px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  position: relative; overflow: hidden;
+}
+.ab-quote-pre {
+  font-size: 16px; color: var(--ink2); margin-bottom: 32px;
+  letter-spacing: 0.02em; line-height: 1.7; font-family: "Lora", serif; font-style: italic;
+}
+.ab-quote-text {
+  font-family: "Lora", serif; font-style: italic;
+  font-size: clamp(20px, 3.2vw, 42px);
+  line-height: 1.3; color: var(--ink2); max-width: 760px; font-weight: 400;
+  opacity: 0.7;
+}
+.ab-quote-text em { color: var(--red); }
+.ab-quote-after {
+  margin-top: 44px; font-size: 14px; color: var(--ink3);
+  font-family: "Lora", serif; font-style: italic;
+}
+.ab-qp1 { width: 116px; height: 154px; right: 180px; top: 64px;    transform: rotate(-5deg); }
+.ab-qp2 { width: 96px;  height: 126px; right: 60px;  top: 150px;   transform: rotate(3deg); }
+.ab-qp3 { width: 140px; height: 108px; right: 100px; bottom: 56px; transform: rotate(-2deg); }
+
+/* ══ SECTION 4: COLLAGE MOSAIC ══ */
+.ab-collage {
+  padding: 80px 72px 100px;
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+}
+.ab-collage-label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); border: 1px solid var(--red);
+  padding: 4px 10px; display: inline-block; margin-bottom: 48px;
+}
+.ab-mosaic {
+  display: grid;
+  grid-template-columns: 190px 1fr 150px 190px;
+  grid-template-rows: 172px 116px 192px;
+  gap: 14px;
+}
+.ab-tile { overflow: hidden; }
+.ab-tile-ph {
+  width: 100%; height: 100%; background: rgba(28,25,22,0.07);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--ink3); font-style: italic; text-align: center; padding: 8px;
+}
+.ab-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ab-m1 { grid-column: 1; grid-row: 1 / 3; }
+.ab-m2 { grid-column: 2; grid-row: 1; }
+.ab-m3 { grid-column: 3; grid-row: 1; }
+.ab-m4 { grid-column: 4; grid-row: 1 / 3; }
+.ab-m5 { grid-column: 2; grid-row: 2; display: flex; align-items: center; padding: 0 20px; background: rgba(28,25,22,0.04); }
+.ab-m5-text { font-size: 14px; color: var(--ink2); line-height: 1.7; font-weight: 300; }
+.ab-m6 { grid-column: 3; grid-row: 2 / 4; }
+.ab-m7 { grid-column: 1; grid-row: 3; }
+.ab-m8 { grid-column: 2; grid-row: 3; display: flex; align-items: flex-end; padding: 0 0 8px; }
+.ab-m8-text { font-family: "Kaisei Decol", serif; font-size: clamp(17px, 2.2vw, 26px); color: var(--ink); line-height: 1.25; }
+.ab-m9 { grid-column: 4; grid-row: 3; }
+
+/* ══ SECTION 5: PHILOSOPHY ══ */
+.ab-phil {
+  padding: 100px 72px;
+  position: relative; overflow: hidden;
+  background: var(--paper);
+}
+.ab-phil-label {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 52px;
+}
+.ab-phil-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+}
+.ab-phil-title {
+  font-family: "Kaisei Decol", serif;
+  font-size: clamp(24px, 3.2vw, 42px);
+  font-weight: 400; line-height: 1.2; color: var(--ink); margin-bottom: 28px;
+}
+.ab-phil-body { font-size: 16px; color: var(--ink2); line-height: 1.85; font-weight: 300; }
+.ab-phil-body p + p { margin-top: 16px; }
+.ab-phil-pull {
+  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line);
+  font-family: "Lora", serif; font-style: italic;
+  font-size: 19px; color: var(--ink); line-height: 1.55;
+}
+.ab-phil-photos { position: relative; height: 480px; }
+.ab-pp1 { position: absolute; width: 224px; height: 288px; top: 0;    left: 32px;   transform: rotate(-3deg); box-shadow: 0 6px 28px rgba(28,25,22,0.14); }
+.ab-pp2 { position: absolute; width: 176px; height: 136px; top: 56px; left: 250px;  transform: rotate(4deg);  box-shadow: 0 6px 28px rgba(28,25,22,0.14); }
+.ab-pp3 { position: absolute; width: 200px; height: 248px; bottom: 0;  left: 72px;  transform: rotate(2deg);  box-shadow: 0 6px 28px rgba(28,25,22,0.14); }
+.ab-pp4 { position: absolute; width: 124px; height: 164px; bottom: 36px; left: 304px; transform: rotate(-5deg); box-shadow: 0 6px 28px rgba(28,25,22,0.14); }
+.ab-pp-ph { width: 100%; height: 100%; background: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--ink3); font-style: italic; }
+
+/* ══ CTA ══ */
+.ab-cta {
+  background: var(--dark); padding: 80px 72px;
+  display: flex; justify-content: space-between; align-items: center; gap: 48px;
+}
+.ab-cta-title {
+  font-family: "Kaisei Decol", serif;
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 400; color: #fff; line-height: 1.2;
+}
+.ab-cta-link {
+  display: inline-block; padding: 14px 36px; flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.8);
+  text-decoration: none; font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; transition: all 0.2s; font-family: "DM Sans", sans-serif;
+}
+.ab-cta-link:hover { background: #fff; color: var(--dark); border-color: #fff; }
+
+@media (max-width: 900px) {
+  .ab-open { padding: 56px 24px 80px; }
+  .ab-p1,.ab-p2,.ab-p3 { display: none; }
+  .ab-p4 { right: 16px; width: 90px; height: 72px; bottom: 160px; }
+  .ab-p5 { right: 120px; width: 72px; height: 96px; }
+  .ab-p6 { display: none; }
+  .ab-story { padding: 72px 24px; }
+  .ab-sp1,.ab-sp2,.ab-sp3 { display: none; }
+  .ab-quote { padding: 72px 24px; }
+  .ab-qp1,.ab-qp2,.ab-qp3 { display: none; }
+  .ab-collage { padding: 56px 24px 72px; }
+  .ab-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px 80px 160px; }
+  .ab-m1 { grid-column: 1; grid-row: 1; }
+  .ab-m2 { grid-column: 2; grid-row: 1; }
+  .ab-m3 { grid-column: 1; grid-row: 2; }
+  .ab-m4 { grid-column: 2; grid-row: 2; }
+  .ab-m5 { grid-column: 1 / 3; grid-row: 3; }
+  .ab-m6 { grid-column: 1; grid-row: 4 / 6; }
+  .ab-m7 { grid-column: 2; grid-row: 4; }
+  .ab-m8 { grid-column: 2; grid-row: 5; }
+  .ab-m9 { display: none; }
+  .ab-phil { padding: 72px 24px; }
+  .ab-phil-grid { grid-template-columns: 1fr; gap: 48px; }
+  .ab-phil-photos { height: 320px; }
+  .ab-cta { flex-direction: column; align-items: flex-start; padding: 56px 24px; }
+}
+</style>
+
+<div class="ab">
+
+  <!-- ══ OPENING ══ -->
+  <div class="ab-open">
+    <div class="ab-photo ab-p1"><div class="ab-photo-ph">[ Guest laughing ]</div></div>
+    <div class="ab-photo ab-p2"><div class="ab-photo-ph">[ Morning market ]</div></div>
+    <div class="ab-photo ab-p3"><div class="ab-photo-ph">[ Old Town street ]</div></div>
+    <div class="ab-photo ab-p4"><div class="ab-photo-ph">[ Cooking together ]</div></div>
+    <div class="ab-photo ab-p5"><div class="ab-photo-ph">[ Forest path ]</div></div>
+    <div class="ab-photo ab-p6"><div class="ab-photo-ph">[ Sake brewery ]</div></div>
+    <div class="ab-open-inner">
+      <div class="ab-open-eyebrow">Takayama & Beyond — About us</div>
+      <h1 class="ab-open-title">A Local Experience<br>&amp; Tour Company<br>in Takayama &amp;<br><em style="color:var(--red);font-style:italic;">Beyond.</em></h1>
+      <p class="ab-open-sub">Connecting people in Takayama — with the place, the people, and what makes it unlike anywhere else in Japan.</p>
+    </div>
+  </div>
+
+  <!-- ══ STORY ══ -->
+  <div class="ab-story">
+    <div class="ab-photo ab-sp1"><div class="ab-photo-ph" style="color:rgba(255,255,255,0.2);">[ Guide & guests ]</div></div>
+    <div class="ab-photo ab-sp2"><div class="ab-photo-ph" style="color:rgba(255,255,255,0.2);">[ Family home ]</div></div>
+    <div class="ab-photo ab-sp3"><div class="ab-photo-ph" style="color:rgba(255,255,255,0.2);">[ Tea room ]</div></div>
+    <div class="ab-story-label">Our story</div>
+    <div class="ab-story-body">
+      <p class="ab-story-p">Founded with a single conviction: that the most valuable thing a traveller can bring home is a <em>genuine human and cultural connection.</em></p>
+      <p class="ab-story-p">We work with local families, craftspeople, tea masters, and farmers who open their homes and workshops — <strong>not because it&rsquo;s convenient,</strong> but because they believe in sharing what makes this place extraordinary.</p>
+      <p class="ab-story-p">Based in Takayama&rsquo;s historic Old Town. Every experience runs <em>exclusively for your group.</em></p>
+    </div>
+  </div>
+
+  <!-- ══ QUOTE ══ -->
+  <div class="ab-quote">
+    <div class="ab-photo ab-qp1"><div class="ab-photo-ph">[ Grandfather ]</div></div>
+    <div class="ab-photo ab-qp2"><div class="ab-photo-ph">[ Snow in town ]</div></div>
+    <div class="ab-photo ab-qp3"><div class="ab-photo-ph">[ Lantern light ]</div></div>
+    <div class="ab-quote-pre">My grandfather, who loved living in Takayama his entire life, had often said —</div>
+    <div class="ab-quote-text">
+      &ldquo;Takayama is not an easy place to reach.<br>
+      If someone makes the journey,<br>
+      they deserve a <em>warm welcome,</em><br>
+      even if we&rsquo;ve only just met.&rdquo;
+    </div>
+    <div class="ab-quote-after">and we stand by that.</div>
+  </div>
+
+  <!-- ══ COLLAGE ══ -->
+  <div class="ab-collage">
+    <div class="ab-collage-label">What we do</div>
+    <div class="ab-mosaic">
+      <div class="ab-tile ab-m1"><div class="ab-tile-ph">[ Cooking hands ]</div></div>
+      <div class="ab-tile ab-m2"><div class="ab-tile-ph">[ Morning market ]</div></div>
+      <div class="ab-tile ab-m3"><div class="ab-tile-ph">[ Sake pour ]</div></div>
+      <div class="ab-tile ab-m4"><div class="ab-tile-ph">[ Farmhouse ]</div></div>
+      <div class="ab-m5"><div class="ab-m5-text">We work with local families, craftspeople, and sake brewers who open their doors to a small number of guests each week.</div></div>
+      <div class="ab-tile ab-m6"><div class="ab-tile-ph">[ Tea ceremony tatami ]</div></div>
+      <div class="ab-tile ab-m7"><div class="ab-tile-ph">[ Sugidama making ]</div></div>
+      <div class="ab-m8"><div class="ab-m8-text">Every experience runs exclusively for your group.</div></div>
+      <div class="ab-tile ab-m9"><div class="ab-tile-ph">[ Mountain view ]</div></div>
+    </div>
+  </div>
+
+  <!-- ══ PHILOSOPHY ══ -->
+  <div class="ab-phil">
+    <div class="ab-phil-label">Our Philosophy</div>
+    <div class="ab-phil-grid">
+      <div>
+        <h2 class="ab-phil-title">Most people visit Takayama and see the streets.<br>We hope they leave knowing the people.</h2>
+        <div class="ab-phil-body">
+          <p>Each experience begins with a question: what would we share with someone we care about? Not the highlights, but everyday life.</p>
+          <p>Through these shared moments, we hope you discover something new — about the culture, the people, and perhaps even yourself.</p>
+        </div>
+        <div class="ab-phil-pull">&ldquo;What would we share with someone we care about?&rdquo;</div>
+      </div>
+      <div class="ab-phil-photos">
+        <div class="ab-photo ab-pp1"><div class="ab-pp-ph">[ Guests in rain ]</div></div>
+        <div class="ab-photo ab-pp2"><div class="ab-pp-ph">[ Laughing ]</div></div>
+        <div class="ab-photo ab-pp3"><div class="ab-pp-ph">[ Cooking class ]</div></div>
+        <div class="ab-photo ab-pp4"><div class="ab-pp-ph">[ Child & guide ]</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CTA ══ -->
+  <div class="ab-cta">
+    <div class="ab-cta-title">Enter a world few ever see.<br>Something real. Something lasting.</div>
+    <a href="/experiences" class="ab-cta-link">Browse experiences &rarr;</a>
+  </div>
+
+</div><!-- /ab -->
