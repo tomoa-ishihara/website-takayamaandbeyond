@@ -1,0 +1,14 @@
+/  /top-page.html  200
+/tours  /tours-list.html  200
+/tours/family  /tour-family.html  200
+/tours/wood  /tour-wood.html  200
+/tours/nature  /tour-detail.html  200
+/tours/food  /tour-food.html  200
+/experiences  /experiences-list.html  200
+/experiences/cooking  /experience-detail.html  200
+/experiences/foodtour  /exp-foodtour.html  200
+/experiences/sake-tasting  /exp-sake.html  200
+/experiences/countryside  /exp-countryside.html  200
+/experiences/tea  /exp-tea.html  200
+/about  /about.html  200
+/partnership  /partnership.html  200
